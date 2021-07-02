@@ -39,3 +39,6 @@ sleep 1
 sudo csmgrdstart
 sleep 1
 sudo cefnetdstart
+
+rm -rf cefore-0.8.3
+rm cefore.zip
