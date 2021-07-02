@@ -1,3 +1,5 @@
+#!/bin/bash
+
 ./run.sh 14261 ubuntu_1
 ./run.sh 14262 ubuntu_2
 ./run.sh 14263 ubuntu_3

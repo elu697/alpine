@@ -1,0 +1,28 @@
+version: '3.5'
+
+services:
+  ubuntu:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+        - "6970:22"
+    restart: always
+    networks:
+      - container-link
+    sysctls:
+        net.core.rmem_default: 10000000
+        net.core.wmem_default: 10000000
+        net.core.rmem_max: 10000000
+        net.core.wmem_max: 10000000
+
+# ネットワーク定義
+networks:
+  # docker-composeで勝手にデフォルトネットワークが生成される予防。（自動で全コンテナが所属するbridgeを指定）
+  default:
+    external:
+      name: bridge
+  # コンテナ間通信用のネットワークセグメント
+  container-link:
+    # これが作成されるネットワーク名（同名がなければ自動生成される）
+    name: docker.internal
