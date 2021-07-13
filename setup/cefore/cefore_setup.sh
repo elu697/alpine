@@ -15,7 +15,7 @@ cd cefore-0.8.3
 export CEFORE_DIR=/usr/local
 aclocal
 automake
-./configure --enable-csmgr --enable-cache --enable-cefping --enable-cefinfo --enable-debug
+./configure --enable-csmgr --enable-cefping --enable-samptp --enable-debug --enable-cache
 make
 sudo make install
 sudo ldconfig

@@ -14,17 +14,18 @@ export CEFORE_DIR=/usr/local
 aclocal
 autoconf
 automake
-./configure --enable-csmgr --enable-cache --enable-cefping --enable-cefinfo --enable-debug --enable-samptp
+./configure --enable-csmgr --enable-cefping --enable-samptp --enable-debug --enable-cache
 make
 sudo make install
 sudo ldconfig
 
+sleep 2
 # run cefore
 sudo cefnetdstop
 sleep 1
 sudo csmgrdstop
 sleep 1
-sudo csmgrdstart
+sudo csmgrdstarta
 sleep 1
 sudo cefnetdstart
 
