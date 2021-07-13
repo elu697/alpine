@@ -16,6 +16,7 @@ sudo ldconfig
 cd ..
 cp -f config/cefnetd.conf /usr/local/cefore/cefnetd.conf
 cp -f config/csmgrd.conf /usr/local/cefore/csmgrd.conf
+cp -f config/plugin.conf /usr/local/cefore/plugin.conf
 
 # tuning for cefore without on docker
 sudo sysctl --write net.core.rmem_default=10000000

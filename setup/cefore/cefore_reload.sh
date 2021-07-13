@@ -17,7 +17,7 @@ sudo cefnetdstop
 sleep 1
 sudo csmgrdstop
 sleep 1
-sudo csmgrdstarta
+sudo csmgrdstart
 sleep 1
 sudo cefnetdstart
 
