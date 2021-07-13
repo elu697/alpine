@@ -1,15 +1,7 @@
 #!/bin/bash
 
-# setup env
-sudo apt -y update
-sudo apt -y upgrade
-sudo apt -y full-upgrade
-sudo apt -y autoremove
-sudo apt install -y unzip
-sudo apt -y install make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl git zlib1g-dev libffi-dev automake net-tools
-
 # install cefore
-wget https://cefore.net/dlfile.php?file=cefore-0.8.3.zip -O cefore-0.8.3.zip
+# wget https://cefore.net/dlfile.php?file=cefore-0.8.3.zip -O cefore-0.8.3.zip
 unzip -o cefore-0.8.3.zip
 cd cefore-0.8.3
 export CEFORE_DIR=/usr/local
@@ -32,6 +24,7 @@ sudo sysctl --write net.core.rmem_max=10000000
 sudo sysctl --write net.core.wmem_max=10000000
 
 # run cefore
+sleep 2
 sudo cefnetdstop
 sleep 1
 sudo csmgrdstop
@@ -43,6 +36,8 @@ sudo cefnetdstart
 csmgrstatus
 cefstatus
 
+git config --global user.email "elyou.dev@gmail.com"
+git config --global user.name "elu697"
 
-rm -rf cefore-0.8.3
-rm cefore.zip
+# rm -rf cefore-0.8.3
+# rm cefore.zip
