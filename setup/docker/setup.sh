@@ -15,3 +15,4 @@ sudo sysctl --write net.core.rmem_max=10000000
 sudo sysctl --write net.core.wmem_max=10000000
 fi
 
+

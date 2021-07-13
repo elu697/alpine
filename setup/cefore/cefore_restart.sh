@@ -14,3 +14,6 @@ sleep 1
 sudo csmgrdstart
 sleep 1
 sudo cefnetdstart
+
+csmgrstatus
+cefstatus
