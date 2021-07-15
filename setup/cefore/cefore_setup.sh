@@ -1,9 +1,6 @@
 #!/bin/bash
 
-# install cefore
-# wget https://cefore.net/dlfile.php?file=cefore-0.8.3.zip -O cefore-0.8.3.zip
-unzip -o cefore-0.8.3.zip
-cd cefore-0.8.3
+cd ../../cefore
 export CEFORE_DIR=/usr/local
 aclocal
 automake
@@ -14,9 +11,9 @@ sudo ldconfig
 
 # copy settings
 cd ..
-cp -f config/cefnetd.conf /usr/local/cefore/cefnetd.conf
-cp -f config/csmgrd.conf /usr/local/cefore/csmgrd.conf
-cp -f config/plugin.conf /usr/local/cefore/plugin.conf
+cp -f setup/config/cefnetd.conf /usr/local/cefore/cefnetd.conf
+cp -f setup/config/csmgrd.conf /usr/local/cefore/csmgrd.conf
+cp -f setup/config/plugin.conf /usr/local/cefore/plugin.conf
 
 # tuning for cefore without on docker
 sudo sysctl --write net.core.rmem_default=10000000
@@ -40,5 +37,3 @@ cefstatus
 git config --global user.email "elyou.dev@gmail.com"
 git config --global user.name "elu697"
 
-# rm -rf cefore-0.8.3
-# rm cefore.zip

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # install cefore
-cd cefore-0.8.3
+cd ../../cefore
 export CEFORE_DIR=/usr/local
 aclocal
 autoconf
