@@ -4,6 +4,12 @@ config.*
 *.o
 *.Po
 *.Plo
+*.lo
+*.la
+*.lai
+*.a
+*.so
+*.so.*
 
 config/
 !config/*.pem
