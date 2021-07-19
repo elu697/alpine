@@ -38,9 +38,10 @@ utils/cefnetdstop
 utils/cefroute
 utils/cefstatus
 
-#custom
+#custom ---------------
 _deps
 _libs
+*.lai
 
 # Prerequisites
 *.d
