@@ -1,4 +1,4 @@
-# Cefore  
+# Cefore (forked)
 ## About Cefore
 ---
 Cefore is a software platform that enables CCN-like communications. Cefore consists of (1) "cefnetd" daemon, which implements the CCN's basic function such as CCN Interest/Data handling, and FIB and Pending Interest Table (PIT) management, (2) "csmgrd" daemon, which implements Content Store, (3) arbitrary plugin library implementations that extend cefnetd's or csmgrd's functionalities, and (4) network tools/commands and sample applications. Cefore can run on top of Ubuntu, Raspbian Jessie, macOS, and Android.   
