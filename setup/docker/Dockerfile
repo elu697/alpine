@@ -8,15 +8,19 @@ RUN apt-get update
 RUN apt-get upgrade -y
 RUN apt-get full-upgrade -y
 RUN apt-get autoremove -y
-RUN apt-get install -y locales
+RUN apt-get install -y locales aptitude
 RUN locale-gen en_US.UTF-8
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-RUN apt-get install -y openssh-server apt-utils nano
-RUN apt-get install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake
-RUN apt-get install -y sudo git net-tools unzip
+# cefore
+RUN aptitude install -y openssh-server apt-utils nano
+RUN aptitude install -y make build-essential libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake
+RUN aptitude install -y sudo git net-tools unzip
+# python3 for cefpyco
+RUN aptitude install -y build-essential libssl-dev libffi-dev python3-dev
+RUN aptitude install -y python3-pip
 
 RUN mkdir /var/run/sshd
 
