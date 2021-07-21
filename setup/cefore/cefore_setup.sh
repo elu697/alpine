@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# install cefore
 cd ../../cefore
 export CEFORE_DIR=/usr/local
 aclocal
@@ -35,6 +35,15 @@ sudo cefnetdstart
 csmgrstatus
 cefstatus
 
+# install cefpyco
+cd cefpyco
+sudo apt install -y aptitude
+sudo aptitude install -y cmake python-pip
+pip install setuptools click numpy
+cmake .
+sudo make install
+
+# original
 git config --global user.email "elyou.dev@gmail.com"
 git config --global user.name "elu697"
 
