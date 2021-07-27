@@ -50,4 +50,4 @@ EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
 
-RUN su docker && cd && git clone https://github.com/elu697/alpine.git
+RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine
