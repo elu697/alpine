@@ -37,7 +37,7 @@ ARG DOCKER_PASSWORD=password
 RUN echo 'Defaults visiblepw'             >> /etc/sudoers
 RUN echo '${DOCKER_USER} ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 
-#RUN sed -i 's/#\Port 22/Port 6970/' /etc/ssh/sshd_config
+# RUN sed -i 's/#\Port 22/Port 6970/' /etc/ssh/sshd_config
 RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
 RUN sed -i 's/#PasswordAuthetication/PasswordAuthetication/' /etc/ssh/sshd_config
 
@@ -50,4 +50,4 @@ EXPOSE 22
 
 CMD ["/usr/sbin/sshd", "-D"]
 
-RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine
+RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/cefore && bash cefore_setup.sh

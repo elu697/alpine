@@ -2,6 +2,7 @@
 
 # install cefore
 cd ../../cefore
+sudo make uninstall
 export CEFORE_DIR=/usr/local
 aclocal
 autoconf
