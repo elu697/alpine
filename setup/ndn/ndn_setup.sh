@@ -37,6 +37,10 @@ git clone https://github.com/named-data/jndn.git
 
 # ndn tool
 # https://github.com/named-data/ndn-tools/blob/master/INSTALL.md
+sudo aptitude install default-jdk
+sudo aptitude install maven
+sudo aptitude install psmisc
+
 sudo aptitude install -y libpcap-dev
 cd ndn-tools
 ./waf configure
