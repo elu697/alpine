@@ -18,8 +18,8 @@ app = NDNApp()
 
 @app.route('/example/testApp')
 def on_interest(name: FormalName, param: InterestParam, _app_param: Optional[BinaryStr]):
-    # print(bytes(_app_param) if _app_param else None)
-    # print(str(_app_param, 'utf8'))
+    print("len ->", len(_app_param))
+    print(str(_app_param, 'utf8'))
     print(f'>> I: {Name.to_str(name)}, {param}, {_app_param}')
     content = "Hello, world!".encode()
     app.put_data(name, content=content, freshness_period=10000)
