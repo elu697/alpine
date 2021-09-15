@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM nvidia/cuda:11.4.1-cudnn8-devel-ubuntu18.04
 
 # おまじない
 ENV DEBIAN_FRONTEND=noninteractive
@@ -28,7 +28,7 @@ RUN echo 'root:password' | chpasswd
 ARG DOCKER_UID=1000
 ARG DOCKER_USER=docker
 ARG DOCKER_PASSWORD=password
-　RUN useradd -s /bin/bash -m --uid ${DOCKER_UID} --groups sudo ${DOCKER_USER} \
+RUN useradd -s /bin/bash -m --uid ${DOCKER_UID} --groups sudo ${DOCKER_USER} \
   && echo ${DOCKER_USER}:${DOCKER_PASSWORD} | chpasswd
 
 # SUDO 追加
