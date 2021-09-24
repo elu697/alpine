@@ -9,8 +9,6 @@ services:
     ports:
       - "6970:22"
     restart: always
-    command: nvidia-smi
-    runtime: nvidia
     deploy:
       resources:
         reservations:
@@ -34,8 +32,6 @@ services:
     ports:
       - "6971:22"
     restart: always
-    command: nvidia-smi
-    runtime: nvidia
     deploy:
       resources:
         reservations:
@@ -53,8 +49,6 @@ services:
     ports:
       - "6972:22"
     restart: always
-    command: nvidia-smi
-    runtime: nvidia
     deploy:
       resources:
         reservations:
