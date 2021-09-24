@@ -10,10 +10,6 @@ services:
       - "6970:22"
       - "443:9896"
     restart: always
-    #    volumes:
-    #        - "/proc:/proc"
-    #        - "../cefore:/home/docker/cefore"
-    # network_mode: "host"
     networks:
       - container-link
   #    sysctls:

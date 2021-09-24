@@ -16,7 +16,10 @@ ENV LC_ALL en_US.UTF-8
 
 # 開発環境構築
 RUN aptitude install -y openssh-server apt-utils nano
-RUN aptitude install -y make build-essential libsm6 libxext6 libxrender-dev libssl-dev zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake
+RUN aptitude install -y make libjsoncpp-dev libjsonrpccpp-dev libgmp-dev libreadline-dev libmicrohttpd-dev ocl-icd-libopencl1 \
+opencl-headers mesa-common-dev build-essential libboost-all-dev build-essential libsm6 libxext6 libxrender-dev libssl-dev \
+zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
+libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake
 RUN aptitude install -y sudo git net-tools unzip
 # python3 for cefpyco
 RUN aptitude install -y build-essential libssl-dev libffi-dev python3-dev
@@ -46,6 +49,13 @@ RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so
 ENV NOTVISIBLE "in users profile"
 RUN echo "export VISIBLE=now" >> /etc/profile
 
+# Env setup
+ENV GPU_FORCE_64BIT_PTR=0
+ENV GPU_MAX_HEAP_SIZE=100
+ENV GPU_USE_SYNC_OBJECTS=1
+ENV GPU_MAX_ALLOC_PERCENT=100
+ENV GPU_SINGLE_ALLOC_PERCENT=100
+
 # SSHポート開放
 EXPOSE 22
 
@@ -53,5 +63,5 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
 # Ceforeセットアップ Rootユーザ
-RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/cefore && bash cefore_setup.sh
+# RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/cefore && bash cefore_setup.sh
 
