@@ -1,15 +1,22 @@
 version: "3.5"
 
 services:
-  ubuntu-cefore_1:
-    container_name: cefore_1
+  cuda-ubuntu_1:
+    # container_name: cefore_1
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "6970:22"
-      - "443:9896"
     restart: always
+    command: nvidia-smi
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [utility, compute, video]
     networks:
       - container-link
   #    sysctls:
@@ -19,25 +26,41 @@ services:
   #        - net.core.wmem_default=10000000
   #        - net.core.rmem_max=10000000
   #        - net.core.wmem_max=10000000
-  ubuntu-cefore_2:
-    container_name: cefore_2
+  cuda-ubuntu_2:
+    # container_name: cefore_2
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "6971:22"
     restart: always
+    command: nvidia-smi
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [utility, compute, video]
     networks:
       - container-link
 
-  ubuntu-cefore_3:
-    container_name: cefore_3
+  cuda-ubuntu_3:
+    # container_name: cefore_3
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "6972:22"
     restart: always
+    command: nvidia-smi
+    runtime: nvidia
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [utility, compute, video]
     networks:
       - container-link
 
