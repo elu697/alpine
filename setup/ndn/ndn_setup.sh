@@ -15,7 +15,7 @@ git clone https://github.com/named-data/jndn.git
 # # ndn-cxx
 # # https://github.com/named-data/ndn-cxx/blob/master/docs/INSTALL.rst
 sudo aptitude install -y g++ pkg-config python3-minimal libboost-all-dev libssl-dev libsqlite3-dev
-sudo apt install -y doxygen graphviz python3-pip
+sudo aptitude install -y doxygen graphviz python3-pip
 sudo pip3 install sphinx sphinxcontrib-doxylink
 cd ndn-cxx
 ./waf configure --with-examples  # on CentOS, add --without-pch
@@ -37,9 +37,9 @@ cd ..
 
 # ndn tool
 # https://github.com/named-data/ndn-tools/blob/master/INSTALL.md
-sudo aptitude install default-jdk
-sudo aptitude install maven
-sudo aptitude install psmisc
+sudo aptitude install -y default-jdk
+sudo aptitude install -y maven
+sudo aptitude install -y psmisc
 
 sudo aptitude install -y libpcap-dev
 cd ndn-tools
