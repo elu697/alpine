@@ -14,7 +14,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              capabilities: [utility, compute, video]
+              capabilities: [gpu, utility, compute, video]
     networks:
       - container-link
   #    sysctls:
@@ -37,7 +37,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              capabilities: [utility, compute, video]
+              capabilities: [gpu, utility, compute, video]
     networks:
       - container-link
 
@@ -54,7 +54,7 @@ services:
         reservations:
           devices:
             - driver: nvidia
-              capabilities: [utility, compute, video]
+              capabilities: [gpu, utility, compute, video]
     networks:
       - container-link
 
