@@ -14,26 +14,26 @@ git clone https://github.com/named-data/jndn.git
 
 # # ndn-cxx
 # # https://github.com/named-data/ndn-cxx/blob/master/docs/INSTALL.rst
-# sudo aptitude install -y g++ pkg-config python3-minimal libboost-all-dev libssl-dev libsqlite3-dev
-# sudo apt install -y doxygen graphviz python3-pip
-# sudo pip3 install sphinx sphinxcontrib-doxylink
-# cd ndn-cxx
-# ./waf configure --with-examples  # on CentOS, add --without-pch
-# ./waf
-# sudo ./waf install
-# sudo ldconfig  # on Linux only
-# cd ..
+sudo aptitude install -y g++ pkg-config python3-minimal libboost-all-dev libssl-dev libsqlite3-dev
+sudo apt install -y doxygen graphviz python3-pip
+sudo pip3 install sphinx sphinxcontrib-doxylink
+cd ndn-cxx
+./waf configure --with-examples  # on CentOS, add --without-pch
+./waf
+sudo ./waf install
+sudo ldconfig  # on Linux only
+cd ..
 
 # # NFD
-# sudo aptitude install -y software-properties-common
-# # sudo add-apt-repository ppa:named-data/ppa
-# sudo aptitude install -y libpcap-dev libsystemd-dev
-# cd NFD
-# ./waf configure
-# ./waf
-# sudo ./waf install
-# sudo cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf
-# cd ..
+sudo aptitude install -y software-properties-common
+sudo add-apt-repository ppa:named-data/ppa
+sudo aptitude install -y libpcap-dev libsystemd-dev
+cd NFD
+./waf configure
+./waf
+sudo ./waf install
+sudo cp /usr/local/etc/ndn/nfd.conf.sample /usr/local/etc/ndn/nfd.conf
+cd ..
 
 # ndn tool
 # https://github.com/named-data/ndn-tools/blob/master/INSTALL.md
@@ -56,3 +56,6 @@ mvn -f pom-without-protobuf.xml package
 mvn test -P with-integration-tests
 mvn install
 cd ..
+
+# python-ndn
+pip3 install python-ndn

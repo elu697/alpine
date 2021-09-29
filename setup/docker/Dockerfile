@@ -17,12 +17,12 @@ ENV LC_ALL en_US.UTF-8
 # 開発環境構築
 RUN aptitude install -y openssh-server apt-utils nano
 RUN aptitude install -y make libjsoncpp-dev libjsonrpccpp-dev libgmp-dev libreadline-dev libmicrohttpd-dev ocl-icd-libopencl1 \
-opencl-headers mesa-common-dev build-essential libboost-all-dev build-essential libsm6 libxext6 libxrender-dev libssl-dev \
-zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
-libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake
+  opencl-headers mesa-common-dev build-essential libboost-all-dev build-essential libsm6 libxext6 libxrender-dev libssl-dev \
+  zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
+  libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake
 RUN aptitude install -y sudo git net-tools unzip
 # python3 for cefpyco
-RUN aptitude install -y build-essential libssl-dev libffi-dev python3-dev
+RUN aptitude install -y build-essential libssl-dev libffi-dev python3.8
 RUN aptitude install -y python3-pip
 
 # ユーザーを作成
@@ -65,3 +65,5 @@ CMD ["/usr/sbin/sshd", "-D"]
 # Ceforeセットアップ Rootユーザ
 # RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/cefore && bash cefore_setup.sh
 
+# git config --global user.email "elyou.dev@gmail.com"
+# git config --global user.name "elu697"
