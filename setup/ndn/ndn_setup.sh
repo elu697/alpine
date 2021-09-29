@@ -16,7 +16,7 @@ git clone https://github.com/named-data/jndn.git
 # # https://github.com/named-data/ndn-cxx/blob/master/docs/INSTALL.rst
 sudo aptitude install -y g++ pkg-config python3-minimal libboost-all-dev libssl-dev libsqlite3-dev
 sudo aptitude install -y doxygen graphviz python3-pip
-sudo pip3 install sphinx sphinxcontrib-doxylink tensorflow
+sudo pip3 install sphinx sphinxcontrib-doxylink
 cd ndn-cxx
 ./waf configure --with-examples  # on CentOS, add --without-pch
 ./waf
@@ -58,4 +58,4 @@ mvn install
 cd ..
 
 # python-ndn
-pip3 install python-ndn
+pip3 install python-ndn tensorflow tensorflow-gpu
