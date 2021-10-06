@@ -9,6 +9,13 @@ services:
     ports:
       - "6970:22"
     restart: always
+    volumes:
+      - nvidia_driver_415.27:/usr/local/nvidia:ro
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
     deploy:
       resources:
         reservations:
@@ -32,6 +39,13 @@ services:
     ports:
       - "6971:22"
     restart: always
+    volumes:
+      - nvidia_driver_415.27:/usr/local/nvidia:ro
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
     deploy:
       resources:
         reservations:
@@ -49,6 +63,13 @@ services:
     ports:
       - "6972:22"
     restart: always
+    volumes:
+      - nvidia_driver_415.27:/usr/local/nvidia:ro
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
     deploy:
       resources:
         reservations:
