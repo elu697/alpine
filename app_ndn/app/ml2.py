@@ -17,9 +17,7 @@ class ML2:
 
         self.load_model(model_name)
         self.load_dataset(fold, data)
-        self.learn()
-        self.test()
-        self.save_model(model_name)
+        # self.save_model(model_name)
 
     def log_init(self):
         if os.path.exists(self.log_dir):
@@ -61,13 +59,16 @@ class ML2:
         self.model.fit(self.x_train, self.y_train, batch_size=128, epochs=20, validation_split=0.2,
                        callbacks=[TensorBoard(log_dir=self.log_dir),
                                   EarlyStopping(monitor='val_loss', patience=2, verbose=0, mode='auto')],
+                        # callbacks=[EarlyStopping(monitor='val_loss', patience=2, verbose=0, mode='auto')],
                        verbose=1)
 
     def test(self):
         # テストデータを使って精度を検証
         score = self.model.evaluate(self.x_test, self.y_test, verbose=0)
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print("Test score: ", score[0])
         print("Test accuracy: ", score[1])
+        print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
 
     @staticmethod
     def cnn(input_shape, num_classes):
@@ -98,7 +99,17 @@ class ML2:
 
 
 if __name__ == '__main__':
-    model = "test_model.h5"
-    m1 = ML2(model_name=model, fold=2, data=0)
-    m2 = ML2(model_name=model, fold=2, data=1)
+    model = "test_model1.h5"
+    for i in range(5):
+        m = ML2(model_name=model, fold=5, data=i)
+        m.learn()
+        m.save_model(model_name=model)
+    m = ML2(model_name=model, fold=1, data=0)
+    m.test()
+
+
+    m2 = ML2(model_name="test_model2.h5", fold=1, data=0)
+    m2.learn()
+    m2.test()
+    m2.save_model(model_name="test_model2.h5")
     pass
