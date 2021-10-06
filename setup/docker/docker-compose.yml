@@ -9,8 +9,6 @@ services:
     ports:
       - "6970:22"
     restart: always
-    volumes:
-      - nvidia_driver_415.27:/usr/local/nvidia:ro
     devices:
       - /dev/nvidiactl
       - /dev/nvidia-uvm
@@ -39,8 +37,6 @@ services:
     ports:
       - "6971:22"
     restart: always
-    volumes:
-      - nvidia_driver_415.27:/usr/local/nvidia:ro
     devices:
       - /dev/nvidiactl
       - /dev/nvidia-uvm
@@ -63,8 +59,6 @@ services:
     ports:
       - "6972:22"
     restart: always
-    volumes:
-      - nvidia_driver_415.27:/usr/local/nvidia:ro
     devices:
       - /dev/nvidiactl
       - /dev/nvidia-uvm

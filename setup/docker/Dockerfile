@@ -1,4 +1,4 @@
-FROM nvidia/cuda:11.4.1-cudnn8-devel-ubuntu18.04
+FROM nvidia/cuda:11.4.2-cudnn8-devel-ubuntu20.04
 
 # おまじない
 ENV DEBIAN_FRONTEND=noninteractive
@@ -23,8 +23,17 @@ RUN aptitude install -y make libjsoncpp-dev libjsonrpccpp-dev libgmp-dev libread
 RUN aptitude install -y sudo git net-tools unzip
 
 # python3 for cefpyco
-RUN aptitude install -y build-essential libssl-dev libffi-dev python3.8
-RUN aptitude install -y python3-pip
+RUN aptitude install -y build-essential libssl-dev libffi-dev
+RUN aptitude install -y python3-pip python3-dev
+
+RUN pip3 uninstall tensorboard-plugin-wit tb-nightly \
+  tensorboard tf-estimator-nightly tensorflow-gpu \
+  tensorflow tf-nightly tensorflow_estimator -y
+RUN pip3 install -U --user pip numpy wheel
+RUN pip3 install -U --user keras_preprocessing --no-deps
+RUN pip3 install nvidia-pyindex
+RUN pip3 install nvidia-tensorflow
+
 
 # ユーザーを作成
 ARG ROOT_PASSWORD
