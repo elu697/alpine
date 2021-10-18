@@ -75,5 +75,5 @@ CMD ["/usr/sbin/sshd", "-D"]
 # Ceforeセットアップ Rootユーザ
 # RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/cefore && bash cefore_setup.sh
 
-# git config --global user.email "elyou.dev@gmail.com"
-# git config --global user.name "elu697"
+git config --global user.email "elyou.dev@gmail.com"
+git config --global user.name "elu697"

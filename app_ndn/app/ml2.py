@@ -65,6 +65,7 @@ class ML2:
     def test(self):
         # テストデータを使って精度を検証
         score = self.model.evaluate(self.x_test, self.y_test, verbose=0)
+        return (score[0], score[1])
         print("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!")
         print("Test score: ", score[0])
         print("Test accuracy: ", score[1])
@@ -100,16 +101,31 @@ class ML2:
 
 if __name__ == '__main__':
     model = "test_model1.h5"
-    for i in range(5):
-        m = ML2(model_name=model, fold=5, data=i)
+    # 直列
+    N = 5
+    for i in range(N):
+        m = ML2(model_name=model, fold=N, data=i)
         m.learn()
         m.save_model(model_name=model)
     m = ML2(model_name=model, fold=1, data=0)
-    m.test()
+    (score, acc) = m.test()
+
+    # split_scores = []
+    # split_accs = []
+    # for i in range(N):
+    #     m = ML2(model_name=model, fold=N, data=i)
+    #     m.learn()
+    #     # m.save_model(model_name=model)
+    # m = ML2(model_name=model, fold=1, data=0)
 
 
-    m2 = ML2(model_name="test_model2.h5", fold=1, data=0)
-    m2.learn()
-    m2.test()
-    m2.save_model(model_name="test_model2.h5")
+
+    # 通常
+    m = ML2(model_name="test_model2.h5", fold=1, data=0)
+    m.learn()
+    m.save_model(model_name="test_model2.h5")
+    (score2, acc2) = m.test()
+
+    print("Boosting ML -> score:{}, acc:{}".format(score, acc))
+    print("Normal ML -> score:{}, acc:{}".format(score2, acc2))
     pass
