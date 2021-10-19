@@ -28,7 +28,7 @@ app = NDNApp()
 
 
 async def repop(NApp):
-    OPTION_DATA = "AB"
+    OPTION_DATA = s = r'{"C": "\u3042", "A": {"i": 1, "j": 2}, "B": [{"X": 1, "Y": 10}, {"X": 2, "Y": 20}], "REPOP": 0}'
     try:
         timestamp = ndn.utils.timestamp()
         name = Name.from_str('/example/testApp/randomData') + \
@@ -57,7 +57,7 @@ async def repop(NApp):
 def on_interest(name: FormalName, param: InterestParam, _app_param: Optional[BinaryStr]):
     print("len ->", len(_app_param))
     OPTION_DATA = str(_app_param, 'utf8')
-    db = json.loads(OPTION_DATA)  # Jsonじゃないとここで止まってタイムアウト
+    db = json.loads(OPTION_DATA)
     pprint.pprint(db, width=40)
 
     print("App param", OPTION_DATA)
