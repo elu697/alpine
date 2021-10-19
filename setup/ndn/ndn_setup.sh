@@ -58,4 +58,4 @@ mvn install
 cd ..
 
 # python-ndn
-pip3 install python-ndn tensorflow tensorflow-gpu
+pip3 install python-ndn nest-asyncio

@@ -1,10 +1,21 @@
-from ndn.app import *
-from ndn.encoding import *
-from ndn.types import *
+from ndn.app import NDNApp
+from ndn.encoding import Name, Component, InterestParam, BinaryStr, FormalName, MetaInfo
+from ndn.types import InterestNack, InterestTimeout, InterestCanceled, ValidationFailure
+from ndn.schema import policy
+from ndn.schema.schema_tree import Node, MatchedNode
+from ndn.schema.simple_node import RDRNode
+from ndn.schema.simple_cache import MemoryCache, MemoryCachePolicy
+from ndn.schema.simple_trust import SignedBy
+from typing import Optional
+from collections import OrderedDict
 import ndn.utils
 import asyncio as aio
-from typing import Optional
 import logging
+import sys
+import json
+import pprint
+import nest_asyncio
+nest_asyncio.apply()
 
 
 logging.basicConfig(format='[{asctime}]{levelname}:{message}',
@@ -16,13 +27,19 @@ logging.basicConfig(format='[{asctime}]{levelname}:{message}',
 app = NDNApp()
 
 
+s = r'{"C": "\u3042", "A": {"i": 1, "j": 2}, "B": [{"X": 1, "Y": 10}, {"X": 2, "Y": 20}], "REPOP": 1}'
+OPTION_DATA = s
+
+
 async def main():
     try:
         timestamp = ndn.utils.timestamp()
-        name = Name.from_str('/example/testApp/randomData') + [Component.from_timestamp(timestamp)]
-        print(f'Sending Interest {Name.to_str(name)}, {InterestParam(must_be_fresh=True, lifetime=6000)}')
+        name = Name.from_str('/example/testApp/randomData') + \
+            [Component.from_timestamp(timestamp)]
+        print(
+            f'Sending Interest {Name.to_str(name)}, {InterestParam(must_be_fresh=True, lifetime=6000)}')
         data_name, meta_info, content = await app.express_interest(
-            name, app_param="aaa".encode(), must_be_fresh=True, can_be_prefix=False, lifetime=6000)
+            name, app_param=OPTION_DATA.encode(), must_be_fresh=True, can_be_prefix=False, lifetime=6000)
 
         print(f'Received Data Name: {Name.to_str(data_name)}')
         print(meta_info)
