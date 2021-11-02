@@ -20,7 +20,7 @@ nest_asyncio.apply()
 
 logging.basicConfig(format='[{asctime}]{levelname}:{message}',
                     datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.INFO,
+                    level=logging.DEBUG,
                     style='{')
 
 
@@ -29,13 +29,15 @@ app = NDNApp()
 
 s = r'{"C": "\u3042", "A": {"i": 1, "j": 2}, "B": [{"X": 1, "Y": 10}, {"X": 2, "Y": 20}], "REPOP": 1}'
 OPTION_DATA = s
+timestamp = ndn.utils.timestamp()
+URI = Name.from_str('/example/testApp/randomData') + \
+    [Component.from_timestamp(timestamp)]
+URI = Name.from_str('/example/')
 
 
 async def main():
     try:
-        timestamp = ndn.utils.timestamp()
-        name = Name.from_str('/example/testApp/randomData') + \
-            [Component.from_timestamp(timestamp)]
+        name = URI
         print(
             f'Sending Interest {Name.to_str(name)}, {InterestParam(must_be_fresh=True, lifetime=6000)}')
         data_name, meta_info, content = await app.express_interest(

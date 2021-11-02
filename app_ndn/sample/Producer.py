@@ -20,7 +20,7 @@ nest_asyncio.apply()
 
 logging.basicConfig(format='[{asctime}]{levelname}:{message}',
                     datefmt='%Y-%m-%d %H:%M:%S',
-                    level=logging.INFO,
+                    level=logging.DEBUG,
                     style='{')
 
 
@@ -36,7 +36,7 @@ async def repop(NApp):
         print(
             f'Sending Interest {Name.to_str(name)}, {InterestParam(must_be_fresh=True, lifetime=6000)}')
         data_name, meta_info, content = await NApp.express_interest(
-            name, app_param=OPTION_DATA.encode(), must_be_fresh=True, can_be_prefix=False, lifetime=6000)
+            name, app_param=OPTION_DATA.encode(), must_be_fresh=True, can_be_prefix=True, lifetime=6000)
 
         print(f'Received Data Name: {Name.to_str(data_name)}')
         print(meta_info)
@@ -53,7 +53,7 @@ async def repop(NApp):
         NApp.shutdown()
 
 
-@app.route('/example/testApp')
+@ app.route('/example')
 def on_interest(name: FormalName, param: InterestParam, _app_param: Optional[BinaryStr]):
     print("len ->", len(_app_param))
     OPTION_DATA = str(_app_param, 'utf8')
@@ -75,4 +75,5 @@ def on_interest(name: FormalName, param: InterestParam, _app_param: Optional[Bin
 
 
 if __name__ == '__main__':
+    print(MatchedNode(root, node, name, pos, env, policies))
     app.run_forever()
