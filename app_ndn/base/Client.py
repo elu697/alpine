@@ -32,5 +32,6 @@ class TCPSocketSender():
 
 if __name__ == "__main__":
     HOST, PORT = socket.gethostname(), 9999
-    sender = TCPSocketSender(HOST, PORT, "hello")
+    json = {"data": "hello"}
+    sender = TCPSocketSender(HOST, PORT, json)
     response = sender.receive_data

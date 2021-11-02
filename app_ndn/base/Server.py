@@ -20,7 +20,7 @@ class TCPSocketHandler(socketserver.BaseRequestHandler):
 
         request_data = pickle.loads(full_msg)
         print("Server: request response = {}".format(request_data))
-        response_data = pickle.dumps(request_data)
+        response_data = pickle.dumps(request_data['data'])
         self.request.sendall(response_data)
         self.request.close()
 
@@ -30,4 +30,7 @@ if __name__ == "__main__":
     HOST, PORT = socket.gethostname(), 9999
 
     with socketserver.TCPServer((HOST, PORT), TCPSocketHandler) as server:
-        server.serve_forever()
+        try:
+            server.serve_forever()
+        finally:
+            server.socket.close()
