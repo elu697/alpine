@@ -8,6 +8,8 @@ from tensorflow.keras.datasets import mnist
 import random
 import numpy
 
+# モデル分割を行う
+
 
 class ML2:
     def __init__(self, model_name, fold=1, data=0):
@@ -59,7 +61,7 @@ class ML2:
         self.model.fit(self.x_train, self.y_train, batch_size=128, epochs=20, validation_split=0.2,
                        callbacks=[TensorBoard(log_dir=self.log_dir),
                                   EarlyStopping(monitor='val_loss', patience=2, verbose=0, mode='auto')],
-                        # callbacks=[EarlyStopping(monitor='val_loss', patience=2, verbose=0, mode='auto')],
+                       # callbacks=[EarlyStopping(monitor='val_loss', patience=2, verbose=0, mode='auto')],
                        verbose=1)
 
     def test(self):
@@ -117,8 +119,6 @@ if __name__ == '__main__':
     #     m.learn()
     #     # m.save_model(model_name=model)
     # m = ML2(model_name=model, fold=1, data=0)
-
-
 
     # 通常
     m = ML2(model_name="test_model2.h5", fold=1, data=0)
