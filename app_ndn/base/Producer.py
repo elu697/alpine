@@ -53,7 +53,7 @@ async def repop(NApp):
         NApp.shutdown()
 
 
-@ app.route('/example')
+@app.route('/example')
 def on_interest(name: FormalName, param: InterestParam, _app_param: Optional[BinaryStr]):
     print("len ->", len(_app_param))
     OPTION_DATA = str(_app_param, 'utf8')
@@ -75,5 +75,5 @@ def on_interest(name: FormalName, param: InterestParam, _app_param: Optional[Bin
 
 
 if __name__ == '__main__':
-    print(MatchedNode(root, node, name, pos, env, policies))
+    # print(MatchedNode(root, node, name, pos, env, policies))
     app.run_forever()

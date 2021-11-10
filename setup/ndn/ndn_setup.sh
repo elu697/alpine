@@ -59,3 +59,14 @@ cd ..
 
 # python-ndn
 pip3 install python-ndn nest-asyncio
+
+
+# EX CONFIG
+nfd-start
+nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
+# nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
+# prefix= / strategy= /localhost/nfd/strategy/best-route/v=5
+# prefix= /localhost strategy= /localhost/nfd/strategy/multicast/v=4
+# prefix= /ndn/broadcast strategy= /localhost/nfd/strategy/multicast/v=4
+# prefix= /localhost/nfd strategy= /localhost/nfd/strategy/best-route/v=5
+# prefix= /localhop/ndn-autoconf/hub strategy= /localhost/nfd/strategy/multicast/v=4
