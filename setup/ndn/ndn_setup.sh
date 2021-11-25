@@ -58,7 +58,8 @@ mvn install
 cd ..
 
 # python-ndn
-pip3 install python-ndn nest-asyncio
+# pip3 install python-ndn nest-asyncio
+pip3 install -r requirements.txt
 
 
 # EX CONFIG
