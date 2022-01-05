@@ -1,0 +1,36 @@
+# Compiled files
+*.class
+/build
+/dist
+/target
+/examples/target
+
+# JUnit output
+/TEST*.xml
+
+# Javadoc output
+/doc
+
+# Mac OSX
+.DS_Store
+
+# Emacs temp files
+*~
+
+# Netbeans configuration
+nb-configuration.xml
+
+# IntelliJ/Android Studio
+.idea
+*.iml
+.gradle
+local.properties
+examples/android/NDNPing/build
+examples/android/NDNPing/app/build
+
+# unit_test temporary files
+examples/src/net/named_data/jndn/tests/unit_tests/policy_config/test-public-info.db
+/integration-tests/target/
+integration-tests/src/net/named_data/jndn/tests/integration_tests/policy_config/test-public-info.db
+tests/src/net/named_data/jndn/tests/integration_tests/policy_config/test-public-info.db
+tests/src/net/named_data/jndn/tests/integration_tests/policy_config/ndnsec-key-file

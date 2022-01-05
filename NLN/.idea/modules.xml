@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/NLN.iml" filepath="$PROJECT_DIR$/.idea/NLN.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nln/core/core.iml" filepath="$PROJECT_DIR$/nln/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nln-mvn/ndn/jndn.iml" filepath="$PROJECT_DIR$/nln-mvn/ndn/jndn.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nln/src/main/nln-client.iml" filepath="$PROJECT_DIR$/nln/src/main/nln-client.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nln/src/main/java/nln-core.iml" filepath="$PROJECT_DIR$/nln/src/main/java/nln-core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/nln-mvn/nln-mvn.iml" filepath="$PROJECT_DIR$/nln-mvn/nln-mvn.iml" />
+    </modules>
+  </component>
+</project>
