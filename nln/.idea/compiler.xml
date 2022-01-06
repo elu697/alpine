@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="core" />
+        <module name="client" />
+        <module name="jndn-android-with-async-io" />
+        <module name="jndn" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="client" target="17" />
+      <module name="core" target="17" />
+      <module name="jndn" target="1.7" />
+      <module name="jndn-android" target="1.7" />
+      <module name="jndn-android-with-async-io" target="1.7" />
+      <module name="jndn-without-protobuf" target="1.7" />
+    </bytecodeTargetLevel>
+  </component>
+</project>
