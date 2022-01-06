@@ -1,0 +1,3 @@
+[submodule "jndn"]
+	path = nln/jndn
+	url = https://github.com/named-data/jndn.git
