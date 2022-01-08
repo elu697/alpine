@@ -8,9 +8,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
+import java.net.ServerSocket;
+import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import net.named_data.jndn.Data;
@@ -27,51 +32,83 @@ import net.named_data.jndn.security.SafeBag;
 import net.named_data.jndn.security.SecurityException;
 import net.named_data.jndn.util.Blob;
 import net.named_data.jndn.util.Common;
+import ndn.RSA_Key;
 
 public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegisterSuccess, OnRegisterFailed, OnNetworkNack {
     Face face;
     int activeInterestCount = 0;
+    KeyChain keyChain;
 
     public Controller() {
-        this.face = new Face("133.28.131.222", 6970);
+        this.face = new Face("localhost");
+        try {
+            keyChain = new KeyChain("pib-memory:", "tpm-memory:");
+            keyChain.importSafeBag(new SafeBag(
+                    new Name("/test/KEY/0"),
+                    new Blob(RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER, false),
+                    new Blob(RSA_Key.DEFAULT_RSA_PUBLIC_KEY_DER, false)
+            ));
+            this.face.setCommandSigningInfo(keyChain, keyChain.getDefaultCertificateName());
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
-    public static void interest(String name, OnData onData) {
+    public void register() {
+        try {
+            this.face.registerPrefix(new Name("/test"), this, (OnRegisterFailed) this, this);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    public void runLoop() {
+        while (true) {
+            try {
+                this.face.processEvents();
+                Thread.sleep(10);
+            } catch (Exception e) {
+                System.out.println(e);
+            }
+        }
+    }
+
+    public static void interest(String name, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
         Controller controller = new Controller();
         try {
-            System.out.println(controller.face);
             Interest.setDefaultCanBePrefix(true);
             Name uri = new Name(name);
-//            Interest interest = new Interest(uri);
-//            interest.setInterestLifetimeMilliseconds(10000);
-//            controller.face.makeCommandInterest(interest);
-            controller.face.expressInterest(uri, onData, new OnTimeout() {
-                @Override
-                public void onTimeout(Interest interest) {
-                    System.out.println("Timeout");
-                    controller.activeInterestCount--;
-                }
-            });
-            controller.activeInterestCount++;
-            while (controller.activeInterestCount > 0) {
+            controller.face.expressInterest(uri, controller, controller, controller);
+            while (true) {
                 controller.face.processEvents();
+//                controller.activeInterestCount++;
                 Thread.sleep(10);
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-           controller.face.shutdown();
+            controller.face.shutdown();
         }
     }
 
     @Override
     public void onInterest(Name prefix, Interest interest, Face face, long interestFilterId, InterestFilter filter) {
         System.out.println("OnInterest");
+        try {
+            Data data = new Data();
+            data.setName(new Name("AAA"));
+            keyChain.sign(data, keyChain.getDefaultCertificateName());
+            face.putData(data);
+            face.processEvents();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
 
     @Override
     public void onData(Interest interest, Data data) {
         System.out.println("OnData");
+        System.out.println(data.getName().toString());
         this.activeInterestCount--;
     }
 
