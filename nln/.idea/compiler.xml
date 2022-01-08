@@ -8,6 +8,7 @@
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
         <module name="client" />
+        <module name="jndn-android-with-async-io" />
         <module name="jndn" />
       </profile>
     </annotationProcessing>
