@@ -44,7 +44,7 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
         try {
             keyChain = new KeyChain("pib-memory:", "tpm-memory:");
             keyChain.importSafeBag(new SafeBag(
-                    new Name("/test/KEY/0"),
+                    new Name("/example/KEY/0"),
                     new Blob(RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER, false),
                     new Blob(RSA_Key.DEFAULT_RSA_PUBLIC_KEY_DER, false)
             ));
@@ -56,7 +56,7 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
 
     public void register() {
         try {
-            this.face.registerPrefix(new Name("/test"), this, (OnRegisterFailed) this, this);
+            this.face.registerPrefix(new Name("/example"), this, (OnRegisterFailed) this, this);
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -66,7 +66,7 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
         while (true) {
             try {
                 this.face.processEvents();
-                Thread.sleep(10);
+                Thread.sleep(100);
             } catch (Exception e) {
                 System.out.println(e);
             }
@@ -81,8 +81,7 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
             controller.face.expressInterest(uri, controller, controller, controller);
             while (true) {
                 controller.face.processEvents();
-//                controller.activeInterestCount++;
-                Thread.sleep(10);
+                Thread.sleep(100);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -96,10 +95,10 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
         System.out.println("OnInterest");
         try {
             Data data = new Data();
-            data.setName(new Name("AAA"));
+            data.setName(new Name(interest.getName()));
+            data.setContent(new Blob(new int[9]));
             keyChain.sign(data, keyChain.getDefaultCertificateName());
             face.putData(data);
-            face.processEvents();
         } catch (Exception e) {
             System.out.println(e);
         }

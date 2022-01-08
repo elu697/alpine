@@ -32,7 +32,7 @@ OPTION_DATA = s
 timestamp = ndn.utils.timestamp()
 URI = Name.from_str('/example/testApp/randomData') + \
     [Component.from_timestamp(timestamp)]
-URI = Name.from_str('/example/')
+URI = Name.from_str('/example')
 
 
 async def main():

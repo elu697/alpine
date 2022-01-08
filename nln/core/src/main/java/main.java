@@ -36,28 +36,19 @@ import ndn.Controller;
 
 public class main {
     public static void main(String[] args) {
-        System.out.println(args);
-        Controller.interest("/test", (interest, data) -> {
-            System.out.println("DateComming");
-        }, interest -> {
-            System.out.println("InterestTimeout");
-        }, (interest, networkNack) -> {
-            System.out.println("NetworkError");
-        });
-//        if (Objects.equals(args[0], "C")) {
-//            Controller.interest("/test", (interest, data) -> {
-//                System.out.println("DateComming");
-//            }, interest -> {
-//                System.out.println("InterestTimeout");
-//            }, (interest, networkNack) -> {
-//                System.out.println("NetworkError");
-//            });
-//        } else {
-//            Controller controller = new Controller();
-//            controller.register();
-//            controller.runLoop();
-////            setDaemonThread(controller::runLoop);
-//        }
+        if (Objects.equals(args[0], "C")) {
+            Controller.interest("/example", (interest, data) -> {
+                System.out.println("DateComming");
+            }, interest -> {
+                System.out.println("InterestTimeout");
+            }, (interest, networkNack) -> {
+                System.out.println("NetworkError");
+            });
+        } else {
+            Controller controller = new Controller();
+            controller.register();
+            controller.runLoop();
+        }
     }
 
     public static void setDaemonThread(Runnable block) {
