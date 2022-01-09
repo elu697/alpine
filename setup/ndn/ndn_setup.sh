@@ -48,7 +48,6 @@ cd ..
 sudo aptitude install -y default-jdk
 sudo aptitude install -y maven
 sudo aptitude install -y psmisc
-
 sudo aptitude install -y libpcap-dev
 cd ndn-tools
 ./waf configure
@@ -61,7 +60,6 @@ sudo aptitude install -y software-properties-common
 sudo aptitude install -y maven
 cd jndn
 mvn package
-mvn -f pom-without-protobuf.xml package
 mvn test -P with-integration-tests
 mvn install
 cd ..
