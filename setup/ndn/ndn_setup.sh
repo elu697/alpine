@@ -1,16 +1,17 @@
 #!/bin/bash
+set -Ceuxo pipefail
 
 # Download ndn-cxx
-git clone https://github.com/named-data/ndn-cxx.git
+git clone --recursive https://github.com/named-data/ndn-cxx.git
 # Download NFD
 git clone --recursive https://github.com/named-data/NFD.git
 # Download ndn-tools
-git clone https://github.com/named-data/ndn-tools.git
+git clone --recursive https://github.com/named-data/ndn-tools.git
 # Download jndn
-git clone https://github.com/named-data/jndn.git
+git clone --recursive https://github.com/named-data/jndn.git
 
-# sudo aptitude update -y
-# sudo aptitude upgrade -y
+sudo aptitude update -y
+sudo aptitude upgrade -y
 
 # # ndn-cxx
 # # https://github.com/named-data/ndn-cxx/blob/master/docs/INSTALL.rst
@@ -32,6 +33,7 @@ git pull
 sudo aptitude install -y software-properties-common
 sudo add-apt-repository ppa:named-data/ppa
 sudo aptitude install -y libpcap-dev libsystemd-dev
+sudo aptitude nfd
 cd NFD
 ./waf configure
 ./waf
@@ -55,6 +57,7 @@ sudo ./waf install
 cd ..
 
 # jdn
+sudo apt install software-properties-common
 sudo aptitude install -y maven
 cd jndn
 git reset --hard
