@@ -33,8 +33,9 @@ cd ..
 # # NFD
 sudo aptitude install -y software-properties-common
 sudo add-apt-repository ppa:named-data/ppa
+sudo apt update -y
 sudo aptitude install -y libpcap-dev libsystemd-dev
-sudo aptitude nfd
+sudo aptitude install -y nfd
 cd NFD
 ./waf configure
 ./waf
@@ -56,7 +57,7 @@ sudo ./waf install
 cd ..
 
 # jdn
-sudo apt install software-properties-common
+sudo aptitude install -y software-properties-common
 sudo aptitude install -y maven
 cd jndn
 mvn package
