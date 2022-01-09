@@ -17,12 +17,16 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="679" />
+          <option name="caretOffset" value="519" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/main.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="3075" />
+          <option name="caretOffset" value="5715" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/.idea/workspace.xml" />
         </OpenedFileInfo>
       </list>
     </option>

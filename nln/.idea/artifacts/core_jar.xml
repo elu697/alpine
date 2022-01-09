@@ -1,6 +1,9 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="core:jar">
+  <artifact type="jar" build-on-make="true" name="core:jar">
     <output-path>$PROJECT_DIR$/out/artifacts/core_jar</output-path>
+    <properties id="ant-preprocessing">
+      <options enabled="true" />
+    </properties>
     <root id="archive" name="core.jar">
       <element id="module-output" name="core" />
       <element id="module-output" name="jndn" />
