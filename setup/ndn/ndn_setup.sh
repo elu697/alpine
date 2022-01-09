@@ -55,6 +55,8 @@ cd ndn-tools
 sudo ./waf install
 cd ..
 
+sudo nfd-start
+
 # jdn
 sudo aptitude install -y software-properties-common
 sudo aptitude install -y maven
@@ -68,9 +70,7 @@ cd ..
 # pip3 install python-ndn nest-asyncio
 pip3 install -r requirements.txt
 
-
 # EX CONFIG
-nfd-start
 nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
 # nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
 # prefix= / strategy= /localhost/nfd/strategy/best-route/v=5
