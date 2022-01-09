@@ -35,7 +35,7 @@ sudo aptitude install -y software-properties-common
 sudo add-apt-repository ppa:named-data/ppa
 sudo apt update -y
 sudo aptitude install -y libpcap-dev libsystemd-dev
-sudo aptitude install -y nfd
+# sudo aptitude install -y nfd
 cd NFD
 ./waf configure
 ./waf
