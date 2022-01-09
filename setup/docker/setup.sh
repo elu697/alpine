@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -x
+set -Ceuxo pipefail
 
 # Add the package repositories
 # sudo apt-get -y update

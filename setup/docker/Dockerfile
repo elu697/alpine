@@ -51,9 +51,12 @@ RUN echo '${DOCKER_USER} ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 # SSH設定
 RUN mkdir /var/run/sshd
 # RUN sed -i 's/#\Port 22/Port 6970/' /etc/ssh/sshd_config
-RUN sed -i 's/#\?PermitRootLogin prohibit-password/PermitRootLogin yes/' /etc/ssh/sshd_config
-RUN sed -i 's/#PasswordAuthetication/PasswordAuthetication/' /etc/ssh/sshd_config
+RUN sed -i 's|#\?PermitRootLogin prohibit-password|PermitRootLogin yes|' /etc/ssh/sshd_config
+RUN sed -i 's|#AuthorizedKeysFile|AuthorizedKeysFile /etc/ssh/authorized_pub_keys|' /etc/ssh/sshd_config
+RUN sed -i 's|#PasswordAuthetication|PasswordAuthetication|' /etc/ssh/sshd_config
 RUN sed 's@session\s*required\s*pam_loginuid.so@session optional pam_loginuid.so@g' -i /etc/pam.d/sshd
+ARG MY_SSH_PUB_KEY="ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCi7Oqd8eNG1vfY6P7PbA7PWDX2AM2KcnAuMxXDJ2SUyrm9J/ALvz3QVEHuNGQFNTWDXP4BXru6tJaJR9610SZugpSrdS1vayZ98f1R6e0Z2gj6YQkGxFiLW2N+Ip0hQ0XIrAfMMHdBIZnsUKoE2Tr7L28Ium5paI5Ui8F+gAdvl9L86O4pB9f4TYX58Hm5g82bP2Hs0d2prbfAZUF5OnPn1uc05mUNT6HR+jhQcfplmFXujArJGjLJGCQ4DbbRee0jCBOiPFbowjf5WuvBH6FkL+UQj4MrTIvzxAj8Y5CIC2LwbQy1ZgsXj5l2u/aI34y6sWaBBvpNAkLJVlfWJkQ46RzNkDZbJZpZRH/w0LfP62ZXKHHDBU0ybvURXQYjoSOg5EIXJGcCIvJRvxMKzbsLSb5gfUUkXL1tUleiJ+N1AzfoQiVfXWtfUmu1EGXPvPMa/yzVD0WBuVq1jwxZsO7+yYuvP5B46ZhdW9ZypL1n/tPlhKNh7SIfoAFqr3/UaeM= you@miraitomirai21.local"
+RUN echo ${MY_SSH_PUB_KEY} >> /etc/ssh/authorized_pub_keys
 
 # profile設定
 ENV NOTVISIBLE "in users profile"
@@ -73,7 +76,6 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
 # Ceforeセットアップ Rootユーザ
-# RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/cefore && bash cefore_setup.sh
-
-git config --global user.email "elyou.dev@gmail.com"
-git config --global user.name "elu697"
+RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/ndn
+RUN git config --global user.email "elyou.dev@gmail.com"
+RUN git config --global user.name "elu697"
