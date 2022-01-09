@@ -1,6 +1,11 @@
 #!/bin/bash
 set -Ceuxo pipefail
 
+rm -rf NFD/
+rm -rf ndn-cxx/
+rm -rf ndn-tools/
+rm -rf jndn/
+
 # Download ndn-cxx
 git clone --recursive https://github.com/named-data/ndn-cxx.git
 # Download NFD
@@ -19,8 +24,6 @@ sudo aptitude install -y g++ pkg-config python3-minimal libboost-all-dev libssl-
 sudo aptitude install -y doxygen graphviz python3-pip
 sudo pip3 install sphinx sphinxcontrib-doxylink
 cd ndn-cxx
-git reset --hard
-git pull
 ./waf configure --with-examples  # on CentOS, add --without-pch
 ./waf
 sudo ./waf install
@@ -28,8 +31,6 @@ sudo ldconfig  # on Linux only
 cd ..
 
 # # NFD
-git reset --hard
-git pull
 sudo aptitude install -y software-properties-common
 sudo add-apt-repository ppa:named-data/ppa
 sudo aptitude install -y libpcap-dev libsystemd-dev
@@ -49,8 +50,6 @@ sudo aptitude install -y psmisc
 
 sudo aptitude install -y libpcap-dev
 cd ndn-tools
-git reset --hard
-git pull
 ./waf configure
 ./waf
 sudo ./waf install
@@ -60,8 +59,6 @@ cd ..
 sudo apt install software-properties-common
 sudo aptitude install -y maven
 cd jndn
-git reset --hard
-git pull
 mvn package
 mvn -f pom-without-protobuf.xml package
 mvn test -P with-integration-tests
