@@ -105,22 +105,23 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
         }
     }
 
+    public static void setDaemonThread(Runnable block) {
+        Thread thread = new Thread(block);
+        thread.setDaemon(true);
+        thread.start();
+    }
+
     public static void interest(String name, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
         Controller controller = new Controller();
         try {
             Interest.setDefaultCanBePrefix(true);
             Name uri = new Name(name);
             Interest interest = new Interest(uri);
-            interest.setMustBeFresh(true);
-            interest.setInterestLifetimeMilliseconds(5000);
-            interest.refreshNonce();
-            controller.keyChain.sign(interest, controller.certificateName);
-            controller.face.setInterestLoopbackEnabled(true);
-            controller.face.expressInterest(uri, onData, onTimeout);
-            controller.face.expressInterest(interest, controller, controller, controller);
+            interest.setCanBePrefix(true).setMustBeFresh(true).setInterestLifetimeMilliseconds(5000);
+            controller.face.expressInterest(interest, controller, controller , controller);
             while (true) {
                 controller.face.processEvents();
-                Thread.sleep(100);
+                Thread.sleep(10);
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -132,7 +133,7 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
     @Override
     public void onInterest(Name prefix, Interest interest, Face face, long interestFilterId, InterestFilter filter) {
         System.out.println("OnInterest");
-        Logger.getGlobal().log(Level.INFO, "Interest coming: " + interest.getName());
+        Logger.getGlobal().log(Level.INFO, "Interest coming: " + interest.getName() + ", Id: " + interest.getIncomingFaceId());
         try {
             Data data = new Data(interest.getName());
             String content = "Echo " + interest.getName().toUri();
@@ -147,7 +148,7 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
     @Override
     public void onData(Interest interest, Data data) {
         System.out.println("OnData");
-        System.out.println(data.getName().toString());
+        System.out.println(data.getContent());
     }
 
     @Override

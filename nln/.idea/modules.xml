@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/core/core.iml" filepath="$PROJECT_DIR$/core/core.iml" />
       <module fileurl="file://$PROJECT_DIR$/jndn/jndn.iml" filepath="$PROJECT_DIR$/jndn/jndn.iml" />
       <module fileurl="file://$PROJECT_DIR$/jndn/jndn-android-with-async-io.iml" filepath="$PROJECT_DIR$/jndn/jndn-android-with-async-io.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jndn/examples/jndn-examples.iml" filepath="$PROJECT_DIR$/jndn/examples/jndn-examples.iml" />
     </modules>
   </component>
 </project>

@@ -7,6 +7,7 @@
         <option value="$PROJECT_DIR$/client/pom.xml" />
         <option value="$PROJECT_DIR$/jndn/pom.xml" />
         <option value="$PROJECT_DIR$/jndn/pom-android-with-async-io.xml" />
+        <option value="$PROJECT_DIR$/jndn/examples/pom.xml" />
       </list>
     </option>
   </component>
@@ -17,12 +18,20 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="16" />
+          <option name="caretOffset" value="5800" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="557" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/main.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="101" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/main.sh" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1543" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" />
+          <option name="caretOffset" value="2859" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/jndn/src/net/named_data/jndn/contrib/Murmur3.java" />
         </OpenedFileInfo>
       </list>
     </option>

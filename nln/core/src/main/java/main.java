@@ -20,7 +20,7 @@ public class main {
     public static void main(String[] args) {
 
         if (Objects.equals(args[0], "C")) {
-            Controller.interest("/examples", (interest, data) -> {
+            Controller.interest("/nln", (interest, data) -> {
                 System.out.println("DateComming");
                 System.out.println(data.getContent());
             }, interest -> {
@@ -32,6 +32,7 @@ public class main {
             Controller controller = new Controller();
             controller.register();
             controller.runLoop();
+
         }
     }
 
