@@ -9,6 +9,8 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.nio.ByteBuffer;
 import java.net.ServerSocket;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,33 +32,63 @@ import net.named_data.jndn.OnTimeout;
 import net.named_data.jndn.security.KeyChain;
 import net.named_data.jndn.security.SafeBag;
 import net.named_data.jndn.security.SecurityException;
+import net.named_data.jndn.security.KeyType;
+import net.named_data.jndn.security.SecurityException;
+import net.named_data.jndn.security.identity.IdentityManager;
+import net.named_data.jndn.security.identity.MemoryIdentityStorage;
+import net.named_data.jndn.security.identity.MemoryPrivateKeyStorage;
 import net.named_data.jndn.util.Blob;
 import net.named_data.jndn.util.Common;
-import ndn.RSA_Key;
 
 public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegisterSuccess, OnRegisterFailed, OnNetworkNack {
     Face face;
-    int activeInterestCount = 0;
     KeyChain keyChain;
+    Name certificateName;
 
     public Controller() {
         this.face = new Face("localhost");
+        setupKeyChain();
+    }
+
+    private void setupKeyChain() {
+        MemoryIdentityStorage identityStorage = new MemoryIdentityStorage();
+        MemoryPrivateKeyStorage privateKeyStorage = new MemoryPrivateKeyStorage();
+        IdentityManager identityManager = new IdentityManager(identityStorage, privateKeyStorage);
+        KeyChain keyChain = new KeyChain(identityManager);
+        String nodeId = "default";
         try {
-            keyChain = new KeyChain("pib-memory:", "tpm-memory:");
-            keyChain.importSafeBag(new SafeBag(
-                    new Name("/example/KEY/0"),
-                    new Blob(RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER, false),
-                    new Blob(RSA_Key.DEFAULT_RSA_PUBLIC_KEY_DER, false)
-            ));
-            this.face.setCommandSigningInfo(keyChain, keyChain.getDefaultCertificateName());
-        } catch (Exception e) {
-            System.err.println(e);
+            InetAddress addr = InetAddress.getLocalHost();
+            nodeId = addr.getHostName() + addr.getAddress();
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
         }
+        System.out.println(nodeId);
+        //keyName: different between nodes.
+        Name keyName = new Name("/nln/" + nodeId);
+        Name certificateName = keyName.getSubName(0, keyName.size() - 1).append("KEY").append(keyName.get(-1))
+                .append("ID-CERT").append("0");
+        try {
+            identityStorage.addKey(keyName, KeyType.RSA, new Blob(RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER, false));
+            privateKeyStorage.setKeyPairForKeyName(keyName, KeyType.RSA, RSA_Key.DEFAULT_RSA_PUBLIC_KEY_DER,
+                    RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER);
+        } catch (SecurityException e) {
+            System.out.println("exception: " + e.getMessage());
+        }
+        face.setCommandSigningInfo(keyChain, certificateName);
+        this.keyChain = keyChain;
+        this.certificateName = certificateName;
+        System.out.println(certificateName);
+//        keyChain = new KeyChain("pib-memory:", "tpm-memory:");
+//        keyChain.importSafeBag(new SafeBag(
+//                new Name("/example/KEY/0"),
+//                new Blob(RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER, false),
+//                new Blob(RSA_Key.DEFAULT_RSA_PUBLIC_KEY_DER, false)
+//        ));
     }
 
     public void register() {
         try {
-            this.face.registerPrefix(new Name("/example"), this, (OnRegisterFailed) this, this);
+            face.registerPrefix(new Name("/nln"), this, (OnRegisterFailed) this, this);
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -65,7 +97,7 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
     public void runLoop() {
         while (true) {
             try {
-                this.face.processEvents();
+                face.processEvents();
                 Thread.sleep(100);
             } catch (Exception e) {
                 System.out.println(e);
@@ -78,7 +110,14 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
         try {
             Interest.setDefaultCanBePrefix(true);
             Name uri = new Name(name);
-            controller.face.expressInterest(uri, controller, controller, controller);
+            Interest interest = new Interest(uri);
+            interest.setMustBeFresh(true);
+            interest.setInterestLifetimeMilliseconds(5000);
+            interest.refreshNonce();
+            controller.keyChain.sign(interest, controller.certificateName);
+            controller.face.setInterestLoopbackEnabled(true);
+            controller.face.expressInterest(uri, onData, onTimeout);
+            controller.face.expressInterest(interest, controller, controller, controller);
             while (true) {
                 controller.face.processEvents();
                 Thread.sleep(100);
@@ -93,11 +132,12 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
     @Override
     public void onInterest(Name prefix, Interest interest, Face face, long interestFilterId, InterestFilter filter) {
         System.out.println("OnInterest");
+        Logger.getGlobal().log(Level.INFO, "Interest coming: " + interest.getName());
         try {
-            Data data = new Data();
-            data.setName(new Name(interest.getName()));
-            data.setContent(new Blob(new int[9]));
-            keyChain.sign(data, keyChain.getDefaultCertificateName());
+            Data data = new Data(interest.getName());
+            String content = "Echo " + interest.getName().toUri();
+            data.setContent(new Blob(content));
+//            keyChain.sign(data, certificateName);
             face.putData(data);
         } catch (Exception e) {
             System.out.println(e);
@@ -108,19 +148,16 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
     public void onData(Interest interest, Data data) {
         System.out.println("OnData");
         System.out.println(data.getName().toString());
-        this.activeInterestCount--;
     }
 
     @Override
     public void onTimeout(Interest interest) {
         System.out.println("Timeout");
-        this.activeInterestCount--;
     }
 
     @Override
     public void onNetworkNack(Interest interest, NetworkNack networkNack) {
         System.out.println("OnNetworkNack");
-        this.activeInterestCount--;
     }
 
     @Override
