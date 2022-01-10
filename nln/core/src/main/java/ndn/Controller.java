@@ -50,17 +50,22 @@ public class Controller {
 
     public Controller() {
         this.face = new Face("localhost");
-        setupKeyChain();
+        init();
     }
 
     public Controller(String host) {
         this.face = new Face(host);
-        setupKeyChain();
+        init();
     }
 
     public Controller(Face face) {
         this.face = face;
+        init();
+    }
+
+    private void init() {
         setupKeyChain();
+        face.setInterestLoopbackEnabled(true);
     }
 
     private void setupKeyChain() {
@@ -150,7 +155,7 @@ public class Controller {
         try {
             Interest.setDefaultCanBePrefix(true);
             Interest interest = initTsfInterest(new Name(name));
-            //interest.setMustBeFresh(false); // trueにすると何故かDataを受け取れないのTimeStampFieldをNameにつける
+            interest.setMustBeFresh(false); // trueにすると何故かDataを受け取れないのTimeStampFieldをNameにつける
             interest.setInterestLifetimeMilliseconds(5000.0);
 //            controller.keyChain.sign(interest, controller.certificateName);
             Logger.getGlobal().log(Level.INFO, "Interest sending: " + interest.getName());
