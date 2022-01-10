@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Optional;
 
+import ndn.Controller;
 import net.named_data.jndn.*;
 import net.named_data.jndn.transport.Transport;
 
@@ -36,17 +37,8 @@ public class MIB {
     LinkedHashMap<Name, ModelInfo> lhm = new LinkedHashMap<>();
 
     private MIB() {
-        Face testFace = new Face("172.20.0.3");
-        try {
-            testFace.expressInterest(new Name("/nln"), new OnData() {
-                @Override
-                public void onData(Interest interest, Data data) {
+    }
 
-                }
-            });
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
+    public static void main(String[] args) {
     }
 }

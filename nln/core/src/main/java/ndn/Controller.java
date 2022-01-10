@@ -53,6 +53,16 @@ public class Controller {
         setupKeyChain();
     }
 
+    public Controller(String host) {
+        this.face = new Face(host);
+        setupKeyChain();
+    }
+
+    public Controller(Face face) {
+        this.face = face;
+        setupKeyChain();
+    }
+
     private void setupKeyChain() {
         MemoryIdentityStorage identityStorage = new MemoryIdentityStorage();
         MemoryPrivateKeyStorage privateKeyStorage = new MemoryPrivateKeyStorage();
@@ -136,8 +146,7 @@ public class Controller {
         }
     }
 
-    public static void interest(String name, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
-        Controller controller = new Controller();
+    public void interest(String name, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
         try {
             Interest.setDefaultCanBePrefix(true);
             Interest interest = initTsfInterest(new Name(name));
@@ -146,7 +155,7 @@ public class Controller {
 //            controller.keyChain.sign(interest, controller.certificateName);
             Logger.getGlobal().log(Level.INFO, "Interest sending: " + interest.getName());
 
-            controller.face.expressInterest(interest, (tsfInterest, data) -> {
+            face.expressInterest(interest, (tsfInterest, data) -> {
                 Logger.getGlobal().log(Level.INFO, "Receive data: " + tsfInterest.getName() + ", data: " + data.getContent());
                 onData.onData(tsfInterest, data);
             }, tsfInterest -> {
@@ -157,14 +166,14 @@ public class Controller {
                 onNetworkNack.onNetworkNack(tsfInterest, networkNack);
             });
             while (true) {
-                controller.face.processEvents();
+                face.processEvents();
                 Thread.sleep(10);
             }
         } catch (Exception e) {
             Logger.getGlobal().log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
         } finally {
-            controller.face.shutdown();
+            face.shutdown();
         }
     }
 }

@@ -20,7 +20,9 @@ public class main {
     public static void main(String[] args) {
         String name = "/nln/";
         if (Objects.equals(args[0], "C")) {
-            Controller.interest(name, (interest, data) -> {
+            Face face = new Face("172.20.0.3");
+            Controller controller = new Controller(face);
+            controller.interest(name, (interest, data) -> {
                 System.out.println("Date Coming");
                 System.out.println(name);
                 System.out.println(interest.getName());
