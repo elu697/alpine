@@ -4,6 +4,7 @@ import net.named_data.jndn.*;
 import net.named_data.jndn.impl.*;
 import net.named_data.jndn.lp.*;
 import net.named_data.jndn.util.*;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -12,14 +13,16 @@ import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
+import java.text.SimpleDateFormat;
+import java.util.*;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
+import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
+
 import net.named_data.jndn.Data;
 import net.named_data.jndn.Face;
 import net.named_data.jndn.Interest;
@@ -40,7 +43,7 @@ import net.named_data.jndn.security.identity.MemoryPrivateKeyStorage;
 import net.named_data.jndn.util.Blob;
 import net.named_data.jndn.util.Common;
 
-public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegisterSuccess, OnRegisterFailed, OnNetworkNack {
+public class Controller {
     Face face;
     KeyChain keyChain;
     Name certificateName;
@@ -78,20 +81,6 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
         this.keyChain = keyChain;
         this.certificateName = certificateName;
         System.out.println(certificateName);
-//        keyChain = new KeyChain("pib-memory:", "tpm-memory:");
-//        keyChain.importSafeBag(new SafeBag(
-//                new Name("/example/KEY/0"),
-//                new Blob(RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER, false),
-//                new Blob(RSA_Key.DEFAULT_RSA_PUBLIC_KEY_DER, false)
-//        ));
-    }
-
-    public void register() {
-        try {
-            face.registerPrefix(new Name("/nln"), this, (OnRegisterFailed) this, this);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
     }
 
     public void runLoop() {
@@ -111,14 +100,59 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
         thread.start();
     }
 
+    public static Interest initTsfInterest(Name name) {
+        Date today = Calendar.getInstance().getTime();
+        String tsf = new SimpleDateFormat("yyyyMMHHmm").format(today);
+        Name uri = new Name(name.toString() + "/TSF" + tsf);
+        Interest tsfInterest = new Interest(uri);
+        return tsfInterest;
+    }
+
+    public static Name getOriginName(Interest interest) {
+        String originName = Arrays.stream(interest.getName().toString().split("/")).filter(i -> !i.startsWith("TSF")).collect(Collectors.joining("/"));
+//        Interest originInterest = new Interest(interest);
+//        originInterest.setName(new Name(originName));
+        return new Name(originName);
+    }
+
+    public void register(String name, OnInterestCallback onInterestCallback, OnRegisterFailed onRegisterFailed, OnRegisterSuccess onRegisterSuccess) {
+        try {
+            face.registerPrefix(new Name(name), (prefix, tsfInterest, face, interestFilterId, filter) -> {
+                Logger.getGlobal().log(Level.INFO, "Interest coming: " + tsfInterest.getName() + ", filterBy: " + filter.getPrefix());
+//                Interest originInterest = getOriginInterest(interest);
+                onInterestCallback.onInterest(getOriginName(tsfInterest), tsfInterest, face, interestFilterId, filter);
+            }, prefix -> {
+                Logger.getGlobal().log(Level.INFO, "Register failed: " + prefix);
+                onRegisterFailed.onRegisterFailed(prefix);
+            }, (prefix, registeredPrefixId) -> {
+                Logger.getGlobal().log(Level.INFO, "Register success: " + prefix + ", ID: " + registeredPrefixId);
+                onRegisterSuccess.onRegisterSuccess(prefix, registeredPrefixId);
+            });
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
     public static void interest(String name, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
         Controller controller = new Controller();
         try {
             Interest.setDefaultCanBePrefix(true);
-            Name uri = new Name(name);
-            Interest interest = new Interest(uri);
-            interest.setCanBePrefix(true).setMustBeFresh(true).setInterestLifetimeMilliseconds(5000);
-            controller.face.expressInterest(interest, controller, controller , controller);
+            Interest interest = initTsfInterest(new Name(name));
+            //interest.setMustBeFresh(false); // trueにすると何故かDataを受け取れないのTimeStampFieldをNameにつける
+            interest.setInterestLifetimeMilliseconds(5000.0);
+//            controller.keyChain.sign(interest, controller.certificateName);
+            Logger.getGlobal().log(Level.INFO, "Interest sending: " + interest.getName());
+
+            controller.face.expressInterest(interest, (tsfInterest, data) -> {
+                Logger.getGlobal().log(Level.INFO, "Receive data: " + tsfInterest.getName() + ", data: " + data.getContent());
+                onData.onData(tsfInterest, data);
+            }, tsfInterest -> {
+                Logger.getGlobal().log(Level.INFO, "Timeout interest: " + tsfInterest.getName());
+                onTimeout.onTimeout(tsfInterest);
+            }, (tsfInterest, networkNack) -> {
+                Logger.getGlobal().log(Level.INFO, "Network nack: " + tsfInterest.getName() + ", Reason: " + networkNack.getReason());
+                onNetworkNack.onNetworkNack(tsfInterest, networkNack);
+            });
             while (true) {
                 controller.face.processEvents();
                 Thread.sleep(10);
@@ -128,46 +162,5 @@ public class Controller implements OnInterestCallback, OnData, OnTimeout, OnRegi
         } finally {
             controller.face.shutdown();
         }
-    }
-
-    @Override
-    public void onInterest(Name prefix, Interest interest, Face face, long interestFilterId, InterestFilter filter) {
-        System.out.println("OnInterest");
-        Logger.getGlobal().log(Level.INFO, "Interest coming: " + interest.getName() + ", Id: " + interest.getIncomingFaceId());
-        try {
-            Data data = new Data(interest.getName());
-            String content = "Echo " + interest.getName().toUri();
-            data.setContent(new Blob(content));
-//            keyChain.sign(data, certificateName);
-            face.putData(data);
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-    }
-
-    @Override
-    public void onData(Interest interest, Data data) {
-        System.out.println("OnData");
-        System.out.println(data.getContent());
-    }
-
-    @Override
-    public void onTimeout(Interest interest) {
-        System.out.println("Timeout");
-    }
-
-    @Override
-    public void onNetworkNack(Interest interest, NetworkNack networkNack) {
-        System.out.println("OnNetworkNack");
-    }
-
-    @Override
-    public void onRegisterFailed(Name prefix) {
-        System.out.println("OnRegisterFailed");
-    }
-
-    @Override
-    public void onRegisterSuccess(Name prefix, long registeredPrefixId) {
-        System.out.println("OnRegisterSuccess");
     }
 }

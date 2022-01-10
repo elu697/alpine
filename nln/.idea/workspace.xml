@@ -18,14 +18,8 @@
       <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.sh" beforeDir="false" afterPath="$PROJECT_DIR$/main.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../stash/app_ndn/base/Consumer.py" beforeDir="false" afterPath="$PROJECT_DIR$/../stash/app_ndn/base/Consumer.py" afterDir="false" />
     </list>
-    <list id="ca41d097-a2da-4e6d-a36d-5b0e62c2e5a2" name="Changes by you" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_8_7.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-    </list>
+    <list id="03ddb769-c8db-4d9e-94a6-7be1bdac1b47" name="Changes by you" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -236,8 +230,8 @@
         </breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/core/src/main/java/ndn/Controller.java</url>
-          <line>149</line>
-          <option name="timeStamp" value="4" />
+          <line>139</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
