@@ -63,9 +63,9 @@ public class Controller {
             InetAddress addr = InetAddress.getLocalHost();
             nodeId = addr.getHostName() + addr.getAddress();
         } catch (UnknownHostException e) {
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
         }
-        System.out.println(nodeId);
         //keyName: different between nodes.
         Name keyName = new Name("/nln/" + nodeId);
         Name certificateName = keyName.getSubName(0, keyName.size() - 1).append("KEY").append(keyName.get(-1))
@@ -75,12 +75,13 @@ public class Controller {
             privateKeyStorage.setKeyPairForKeyName(keyName, KeyType.RSA, RSA_Key.DEFAULT_RSA_PUBLIC_KEY_DER,
                     RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER);
         } catch (SecurityException e) {
-            System.out.println("exception: " + e.getMessage());
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
         }
         face.setCommandSigningInfo(keyChain, certificateName);
         this.keyChain = keyChain;
         this.certificateName = certificateName;
-        System.out.println(certificateName);
+        Logger.getGlobal().log(Level.INFO, "Face signed: node HOST->" + nodeId);
     }
 
     public void runLoop() {
@@ -89,7 +90,8 @@ public class Controller {
                 face.processEvents();
                 Thread.sleep(100);
             } catch (Exception e) {
-                System.out.println(e);
+                Logger.getGlobal().log(Level.SEVERE, e.getMessage());
+                e.printStackTrace();
             }
         }
     }
@@ -129,7 +131,8 @@ public class Controller {
                 onRegisterSuccess.onRegisterSuccess(prefix, registeredPrefixId);
             });
         } catch (Exception e) {
-            System.err.println(e);
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
         }
     }
 
@@ -158,6 +161,7 @@ public class Controller {
                 Thread.sleep(10);
             }
         } catch (Exception e) {
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
         } finally {
             controller.face.shutdown();
