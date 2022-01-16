@@ -3,53 +3,83 @@ import java.util.*;
 import net.named_data.jndn.*;
 
 public class MIB {
-    static class ModelInfo extends Hashtable {
-        Optional<Name> dataName;
-        Face forwardFace;
+    public static final class ModelInfo extends Hashtable {
+        private ArrayList<Name> datasetName;
+        private ArrayList<Face> forwardFace;
 
-        public ModelInfo(Name name, Face face) {
-            this.dataName = Optional.of(name);
-            this.forwardFace = face;
+        public ModelInfo() {
+            datasetName = new ArrayList<>();
+            forwardFace = new ArrayList<>();
         }
 
-        public ModelInfo(Face face) {
-            this.dataName = null;
-            this.forwardFace = face;
+        public void add(Name name) {
+            datasetName.add(name);
+        }
+
+        public void add(Face forward) {
+            forwardFace.add(forward);
+        }
+
+        public void remove(Name name) {
+            datasetName.remove(name);
+        }
+
+        public void remove(Face face) {
+            forwardFace.remove(face);
+        }
+
+        public ArrayList<Name> getDatasetNames() {
+            return datasetName;
+        }
+
+        public ArrayList<Face> getFaces() {
+            return forwardFace;
         }
     }
 
     volatile public static MIB shard = new MIB();
-    private LinkedHashMap<Name, ArrayList<ModelInfo>> lhm = new LinkedHashMap<>();
+    private LinkedHashMap<Name, ModelInfo> lhm = new LinkedHashMap<>();
 
     private MIB() {
     }
 
-    void set(Name prefix, Name dataName, Face face) {
-        ArrayList<ModelInfo> infoList = lhm.getOrDefault(prefix, new ArrayList<>());
-        infoList.add(new ModelInfo(dataName, face));
-        lhm.put(prefix, infoList);
+    public void set(Name prefix, Name datasetName) {
+        ModelInfo modelInfo = lhm.getOrDefault(prefix, new ModelInfo());
+        modelInfo.add(datasetName);
+        lhm.put(prefix, modelInfo);
     }
 
-    void set(Name prefix, Face face) {
-        ArrayList<ModelInfo> infoList = lhm.getOrDefault(prefix, new ArrayList<>());
-        infoList.add(new ModelInfo(face));
-        lhm.put(prefix, infoList);
+    public void set(Name prefix, Face forwardFace) {
+        ModelInfo modelInfo = lhm.getOrDefault(prefix, new ModelInfo());
+        modelInfo.add(forwardFace);
+        lhm.put(prefix, modelInfo);
     }
 
-    ArrayList<ModelInfo> get(Name prefix) {
-        return lhm.getOrDefault(prefix, new ArrayList<>());
+    public void unset(Name prefix, Name datasetName) {
+        ModelInfo modelInfo = lhm.getOrDefault(prefix, new ModelInfo());
+        modelInfo.remove(datasetName);
+        lhm.put(prefix, modelInfo);
+    }
+
+    public void unset(Name prefix, Face forwardFace) {
+        ModelInfo modelInfo = lhm.getOrDefault(prefix, new ModelInfo());
+        modelInfo.remove(forwardFace);
+        lhm.put(prefix, modelInfo);
+    }
+
+    public ModelInfo get(Name prefix) {
+        return lhm.getOrDefault(prefix, new ModelInfo());
     }
 
     public static void main(String[] args) {
-        MIB.shard.set(new Name("/model/A"), new Name("/dataset/A"), new Face());
-        MIB.shard.set(new Name("/model/A"), new Name("/dataset/B"), new Face());
-        MIB.shard.set(new Name("/model/B"), new Name("/dataset/A"), new Face());
-        MIB.shard.set(new Name("/model/B"), new Face());
-        MIB.shard.get(new Name("/model/A")).forEach( i -> {
-            System.out.println(i.dataName);
+        MIB.shard.set(new Name("/model/A"), new Name("/dataset/ABC"));
+        MIB.shard.set(new Name("/model/A"), new Name("/dataset/AB"));
+        MIB.shard.set(new Name("/model/A"), new Face());
+        MIB.shard.get(new Name("/model/A")).datasetName.forEach(i-> {
+            System.out.println(i);
         });
-        MIB.shard.get(new Name("/model/B")).forEach( i -> {
-            System.out.println(i.dataName);
+        MIB.shard.get(new Name("/model/A")).forwardFace.forEach(i-> {
+            System.out.println(i);
         });
     }
 }

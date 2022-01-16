@@ -16,9 +16,9 @@
     <bytecodeTargetLevel>
       <module name="client" target="17" />
       <module name="core" target="17" />
-      <module name="jndn" target="17" />
+      <module name="jndn" target="1.7" />
       <module name="jndn-android-with-async-io" target="17" />
-      <module name="jndn-examples" target="17" />
+      <module name="jndn-examples" target="1.7" />
     </bytecodeTargetLevel>
   </component>
 </project>

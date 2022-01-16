@@ -6,9 +6,9 @@ import java.time.LocalDateTime;
 import java.util.*;
 
 public class PLT {
-    static final class PendingInfo {
-        Name prefix;
-        Face request;
+    public static final class PendingInfo {
+        private Name prefix;
+        private Face request;
 
         public PendingInfo(Name prefix, Face request) {
             this.prefix = prefix;
@@ -30,8 +30,8 @@ public class PLT {
     }
 
     static class LearningInfo {
-        LocalDateTime lastMonitoredTime;
-        ArrayList<Face> aliveFaces = new ArrayList<>();
+        private LocalDateTime lastMonitoredTime;
+        private ArrayList<Face> aliveFaces = new ArrayList<>();
 
         public LearningInfo(){
             monitored();
@@ -54,7 +54,6 @@ public class PLT {
     private LinkedHashMap<PendingInfo, PLT.LearningInfo> lhm = new LinkedHashMap<>();
 
     private PLT() {
-
     }
 
     public void push(Name prefix, Face requestFrom, Face alive) {
