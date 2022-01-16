@@ -1,7 +1,7 @@
 package ndn;
 import java.nio.ByteBuffer;
 
-public record RSA_Key() {
+public class RSA_Key {
     private static ByteBuffer toBuffer(int[] array)
     {
         ByteBuffer result = ByteBuffer.allocate(array.length);

@@ -15,9 +15,26 @@ import java.util.logging.Logger;
 import ndn.Controller;
 import net.named_data.jndn.*;
 import net.named_data.jndn.util.Blob;
+import org.tensorflow.ConcreteFunction;
+import org.tensorflow.Signature;
+import org.tensorflow.Tensor;
+import org.tensorflow.TensorFlow;
+import org.tensorflow.op.Ops;
+import org.tensorflow.op.core.Placeholder;
+import org.tensorflow.op.math.Add;
+import org.tensorflow.types.TInt32;
 
 public class main {
     public static void main(String[] args) {
+        System.out.println("Hello TensorFlow " + TensorFlow.version());
+        System.out.println("Hello TensorFlow " + TensorFlow.version());
+
+        try (ConcreteFunction dbl = ConcreteFunction.create(main::dbl);
+             TInt32 x = TInt32.scalarOf(10);
+             Tensor dblX = dbl.call(x)) {
+            System.out.println(x.getInt() + " doubled is " + ((TInt32)dblX).getInt());
+        }
+
         String name = "/model/A";
         if (Objects.equals(args[0], "C")) {
 //            Face face = new Face("172.20.0.3");
@@ -54,6 +71,12 @@ public class main {
             });
             controller.runLoop();
         }
+    }
+
+    private static Signature dbl(Ops tf) {
+        Placeholder<TInt32> x = tf.placeholder(TInt32.class);
+        Add<TInt32> dblX = tf.math.add(x, x);
+        return Signature.builder().input("x", x).output("dbl", dblX).build();
     }
 
     public static void setDaemonThread(Runnable block) {

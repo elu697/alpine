@@ -10,50 +10,59 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_1_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_linux_x86_64_1_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_macosx_x86_64_1_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_windows_x86_64_1_5_6.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_ndarray_0_3_3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_0_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_linux_x86_64_0_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_macosx_x86_64_0_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_windows_x86_64_0_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_platform_0_4_0.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/AsyncBlock.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/ForwardController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/InterestParameter.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/ResponseData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/artifacts/core_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/core_jar.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_8_7.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/Forwarder.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/MIB.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/MIB.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/PLT.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/PLT.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/AliveMonitor.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/DataType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/Forwarder$1.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/Forwarder$2.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/Forwarder$ForwarderDelegate.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/Forwarder.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/InterestController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/LearingController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/MIB$ModelInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/MIB.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/PLT$LearningInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/PLT$PendingInfo.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/PLT.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/ndn/RSA_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/ndn/RSA_Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/AliveMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/AliveMonitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/AsyncBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/AsyncBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/DataType.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/DataType.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/ForwardController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ForwardController$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/ForwardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ForwardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/InterestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/InterestController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/InterestParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/InterestParameter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/LearingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/LearingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/MIB$ModelInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/MIB$ModelInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/MIB.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/MIB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/PLT$LearningInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/PLT$LearningInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/PLT$PendingInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/PLT$PendingInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/PLT.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/PLT.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/ResponseData.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ResponseData.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/main.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/jndn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.sh" beforeDir="false" afterPath="$PROJECT_DIR$/main.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" afterDir="false" />
     </list>
-    <list id="c18ad2bc-60f6-486c-a3a9-951e97f7ef0e" name="Changes by you" comment="" />
+    <list id="c18ad2bc-60f6-486c-a3a9-951e97f7ef0e" name="Changes by you" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_named_data_jndn_android_with_async_io_0_25.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_platform_mkl_gpu_0_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_2_6_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_8_0.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_1_5_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_1_5_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_linux_x86_64_1_5_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_linux_x86_64_1_5_4.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_macosx_x86_64_1_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_windows_x86_64_1_5_6.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_0_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_0_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_linux_x86_64_0_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_linux_x86_64_mkl_gpu_0_3_3.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_macosx_x86_64_0_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_windows_x86_64_0_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_platform_0_4_0.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -89,6 +98,17 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
+  </component>
+  <component name="LineStatusTrackerManager">
+    <file path="$PROJECT_DIR$/core/core.iml">
+      <ranges>
+        <range start1="2" end1="3" start2="2" end2="3" changelist="c18ad2bc-60f6-486c-a3a9-951e97f7ef0e" />
+        <range start1="13" end1="19" start2="13" end2="18" changelist="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" />
+        <range start1="20" end1="24" start2="19" end2="21" changelist="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" />
+        <range start1="26" end1="27" start2="23" end2="23" changelist="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" />
+        <range start1="34" end1="35" start2="30" end2="30" changelist="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" />
+      </ranges>
+    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
