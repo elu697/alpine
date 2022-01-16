@@ -18,11 +18,12 @@ import net.named_data.jndn.util.Blob;
 
 public class main {
     public static void main(String[] args) {
-        String name = "/nln/";
+        String name = "/model/A";
         if (Objects.equals(args[0], "C")) {
-            Face face = new Face("172.20.0.3");
+//            Face face = new Face("172.20.0.3");
+            Face face = new Face();
             Controller controller = new Controller(face);
-            controller.interest(name, (interest, data) -> {
+            controller.interest(name, true,true, (interest, data) -> {
                 System.out.println("Date Coming");
                 System.out.println(name);
                 System.out.println(interest.getName());
@@ -36,7 +37,7 @@ public class main {
             Controller controller = new Controller();
             controller.register(name, (prefix, interest, face, interestFilterId, filter) -> {
                 System.out.println("Interest Coming");
-                System.out.println(prefix);
+                System.out.println(interest.toUri());
                 Data data = new Data(interest.getName());
                 data.setContent(new Blob("Echo" + interest.getName().toString()));
                 try {

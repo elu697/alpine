@@ -1,24 +1,13 @@
 package ndn;
 
 import net.named_data.jndn.*;
-import net.named_data.jndn.impl.*;
-import net.named_data.jndn.lp.*;
-import net.named_data.jndn.util.*;
 
-import java.io.BufferedReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.nio.ByteBuffer;
-import java.net.ServerSocket;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
-import java.net.Socket;
-import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
-import java.util.concurrent.Executors;
-import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.stream.Collectors;
@@ -26,22 +15,18 @@ import java.util.stream.Collectors;
 import net.named_data.jndn.Data;
 import net.named_data.jndn.Face;
 import net.named_data.jndn.Interest;
-import net.named_data.jndn.InterestFilter;
 import net.named_data.jndn.Name;
 import net.named_data.jndn.OnData;
 import net.named_data.jndn.OnInterestCallback;
 import net.named_data.jndn.OnRegisterFailed;
 import net.named_data.jndn.OnTimeout;
 import net.named_data.jndn.security.KeyChain;
-import net.named_data.jndn.security.SafeBag;
 import net.named_data.jndn.security.SecurityException;
 import net.named_data.jndn.security.KeyType;
-import net.named_data.jndn.security.SecurityException;
 import net.named_data.jndn.security.identity.IdentityManager;
 import net.named_data.jndn.security.identity.MemoryIdentityStorage;
 import net.named_data.jndn.security.identity.MemoryPrivateKeyStorage;
 import net.named_data.jndn.util.Blob;
-import net.named_data.jndn.util.Common;
 
 public class Controller {
     Face face;
@@ -117,12 +102,18 @@ public class Controller {
         thread.start();
     }
 
-    public static Interest initTsfInterest(Name name) {
-        Date today = Calendar.getInstance().getTime();
-        String tsf = new SimpleDateFormat("yyyyMMHHmm").format(today);
+    public static Interest initTsfInterest(Name name, Boolean isLatest) {
+        LocalDateTime time = LocalDateTime.now();
+        String ss = isLatest ? "ss" : "";
+        String tsf = time.format(DateTimeFormatter.ofPattern("yyyyMMHHmm" + ss));
         Name uri = new Name(name.toString() + "/TSF" + tsf);
         Interest tsfInterest = new Interest(uri);
         return tsfInterest;
+    }
+
+    public static String getTsf(Name of) {
+        String tsf = Arrays.stream(of.toString().split("/")).filter(i -> i.startsWith("TSF")).collect(Collectors.joining("/"));
+        return tsf;
     }
 
     public static Name getOriginName(Interest interest) {
@@ -130,6 +121,27 @@ public class Controller {
 //        Interest originInterest = new Interest(interest);
 //        originInterest.setName(new Name(originName));
         return new Name(originName);
+    }
+
+    public static void responseParam(Interest interest, Face face, Blob param) {
+        Data responseData = new Data();
+        responseData.setName(interest.getName());
+        responseData.setContent(param);
+        try {
+            face.putData(responseData);
+        } catch (IOException e) {
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    public static void responseNack(Interest interest, Face face, NetworkNack networkNack) {
+        try {
+            face.putNack(interest, networkNack);
+        } catch (IOException e) {
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
+        }
     }
 
     public void register(String name, OnInterestCallback onInterestCallback, OnRegisterFailed onRegisterFailed, OnRegisterSuccess onRegisterSuccess) {
@@ -151,10 +163,11 @@ public class Controller {
         }
     }
 
-    public void interest(String name, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
+    public void interest(String name, Boolean isPreferredLatest, Boolean isLatest, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
         try {
+            final Boolean[] responseFlag = {false};
             Interest.setDefaultCanBePrefix(true);
-            Interest interest = initTsfInterest(new Name(name));
+            Interest interest = isPreferredLatest ? initTsfInterest(new Name(name), isLatest) : new Interest(new Name(name));
             interest.setMustBeFresh(false); // trueにすると何故かDataを受け取れないのTimeStampFieldをNameにつける
             interest.setInterestLifetimeMilliseconds(5000.0);
 //            controller.keyChain.sign(interest, controller.certificateName);
@@ -162,15 +175,48 @@ public class Controller {
 
             face.expressInterest(interest, (tsfInterest, data) -> {
                 Logger.getGlobal().log(Level.INFO, "Receive data: " + tsfInterest.getName() + ", data: " + data.getContent());
+                responseFlag[0] = true;
                 onData.onData(tsfInterest, data);
             }, tsfInterest -> {
                 Logger.getGlobal().log(Level.INFO, "Timeout interest: " + tsfInterest.getName());
+                responseFlag[0] = true;
                 onTimeout.onTimeout(tsfInterest);
             }, (tsfInterest, networkNack) -> {
                 Logger.getGlobal().log(Level.INFO, "Network nack: " + tsfInterest.getName() + ", Reason: " + networkNack.getReason());
+                responseFlag[0] = true;
                 onNetworkNack.onNetworkNack(tsfInterest, networkNack);
             });
-            while (true) {
+            while (!responseFlag[0]) {
+                face.processEvents();
+                Thread.sleep(10);
+            }
+        } catch (Exception e) {
+            Logger.getGlobal().log(Level.SEVERE, e.getMessage());
+            e.printStackTrace();
+        } finally {
+            face.shutdown();
+        }
+    }
+
+    public void interest(Interest interest, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
+        try {
+            final Boolean[] responseFlag = {false};
+//            controller.keyChain.sign(interest, controller.certificateName);
+            Logger.getGlobal().log(Level.INFO, "Interest sending: " + interest.getName());
+            face.expressInterest(interest, (tsfInterest, data) -> {
+                Logger.getGlobal().log(Level.INFO, "Receive data: " + tsfInterest.getName() + ", data: " + data.getContent());
+                responseFlag[0] = true;
+                onData.onData(tsfInterest, data);
+            }, tsfInterest -> {
+                Logger.getGlobal().log(Level.INFO, "Timeout interest: " + tsfInterest.getName());
+                responseFlag[0] = true;
+                onTimeout.onTimeout(tsfInterest);
+            }, (tsfInterest, networkNack) -> {
+                Logger.getGlobal().log(Level.INFO, "Network nack: " + tsfInterest.getName() + ", Reason: " + networkNack.getReason());
+                responseFlag[0] = true;
+                onNetworkNack.onNetworkNack(tsfInterest, networkNack);
+            });
+            while (!responseFlag[0]) {
                 face.processEvents();
                 Thread.sleep(10);
             }

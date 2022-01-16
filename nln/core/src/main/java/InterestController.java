@@ -1,2 +1,5 @@
-package PACKAGE_NAME;public class InterestController {
+public class InterestController {
+
+    public InterestController() {
+    }
 }
