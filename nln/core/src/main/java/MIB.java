@@ -18,8 +18,8 @@ public class MIB {
         }
     }
 
-    public static MIB shard = new MIB();
-    LinkedHashMap<Name, ArrayList<ModelInfo>> lhm = new LinkedHashMap<>();
+    volatile public static MIB shard = new MIB();
+    private LinkedHashMap<Name, ArrayList<ModelInfo>> lhm = new LinkedHashMap<>();
 
     private MIB() {
     }
