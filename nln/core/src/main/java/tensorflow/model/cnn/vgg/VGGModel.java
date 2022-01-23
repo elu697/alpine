@@ -26,16 +26,9 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.tensorflow.*;
-import org.tensorflow.framework.metrics.impl.MeanBaseMetricWrapper;
-import org.tensorflow.framework.metrics.impl.WeightsBroadcastOps;
 import org.tensorflow.framework.optimizers.*;
-import org.tensorflow.ndarray.impl.dense.DenseNdArray;
 import org.tensorflow.op.Op;
 import org.tensorflow.op.core.*;
-import org.tensorflow.op.data.ShuffleDataset;
-import org.tensorflow.op.train.Save;
-import org.tensorflow.proto.util.SaverDef;
-import org.tensorflow.types.TString;
 import tensorflow.model.datasets.ImageBatch;
 import tensorflow.model.datasets.mnist.MnistDataset;
 import org.tensorflow.ndarray.ByteNdArray;
@@ -52,7 +45,6 @@ import org.tensorflow.op.nn.SoftmaxCrossEntropyWithLogits;
 import org.tensorflow.op.random.TruncatedNormal;
 import org.tensorflow.types.TFloat32;
 import org.tensorflow.types.TUint8;
-import org.tensorflow.op.math.*;
 
 /**
  * Describes the VGGModel.

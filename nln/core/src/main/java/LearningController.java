@@ -1,28 +1,11 @@
-import org.tensorflow.ConcreteFunction;
-import org.tensorflow.Signature;
-import org.tensorflow.Tensor;
 import org.tensorflow.TensorFlow;
-import org.tensorflow.ndarray.NdArrays;
-import org.tensorflow.op.Ops;
-import org.tensorflow.op.core.Placeholder;
-import org.tensorflow.op.math.Add;
-import org.tensorflow.types.TInt32;
+import tensorflow.model.cnn.vgg.VGG11OnFashionMNIST;
 
 public class LearningController {
     public static void main(String[] args) {
         System.out.println("Hello TensorFlow " + TensorFlow.version());
-        System.out.println("Hello TensorFlow " + TensorFlow.version());
+        VGG11OnFashionMNIST.action("mnist", 1000);
+        VGG11OnFashionMNIST.action2("mnist", 1000);
 
-        try (ConcreteFunction dbl = ConcreteFunction.create(LearningController::dbl);
-             TInt32 x = TInt32.scalarOf(10);
-             Tensor dblX = dbl.call(x)) {
-            System.out.println(x.getInt() + " doubled is " + ((TInt32)dblX).getInt());
-        }
-    }
-
-    private static Signature dbl(Ops tf) {
-        Placeholder<TInt32> x = tf.placeholder(TInt32.class);
-        Add<TInt32> dblX = tf.math.add(x, x);
-        return Signature.builder().input("x", x).output("dbl", dblX).build();
     }
 }

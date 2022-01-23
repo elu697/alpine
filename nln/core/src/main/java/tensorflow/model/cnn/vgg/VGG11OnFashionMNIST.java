@@ -19,22 +19,9 @@ package tensorflow.model.cnn.vgg;
 import java.io.File;
 import java.io.IOException;
 import java.util.logging.Logger;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
 import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipOutputStream;
-
-
 import net.lingala.zip4j.ZipFile;
-import net.lingala.zip4j.exception.ZipException;
-import org.tensorflow.op.data.ShuffleDataset;
 import tensorflow.model.datasets.mnist.MnistDataset;
-
-import javax.jws.Oneway;
-
 /**
  * Trains and evaluates VGG'11 model on FashionMNIST dataset.
  */
@@ -44,14 +31,14 @@ public class VGG11OnFashionMNIST {
     public static final int BATCH_SIZE = 512;
 
     // Fashion MNIST dataset paths
-//    public static final String TRAINING_IMAGES_ARCHIVE = "fashionmnist/train-images-idx3-ubyte.gz";
-//    public static final String TRAINING_LABELS_ARCHIVE = "fashionmnist/train-labels-idx1-ubyte.gz";
-//    public static final String TEST_IMAGES_ARCHIVE = "fashionmnist/t10k-images-idx3-ubyte.gz";
-//    public static final String TEST_LABELS_ARCHIVE = "fashionmnist/t10k-labels-idx1-ubyte.gz";
     private static final String TRAINING_IMAGES_ARCHIVE = "mnist/train-images-idx3-ubyte.gz";
     private static final String TRAINING_LABELS_ARCHIVE = "mnist/train-labels-idx1-ubyte.gz";
     private static final String TEST_IMAGES_ARCHIVE = "mnist/t10k-images-idx3-ubyte.gz";
     private static final String TEST_LABELS_ARCHIVE = "mnist/t10k-labels-idx1-ubyte.gz";
+    public static final String TRAINING_IMAGES_ARCHIVE2 = "fashionmnist/train-images-idx3-ubyte.gz";
+    public static final String TRAINING_LABELS_ARCHIVE2 = "fashionmnist/train-labels-idx1-ubyte.gz";
+    public static final String TEST_IMAGES_ARCHIVE2 = "fashionmnist/t10k-images-idx3-ubyte.gz";
+    public static final String TEST_LABELS_ARCHIVE2 = "fashionmnist/t10k-labels-idx1-ubyte.gz";
     private static final String MODEL_NAME = "modelA";
 
     private static final Logger logger = Logger.getLogger(VGG11OnFashionMNIST.class.getName());
@@ -79,6 +66,19 @@ public class VGG11OnFashionMNIST {
         }
     }
 
+    public static void action(String modelName, Integer foldNum) {
+        action(modelName, foldNum, TRAINING_IMAGES_ARCHIVE, TRAINING_LABELS_ARCHIVE, TEST_IMAGES_ARCHIVE, TEST_LABELS_ARCHIVE);
+    }
+
+    public static void action2(String modelName, Integer foldNum) {
+        action(modelName, foldNum, TRAINING_IMAGES_ARCHIVE2, TRAINING_LABELS_ARCHIVE2, TEST_IMAGES_ARCHIVE2, TEST_LABELS_ARCHIVE2);
+    }
+
+    public static void removeDir(String dir) {
+        File file = new File(dir);
+        file.deleteOnExit();
+    }
+
     public static void main(String[] args) {
         action("modelA", 0, TRAINING_IMAGES_ARCHIVE, TRAINING_LABELS_ARCHIVE, TEST_IMAGES_ARCHIVE, TEST_LABELS_ARCHIVE);
     }
@@ -97,6 +97,8 @@ public class VGG11OnFashionMNIST {
     public static Boolean unzipFile(String srcZip, String targetDir) {
 
         File source = new File(srcZip);
+        if (!source.exists()) return false;
+
         try (ZipFile zipFile = new ZipFile(source)){
             zipFile.extractAll(targetDir);
             zipFile.close();
