@@ -10,20 +10,51 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/core_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/core_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_13_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_3.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_xerial_sqlite_jdbc_3_8_7.xml" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/LearningController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/Mnist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/lenet/CnnMnist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/ImageBatch.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/ImageBatchIterator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/mnist/MnistDataset.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/dense/SimpleMnist.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/regression/linear/LinearRegressionExample.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/tensors/TensorCreation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/t10k-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/t10k-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/train-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/train-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mnist/t10k-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mnist/t10k-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mnist/train-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mnist/train-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/LearningController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/Readme.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/t10k-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/t10k-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/train-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/train-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/mnist/t10k-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/mnist/t10k-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/mnist/train-images-idx3-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/mnist/train-labels-idx1-ubyte.gz" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/lenet/CnnMnist.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatch.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatchIterator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/tensors/TensorCreation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/client.iml" beforeDir="false" afterPath="$PROJECT_DIR$/client/client.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/ndn/RSA_Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/ndn/RSA_Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/ForwardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/AliveMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/AliveMonitor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/AsyncBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/AsyncBlock.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/DataType.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/DataType.class" afterDir="false" />
@@ -31,7 +62,7 @@
       <change beforePath="$PROJECT_DIR$/core/target/classes/ForwardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ForwardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/InterestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/InterestController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/InterestParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/InterestParameter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/LearingController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/LearingController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/LearingController.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/MIB$ModelInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/MIB$ModelInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/MIB.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/MIB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/PLT$LearningInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/PLT$LearningInfo.class" afterDir="false" />
@@ -42,26 +73,12 @@
       <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/jndn" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.sh" beforeDir="false" afterPath="$PROJECT_DIR$/main.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" afterDir="false" />
     </list>
-    <list id="c18ad2bc-60f6-486c-a3a9-951e97f7ef0e" name="Changes by you" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_named_data_jndn_android_with_async_io_0_25.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_platform_mkl_gpu_0_3_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_2_6_1.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_8_0.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_1_5_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_1_5_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_linux_x86_64_1_5_6.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_linux_x86_64_1_5_4.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_macosx_x86_64_1_5_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_bytedeco_javacpp_windows_x86_64_1_5_6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_0_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_0_3_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_linux_x86_64_0_4_0.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_linux_x86_64_mkl_gpu_0_3_3.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_macosx_x86_64_0_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_api_windows_x86_64_0_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__org_tensorflow_tensorflow_core_platform_0_4_0.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
+    <list id="640bdbe4-eab4-49ac-95b2-268e0956c2d3" name="Changes by you" comment="">
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/LearingController.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,17 +115,6 @@
       <filtered-out-file-type name="TAG" />
       <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
     </file-type-list>
-  </component>
-  <component name="LineStatusTrackerManager">
-    <file path="$PROJECT_DIR$/core/core.iml">
-      <ranges>
-        <range start1="2" end1="3" start2="2" end2="3" changelist="c18ad2bc-60f6-486c-a3a9-951e97f7ef0e" />
-        <range start1="13" end1="19" start2="13" end2="18" changelist="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" />
-        <range start1="20" end1="24" start2="19" end2="21" changelist="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" />
-        <range start1="26" end1="27" start2="23" end2="23" changelist="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" />
-        <range start1="34" end1="35" start2="30" end2="30" changelist="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" />
-      </ranges>
-    </file>
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -167,15 +173,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ForwardController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ForwardController" />
+    <configuration name="CnnMnist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tensorflow.model.cnn.lenet.CnnMnist" />
       <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tensorflow.model.cnn.lenet.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="InterestController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="InterestController" />
+    <configuration name="ForwardController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ForwardController" />
       <module name="core" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -188,9 +200,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="PLT" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="PLT" />
+    <configuration name="Mnist" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tensorflow.Mnist" />
       <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tensorflow.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -204,10 +222,15 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="All in jndn (1)" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
-      <module name="jndn" />
-      <option name="PACKAGE_NAME" value="" />
-      <option name="TEST_OBJECT" value="package" />
+    <configuration name="VGG11OnFashionMNIST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="tensorflow.model.cnn.vgg.VGG11OnFashionMNIST" />
+      <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="tensorflow.model.cnn.vgg.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -229,18 +252,18 @@
       <item itemvalue="Application.Serve" />
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.MIB" />
-      <item itemvalue="Application.PLT" />
-      <item itemvalue="Application.InterestController" />
       <item itemvalue="Application.ForwardController" />
-      <item itemvalue="JUnit.All in jndn (1)" />
+      <item itemvalue="Application.Mnist" />
+      <item itemvalue="Application.CnnMnist" />
+      <item itemvalue="Application.VGG11OnFashionMNIST" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.VGG11OnFashionMNIST" />
+        <item itemvalue="Application.CnnMnist" />
+        <item itemvalue="Application.Mnist" />
         <item itemvalue="Application.MIB" />
         <item itemvalue="Application.ForwardController" />
-        <item itemvalue="Application.InterestController" />
-        <item itemvalue="Application.PLT" />
-        <item itemvalue="JUnit.All in jndn (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -256,6 +279,9 @@
       <workItem from="1641380939289" duration="14271000" />
       <workItem from="1641447832440" duration="716000" />
       <workItem from="1641718211289" duration="1196000" />
+      <workItem from="1642830426245" duration="597000" />
+      <workItem from="1642836121152" duration="910000" />
+      <workItem from="1642848395961" duration="4396000" />
     </task>
     <servers />
   </component>
@@ -294,6 +320,9 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <MESSAGE value="Update" />
     <option name="LAST_COMMIT_MESSAGE" value="Update" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

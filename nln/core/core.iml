@@ -11,13 +11,16 @@
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-core-platform-mkl-gpu:0.3.3" level="project" />
-    <orderEntry type="library" name="Maven: org.bytedeco:javacpp:1.5.4" level="project" />
-    <orderEntry type="library" name="Maven: org.bytedeco:javacpp:linux-x86_64:1.5.4" level="project" />
-    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-core-api:0.3.3" level="project" />
-    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.8.0" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-core-platform-gpu:0.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.bytedeco:javacpp:1.5.6" level="project" />
+    <orderEntry type="library" name="Maven: org.bytedeco:javacpp:linux-x86_64:1.5.6" level="project" />
+    <orderEntry type="library" name="Maven: org.bytedeco:javacpp:windows-x86_64:1.5.6" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-core-api:0.4.0" level="project" />
+    <orderEntry type="library" name="Maven: com.google.protobuf:protobuf-java:3.9.2" level="project" />
     <orderEntry type="library" name="Maven: org.tensorflow:ndarray:0.3.3" level="project" />
-    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-core-api:linux-x86_64-mkl-gpu:0.3.3" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-core-api:linux-x86_64-gpu:0.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-core-api:windows-x86_64-gpu:0.4.0" level="project" />
+    <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-framework:0.4.0" level="project" />
     <orderEntry type="library" name="Maven: net.named-data:jndn-android-with-async-io:0.25" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.23.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.android:android:4.1.1.4" level="project" />

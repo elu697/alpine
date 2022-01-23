@@ -7,7 +7,7 @@ import java.util.TimerTask;
 
 public class ForwardController {
     Controller ndnController;
-    LearingController learingController;
+    LearningController learningController;
 
     public ForwardController() {
         ndnController = new Controller();
