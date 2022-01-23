@@ -16,9 +16,12 @@
  */
 package tensorflow.model.cnn.vgg;
 
+import java.io.File;
 import java.io.IOException;
+import java.nio.file.*;
 import java.util.Arrays;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -28,7 +31,11 @@ import org.tensorflow.framework.metrics.impl.WeightsBroadcastOps;
 import org.tensorflow.framework.optimizers.*;
 import org.tensorflow.ndarray.impl.dense.DenseNdArray;
 import org.tensorflow.op.Op;
+import org.tensorflow.op.core.*;
+import org.tensorflow.op.data.ShuffleDataset;
 import org.tensorflow.op.train.Save;
+import org.tensorflow.proto.util.SaverDef;
+import org.tensorflow.types.TString;
 import tensorflow.model.datasets.ImageBatch;
 import tensorflow.model.datasets.mnist.MnistDataset;
 import org.tensorflow.ndarray.ByteNdArray;
@@ -36,11 +43,6 @@ import org.tensorflow.ndarray.FloatNdArray;
 import org.tensorflow.ndarray.Shape;
 import org.tensorflow.ndarray.index.Indices;
 import org.tensorflow.op.Ops;
-import org.tensorflow.op.core.Constant;
-import org.tensorflow.op.core.OneHot;
-import org.tensorflow.op.core.Placeholder;
-import org.tensorflow.op.core.Reshape;
-import org.tensorflow.op.core.Variable;
 import org.tensorflow.op.math.Add;
 import org.tensorflow.op.math.Mean;
 import org.tensorflow.op.nn.Conv2d;
@@ -72,10 +74,17 @@ public class VGGModel implements AutoCloseable {
     private static final Logger logger = Logger.getLogger(VGGModel.class.getName());
 
     private Graph graph;
-
     private Session session;
 
+    public VGGModel(String modelPath) {
+        logger.log(Level.INFO, "VGGModel restore");
+        graph = compile("adam");
+        session = new Session(graph);
+        restoreParam(modelPath);
+    }
+
     public VGGModel() {
+        logger.log(Level.INFO, "VGGModel init");
         graph = compile("adam");
         session = new Session(graph);
     }
@@ -304,33 +313,43 @@ public class VGGModel implements AutoCloseable {
     }
 
     public Boolean restoreParam(String path) {
-        try (SavedModelBundle modelBundle = SavedModelBundle.load(path)) {
-            session = modelBundle.session();
-            graph = modelBundle.graph();
-            System.out.println(modelBundle.metaGraphDef().getSaverDef().getRestoreOpName());
-            System.out.println(modelBundle.metaGraphDef().getSaverDef().getSaveTensorName());
-            System.out.println(modelBundle.metaGraphDef().getSaverDef().getFilenameTensorName());
-            System.out.println(modelBundle.metaGraphDef().getGraphDef().getNodeList());
-//            session.restore(path);
+        logger.log(Level.INFO, "Load model from: " + path);
+        try {
+            session.restore(path);
+//            SavedModelBundle modelBundle = SavedModelBundle.load(path);
+//            session = modelBundle.session();
+//            graph = modelBundle.graph();
+//            System.out.println(modelBundle.signatures().size());
+//            System.out.println(modelBundle.metaGraphDef().getSaverDef().getRestoreOpName());
+//            System.out.println(modelBundle.metaGraphDef().getSaverDef().getSaveTensorName());
+//            System.out.println(modelBundle.metaGraphDef().getSaverDef().getFilenameTensorName());
+//            System.out.println(modelBundle.metaGraphDef().getGraphDef().getNodeList());
             return true;
         } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
-//        return false;
     }
 
-    public void saveParam(String path) {
+    public Boolean saveParam(String path) {
+        logger.log(Level.INFO, "Export model to: " + path);
         session.save(path);
-        try {
-            SavedModelBundle.exporter(path).withFunctions(session.function(Signature.builder().build())).export();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        session.runner()
+//                .feed("save/filename:0", TString.scalarOf(path))
+//                .fetch("save/control_dependency")
+//                .run();
+        return true;
 //        try {
-//            SavedModelBundle.exporter("./modelsaves2").export();
+//            Signature.Builder builder = Signature.builder();
+//            for (Iterator<GraphOperation> it = graph.operations(); it.hasNext(); ) {
+//                builder.input(it.next().name(), graph.output(it.next().name()));
+//            }
+//            builder.output(OUTPUT_NAME, graph.operation(OUTPUT_NAME).output(0));
+//            SessionFunction function = SessionFunction.create(builder.build(), session);
+//            SavedModelBundle.exporter(path).withFunction(function).export();
+//            return true;
 //        } catch (IOException e) {
-//            e.printStackTrace();
+//            return false;
 //        }
     }
 

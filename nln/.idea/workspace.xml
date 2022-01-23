@@ -10,51 +10,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/LearningController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/Mnist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/lenet/CnnMnist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/ImageBatch.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/ImageBatchIterator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/mnist/MnistDataset.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/dense/SimpleMnist.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/regression/linear/LinearRegressionExample.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/tensors/TensorCreation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/t10k-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/t10k-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/train-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mnist/t10k-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mnist/t10k-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mnist/train-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/resources/mnist/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/LearningController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/Readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/t10k-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/t10k-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/train-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/mnist/t10k-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/mnist/t10k-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/mnist/train-images-idx3-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/mnist/train-labels-idx1-ubyte.gz" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/lenet/CnnMnist.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatch.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatchIterator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/tensors/TensorCreation.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__net_lingala_zip4j_zip4j_2_9_1.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/META-INF/MANIFEST.MF" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/ForwardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/mnist/MnistDataset.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/mnist/MnistDataset.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/AliveMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/AliveMonitor.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/AsyncBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/AsyncBlock.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/DataType.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/DataType.class" afterDir="false" />
@@ -62,7 +26,7 @@
       <change beforePath="$PROJECT_DIR$/core/target/classes/ForwardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ForwardController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/InterestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/InterestController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/InterestParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/InterestParameter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/LearingController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/LearningController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/LearningController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/MIB$ModelInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/MIB$ModelInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/MIB.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/MIB.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/PLT$LearningInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/PLT$LearningInfo.class" afterDir="false" />
@@ -72,13 +36,24 @@
       <change beforePath="$PROJECT_DIR$/core/target/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/main.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/test.py" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/test.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatchIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatchIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/tensors/TensorCreation.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/tensors/TensorCreation.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/jndn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" afterDir="false" />
     </list>
     <list id="640bdbe4-eab4-49ac-95b2-268e0956c2d3" name="Changes by you" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/LearingController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelsaves.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelsaves.index" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelsaves.pb.data-00000-of-00001" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/modelsaves.pb.index" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -281,7 +256,7 @@
       <workItem from="1641718211289" duration="1196000" />
       <workItem from="1642830426245" duration="597000" />
       <workItem from="1642836121152" duration="910000" />
-      <workItem from="1642848395961" duration="4396000" />
+      <workItem from="1642848395961" duration="9323000" />
     </task>
     <servers />
   </component>

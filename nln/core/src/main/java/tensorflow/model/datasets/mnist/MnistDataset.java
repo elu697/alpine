@@ -16,6 +16,7 @@
  */
 package tensorflow.model.datasets.mnist;
 
+import org.tensorflow.op.data.ShuffleDataset;
 import tensorflow.model.datasets.ImageBatch;
 import tensorflow.model.datasets.ImageBatchIterator;
 import org.tensorflow.ndarray.Shape;
@@ -27,6 +28,10 @@ import java.io.DataInputStream;
 import java.io.DataOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+import java.util.Random;
 import java.util.zip.GZIPInputStream;
 import java.util.zip.GZIPOutputStream;
 
@@ -140,6 +145,6 @@ public class MnistDataset {
     }
     byte[] bytes = new byte[size];
     archiveStream.readFully(bytes);
-    return NdArrays.wrap(Shape.of(dimSizes), DataBuffers.of(bytes, true, false));
+    return NdArrays.wrap(Shape.of(dimSizes), DataBuffers.of(bytes, false, true));
   }
 }

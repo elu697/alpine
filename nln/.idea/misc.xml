@@ -15,12 +15,20 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1851" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" />
+          <option name="caretOffset" value="14223" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="13874" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" />
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/test.py" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="24729" />
+          <option name="fileUrl" value="jar://$MAVEN_REPOSITORY$/org/tensorflow/tensorflow-core-api/0.4.0/tensorflow-core-api-0.4.0-sources.jar!/org/tensorflow/Session.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="4602" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" />
         </OpenedFileInfo>
       </list>
     </option>
