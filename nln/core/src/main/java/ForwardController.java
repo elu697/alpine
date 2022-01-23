@@ -1,7 +1,12 @@
+import jdk.nashorn.internal.parser.JSONParser;
 import ndn.Controller;
 import net.named_data.jndn.*;
+import net.named_data.jndn.util.Blob;
+import org.json.JSONObject;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -20,12 +25,12 @@ public class ForwardController {
         final Boolean[] isResponse = {false};
 
         // Response
-        double delay = interest.getInterestLifetimeMilliseconds()*0.8;
+        double delay = interest.getInterestLifetimeMilliseconds()*0.75;
         TimerTask task = new TimerTask() {
             public void run() {
                 if (!isResponse[0]) {
                     isResponse[0] = true;
-                    response(prefix, interest, responseData);
+                    response(prefix, interest, face, responseData);
                 }
             }
         };
@@ -43,7 +48,7 @@ public class ForwardController {
             }
             if (!isResponse[0]) {
                 isResponse[0] = true;
-                response(prefix, interest, responseData);
+                response(prefix, interest, face, responseData);
             }
             asyncBlock.killThread();
         });
@@ -78,7 +83,13 @@ public class ForwardController {
         }
     }
 
-    private void response(Name prefix, Interest originInterest, ArrayList<Data> data) {
+    private void response(Name prefix, Interest originInterest, Face face, ArrayList<Data> data) {
+        System.out.println(data.toString());
+        ResponseData responseData = new ResponseData();
+        responseData.set("Data", "AAA");
+        System.out.println(responseData.toJsonObj());
+//        new JSONParser()
+        Controller.responseParam(originInterest, face, new Blob(responseData.toJsonObj().toString()));
     }
 
     private void datasetInterest() {
@@ -98,6 +109,37 @@ public class ForwardController {
     }
 
     public static void main(String[] args) {
+        MIB.shard.set(new Name("/model/A"), new Name("/mnist"));
+        MIB.shard.set(new Name("/model/A"), new Name("/mnist2"));
+        MIB.shard.set(new Name("/model/A"), new Name("/mnist3"));
+        MIB.shard.set(new Name("/model/B"), new Name("/mnist"));
+        MIB.shard.set(new Name("/model/C"), new Name("/mnist"));
+
+        ForwardController fController = new ForwardController();
+        fController.listen("/model");
+        new AsyncBlock().setDaemonThread(() -> fController.ndnController.runLoop());
+
+        Controller controller = new Controller();
+        controller.interest("/model/A", true, true, new OnData() {
+            @Override
+            public void onData(Interest interest, Data data) {
+                String dataStr = data.getContent().toString();
+                String jsonStr = new JSONObject(dataStr).get("Data").toString();
+                System.out.println(jsonStr);
+
+            }
+        }, new OnTimeout() {
+            @Override
+            public void onTimeout(Interest interest) {
+
+            }
+        }, new OnNetworkNack() {
+            @Override
+            public void onNetworkNack(Interest interest, NetworkNack networkNack) {
+
+            }
+        });
+        controller.runLoop();
     }
 }
 

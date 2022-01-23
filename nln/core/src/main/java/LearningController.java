@@ -6,6 +6,5 @@ public class LearningController {
         System.out.println("Hello TensorFlow " + TensorFlow.version());
         VGG11OnFashionMNIST.action("mnist", 1000);
         VGG11OnFashionMNIST.action2("mnist", 1000);
-
     }
 }
