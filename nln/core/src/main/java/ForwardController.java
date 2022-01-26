@@ -39,7 +39,7 @@ public class ForwardController {
 
         AsyncBlock asyncBlock = new AsyncBlock();
         asyncBlock.setDaemonThread(() -> {
-            while (shouldResponseCount[0] > 0) {
+            while (shouldResponseCount[0] > 0 && !isResponse[0]) {
                 try {
                     Thread.sleep(50);
                 } catch (InterruptedException e) {
@@ -57,6 +57,8 @@ public class ForwardController {
         for (Name datasetName : modelInfo.getDatasetNames()) {
             Controller datasetController = new Controller();
             datasetController.interest(datasetName.toString(), false, false, (datasetInterest, data) -> {
+                // returned datasets
+                // will be learning by datasets
                 shouldResponseCount[0]--;
                 responseData.add(data);
             }, datasetInterest -> {
@@ -73,6 +75,7 @@ public class ForwardController {
             Name forwardName = prefix.append(Controller.getTsf(interest.getName()));
             forwardInterest.setName(forwardName);
             forwardController.interest(forwardInterest, (datasetInterest, data) -> {
+                // returned model
                 shouldResponseCount[0]--;
                 responseData.add(data);
             }, datasetInterest -> {
@@ -90,14 +93,6 @@ public class ForwardController {
         System.out.println(responseData.toJsonObj());
 //        new JSONParser()
         Controller.responseParam(originInterest, face, new Blob(responseData.toJsonObj().toString()));
-    }
-
-    private void datasetInterest() {
-
-    }
-
-    private void forwardInterest() {
-
     }
 
     public void listen(String name) {
