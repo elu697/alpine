@@ -10,34 +10,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/datastore/Model.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/datastore/DataManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/Dataset.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/datastore/Dataset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/LearningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/LearningController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/Model.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/mnist/MnistDataset.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/mnist/MnistDataset.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/DataType.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/ForwardController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ForwardController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/ForwardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ForwardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/LearningController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/LearningController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/ResponseData.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ResponseData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/fashionmnist/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/fashionmnist/Readme.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/AliveMonitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/common/AliveMonitor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/AsyncBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/util/AsyncBlock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/InterestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/InterestParameter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/model/InterestParameter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/LearningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/MIB.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/common/MIB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/PLT.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/common/PLT.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/ResponseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/model/ResponseData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/main.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/jndn" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" afterDir="false" />
     </list>
-    <list id="603acc78-2d05-4ec9-89bc-bfa6c6fba752" name="Changes by you" comment="">
-      <change beforePath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/Readme.md" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/resources/fashionmnist/Readme.md" afterDir="false" />
-    </list>
+    <list id="603acc78-2d05-4ec9-89bc-bfa6c6fba752" name="Changes by you" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -119,8 +107,11 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="controller" />
+      <recent name="common" />
+      <recent name="util" />
+      <recent name="model" />
       <recent name="datastore" />
-      <recent name="" />
     </key>
   </component>
   <component name="RunManager" selected="Application.Client">
@@ -141,14 +132,14 @@
       </method>
     </configuration>
     <configuration name="ForwardController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="ForwardController" />
+      <option name="MAIN_CLASS_NAME" value="controller.ForwardController" />
       <module name="core" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
     </configuration>
     <configuration name="LearningController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="LearningController" />
+      <option name="MAIN_CLASS_NAME" value="controller.LearningController" />
       <module name="core" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -235,7 +226,7 @@
       <workItem from="1641718211289" duration="1196000" />
       <workItem from="1642830426245" duration="597000" />
       <workItem from="1642836121152" duration="910000" />
-      <workItem from="1642848395961" duration="17114000" />
+      <workItem from="1642848395961" duration="17525000" />
     </task>
     <servers />
   </component>

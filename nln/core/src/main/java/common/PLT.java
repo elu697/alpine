@@ -1,7 +1,8 @@
+package common;
+
 import net.named_data.jndn.Face;
 import net.named_data.jndn.Name;
 
-import java.lang.reflect.Array;
 import java.time.LocalDateTime;
 import java.util.*;
 

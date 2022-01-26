@@ -1,16 +1,12 @@
-import net.named_data.jndn.Data;
-import net.named_data.jndn.util.Blob;
-import org.json.JSONObject;
+package model;
 
-import javax.swing.*;
-import java.util.ArrayList;
-import java.util.Base64;
+import org.json.JSONObject;
 import java.util.HashMap;
 
 public class ResponseData {
     public HashMap<String, String>  jsonData;
 
-    ResponseData() {
+    public ResponseData() {
         jsonData = new HashMap<>();
     }
 
