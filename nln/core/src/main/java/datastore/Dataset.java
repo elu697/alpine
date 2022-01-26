@@ -1,6 +1,4 @@
-import javax.xml.crypto.Data;
-import java.io.File;
-import java.time.LocalDateTime;
+package datastore;
 
 public final class Dataset {
     private static String DATASETS_ROOT = "/home/docker/datasets";
@@ -24,7 +22,7 @@ public final class Dataset {
         String trainImage = name + "/train-images-idx3-ubyte.gz";
         String trainLabel = name + "/train-labels-idx1-ubyte.gz";
         String testImage =  name + "/t10k-images-idx3-ubyte.gz";
-        String testLabel = name + "/t10k-images-idx3-ubyte.gz";
+        String testLabel = name + "/t10k-labels-idx1-ubyte.gz";
 
         Dataset dataset = new Dataset(name, trainImage, trainLabel, testImage, testLabel);
         return dataset;
@@ -35,7 +33,7 @@ public final class Dataset {
         String trainImage = name + "/train-images-idx3-ubyte.gz";
         String trainLabel = name + "/train-labels-idx1-ubyte.gz";
         String testImage =  name + "/t10k-images-idx3-ubyte.gz";
-        String testLabel = name + "/t10k-images-idx3-ubyte.gz";
+        String testLabel = name + "/t10k-labels-idx1-ubyte.gz";
         Dataset dataset = new Dataset(name, trainImage, trainLabel, testImage, testLabel);
         return dataset;
     }

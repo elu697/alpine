@@ -67,11 +67,13 @@ public class VGGModel implements AutoCloseable {
 
     private Graph graph;
     private Session session;
+    private String modelPath;
 
     public VGGModel(String modelPath) {
         logger.log(Level.INFO, "VGGModel restore");
         graph = compile("adam");
         session = new Session(graph);
+        this.modelPath = modelPath;
         restoreParam(modelPath);
     }
 
@@ -305,9 +307,9 @@ public class VGGModel implements AutoCloseable {
     }
 
     public Boolean restoreParam(String path) {
-        logger.log(Level.INFO, "Load model from: " + path);
         try {
             session.restore(path);
+            logger.log(Level.INFO, "Load model from: " + path);
 //            SavedModelBundle modelBundle = SavedModelBundle.load(path);
 //            session = modelBundle.session();
 //            graph = modelBundle.graph();
@@ -319,13 +321,14 @@ public class VGGModel implements AutoCloseable {
             return true;
         } catch (Exception e) {
             e.printStackTrace();
+            logger.log(Level.INFO, "Create model from: " + path);
             return false;
         }
     }
 
-    public Boolean saveParam(String path) {
-        logger.log(Level.INFO, "Export model to: " + path);
-        session.save(path);
+    public Boolean saveParam() {
+        logger.log(Level.INFO, "Export model to: " + modelPath);
+        session.save(modelPath);
 //        session.runner()
 //                .feed("save/filename:0", TString.scalarOf(path))
 //                .fetch("save/control_dependency")
