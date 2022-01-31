@@ -1,19 +1,19 @@
 #!/bin/bash
 set -Ceuxo pipefail
 
-rm -rf NFD/
-rm -rf ndn-cxx/
-rm -rf ndn-tools/
-rm -rf jndn/
+# rm -rf NFD/
+# rm -rf ndn-cxx/
+# rm -rf ndn-tools/
+# rm -rf jndn/
 
-# Download ndn-cxx
-git clone --recursive https://github.com/named-data/ndn-cxx.git
-# Download NFD
-git clone --recursive https://github.com/named-data/NFD.git
-# Download ndn-tools
-git clone --recursive https://github.com/named-data/ndn-tools.git
-# Download jndn
-git clone --recursive https://github.com/named-data/jndn.git
+# # Download ndn-cxx
+# git clone --recursive https://github.com/named-data/ndn-cxx.git
+# # Download NFD
+# git clone --recursive https://github.com/named-data/NFD.git
+# # Download ndn-tools
+# git clone --recursive https://github.com/named-data/ndn-tools.git
+# # Download jndn
+# git clone --recursive https://github.com/named-data/jndn.git
 
 sudo aptitude update -y
 sudo aptitude upgrade -y

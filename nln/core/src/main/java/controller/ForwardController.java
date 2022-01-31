@@ -125,6 +125,10 @@ public class ForwardController {
         });
     }
 
+    public void loop() {
+        ndnController.runLoop();
+    }
+
     private LearningInfo learning(String modelName, String datasetName) {
         Model model = Model.initModel();
         Dataset dataset = Dataset.initFrom(datasetName);
@@ -134,7 +138,7 @@ public class ForwardController {
     }
 
     public static void main(String[] args) {
-        MIB.shard.set(new Name("/model/A"), new Name("/mnist"));
+//        MIB.shard.set(new Name("/model/A"), new Name("/mnist"));
 //        MIB.shard.set(new Name("/model/A"), new Name("/mnist2"));
 //        MIB.shard.set(new Name("/model/A"), new Name("/mnist3"));
 //        MIB.shard.set(new Name("/model/A"), new Face("192.168.1.2"));

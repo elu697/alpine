@@ -16,44 +16,24 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="14" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="4819" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/../setup/ndn/jndn/src/net/named_data/jndn/sync/detail/PSyncSegmentPublisher.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="6949" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/../setup/ndn/jndn/src/net/named_data/jndn/security/KeyChain.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="13720" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/../setup/ndn/jndn/src/net/named_data/jndn/util/Common.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="2187" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/../setup/ndn/jndn/src/net/named_data/jndn/sync/ChronoSync2013.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="1259" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/common/MIB.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="3384" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/model/ResponseData.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="84" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/model/LearningInfo.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="722" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="262" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="472" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Demo1.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="377" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Demo2.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="170" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/main.sh" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="613" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Demo3.java" />
         </OpenedFileInfo>
       </list>
     </option>
