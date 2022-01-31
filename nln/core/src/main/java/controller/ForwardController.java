@@ -90,11 +90,11 @@ public class ForwardController {
 
     private void response(Name prefix, Interest originInterest, Face face, ArrayList<Data> data) {
         System.out.println(data.toString());
-        ResponseData responseData = new ResponseData();
-        responseData.set("Data", "AAA");
-        System.out.println(responseData.toJsonObj());
-//        new JSONParser()
-        Controller.responseParam(originInterest, face, new Blob(responseData.toJsonObj().toString()));
+//        ResponseData responseData = new ResponseData();
+//        responseData.set("Data", "AAA");
+//        System.out.println(responseData.toJsonObj());
+////        new JSONParser()
+//        Controller.responseParam(originInterest, face, new Blob(responseData.toJsonObj().toString()));
     }
 
     public void listen(String name) {
