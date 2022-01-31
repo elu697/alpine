@@ -20,8 +20,8 @@ public final class ResponseData {
 
         public POJO(Map<String, Object> map) {
             this.name = (String) map.get("name");
-            this.datasetInfo = ((ArrayList<DatasetInfo>) map.get("datasetInfo"));
-            this.learningInfo = ((ArrayList<LearningInfo>) map.get("learningInfo"));
+            this.datasetInfo = ((ArrayList<DatasetInfo>) map.getOrDefault("datasetInfo", new ArrayList<>()));
+            this.learningInfo = ((ArrayList<LearningInfo>) map.getOrDefault("learningInfo", new ArrayList<>()));
         }
 
         public POJO() {
@@ -71,6 +71,16 @@ public final class ResponseData {
 
     public ResponseData(String json) {
         this.pojo = new POJO(new JSONObject(json).toMap());
+    }
+
+    public ResponseData(String name, ArrayList<ResponseData> responseDataArrayList) {
+        POJO listPojo = new POJO();
+        listPojo.setName(name);
+        responseDataArrayList.forEach(responseData -> {
+            responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
+            responseData.pojo.getDatasetInfo().forEach(listPojo::addDatasetInfo);
+        });
+        this.pojo = listPojo;
     }
 
     public JSONObject toJsonObj() {

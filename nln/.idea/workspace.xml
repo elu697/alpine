@@ -11,11 +11,21 @@
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/core.iml" beforeDir="false" afterPath="$PROJECT_DIR$/core/core.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/datastore/DataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/datastore/DataManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/datastore/Dataset.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/datastore/Dataset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/model/ResponseData.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/model/ResponseData.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/cnn/vgg/VGGModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/common/AliveMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/AliveMonitor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/common/MIB$ModelInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/MIB$ModelInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/common/MIB.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/MIB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/common/PLT$LearningInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/PLT$LearningInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/common/PLT$PendingInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/PLT$PendingInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/common/PLT.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/PLT.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$2.class" afterDir="false" />
@@ -27,12 +37,42 @@
       <change beforePath="$PROJECT_DIR$/core/target/classes/datastore/DataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/datastore/DataManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/datastore/Dataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/datastore/Dataset.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/datastore/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/datastore/Model.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/model/DatasetInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/DatasetInfo.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/model/InterestParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/InterestParameter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/model/LearningInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/LearningInfo.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/model/ResponseData$POJO.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/ResponseData$POJO.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/model/ResponseData.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/ResponseData.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/jndn" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/lenet/CnnMnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/lenet/CnnMnist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGG11OnFashionMNIST.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatch.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatchIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatchIterator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/tensors/TensorCreation.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/tensors/TensorCreation.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/util/AsyncBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/util/AsyncBlock.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/core-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.sh" beforeDir="false" afterPath="$PROJECT_DIR$/main.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../setup/ndn/ndn_setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../setup/ndn/ndn_setup.sh" afterDir="false" />
     </list>
-    <list id="e361df0c-e309-4cdf-a8e5-b396987dc028" name="Changes by you" comment="" />
+    <list id="e361df0c-e309-4cdf-a8e5-b396987dc028" name="Changes by you" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__com_google_protobuf_protobuf_java_3_5_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__commons_logging_commons_logging_1_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__junit_junit_4_10.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_hamcrest_hamcrest_core_1_1.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/libraries/Maven__org_json_json_20080701.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Maven__net_named_data_jndn_android_with_async_io_0_25.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -106,7 +146,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/core/src/main/java/datastore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/.jdks" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../setup/ndn/jndn/pom-android-with-async-io.xml" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -132,13 +172,6 @@
       <option name="MAIN_CLASS_NAME" value="main" />
       <module name="core" />
       <option name="PROGRAM_PARAMETERS" value="&quot;C&quot;" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="Dataset" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="datastore.Dataset" />
-      <module name="core" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -198,6 +231,14 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="All in jndn-android-with-async-io" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="jndn-android-with-async-io" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="TEST_OBJECT" value="package" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="core" />
       <method v="2">
@@ -216,17 +257,17 @@
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.VGG11OnFashionMNIST" />
       <item itemvalue="Application.ForwardController" />
-      <item itemvalue="Application.Dataset" />
       <item itemvalue="Application.Model" />
       <item itemvalue="Application.ResponseData" />
+      <item itemvalue="JUnit.All in jndn-android-with-async-io" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.ForwardController" />
+        <item itemvalue="JUnit.All in jndn-android-with-async-io" />
         <item itemvalue="Application.ResponseData" />
         <item itemvalue="Application.Model" />
         <item itemvalue="Application.VGG11OnFashionMNIST" />
-        <item itemvalue="Application.Dataset" />
       </list>
     </recent_temporary>
   </component>

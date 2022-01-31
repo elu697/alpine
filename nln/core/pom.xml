@@ -6,11 +6,12 @@
 
     <groupId>tech.miraito.nln</groupId>
     <artifactId>core</artifactId>
+    <!--    <packaging>maven-plugin</packaging>-->
     <version>1.0-SNAPSHOT</version>
 
     <properties>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>11</maven.compiler.source>
+        <maven.compiler.target>11</maven.compiler.target>
     </properties>
 
     <repositories>
@@ -34,11 +35,36 @@
             <artifactId>tensorflow-framework</artifactId>
             <version>0.4.0</version>
         </dependency>
-
+        <!--        <dependency>-->
+        <!--            <groupId>net.named-data</groupId>-->
+        <!--            <artifactId>jndn-android-with-async-io</artifactId>-->
+        <!--            <version>0.25</version>-->
+        <!--            <exclusions>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>com.google.protobuf</groupId>-->
+        <!--                    <artifactId>protobuf-java</artifactId>-->
+        <!--                </exclusion>-->
+        <!--                <exclusion>-->
+        <!--                    <groupId>commons-logging</groupId>-->
+        <!--                    <artifactId>commons-logging</artifactId>-->
+        <!--                </exclusion>-->
+        <!--            </exclusions>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>net.lingala.zip4j</groupId>
+            <artifactId>zip4j</artifactId>
+            <version>2.9.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
         <dependency>
             <groupId>net.named-data</groupId>
             <artifactId>jndn-android-with-async-io</artifactId>
             <version>0.25</version>
+            <scope>compile</scope>
             <exclusions>
                 <exclusion>
                     <groupId>com.google.protobuf</groupId>
@@ -50,20 +76,5 @@
                 </exclusion>
             </exclusions>
         </dependency>
-        <dependency>
-            <groupId>net.lingala.zip4j</groupId>
-            <artifactId>zip4j</artifactId>
-            <version>2.9.1</version>
-        </dependency>
-        <dependency>
-            <groupId>org.json</groupId>
-            <artifactId>json</artifactId>
-            <version>20210307</version>
-        </dependency>
-<!--        <dependency>-->
-<!--            <groupId>net.named-data</groupId>-->
-<!--            <artifactId>jndn</artifactId>-->
-<!--            <version>0.25</version>-->
-<!--        </dependency>-->
     </dependencies>
 </project>

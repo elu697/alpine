@@ -24,8 +24,8 @@ import datastore.*;
  */
 public class VGG11OnFashionMNIST<data> {
     // Hyper-parameters
-    public static final int EPOCHS = 5;
-    public static final int BATCH_SIZE = 512;
+    public static final int EPOCHS = 1;
+    public static final int BATCH_SIZE = 2048;
 
     // Fashion MNIST dataset paths
     private static final String TRAINING_IMAGES_ARCHIVE = "mnist/train-images-idx3-ubyte.gz";
@@ -40,8 +40,8 @@ public class VGG11OnFashionMNIST<data> {
 
     private static final Logger logger = Logger.getLogger(VGG11OnFashionMNIST.class.getName());
 
-    public static void action(Model model, Dataset dataset, Integer foldNum) {
-        logger.info("Data loading.");
+    public static Boolean action(Model model, Dataset dataset, Integer foldNum) {
+        logger.info("Data loading: " + dataset.datasetsPath);
         MnistDataset datasets = MnistDataset.create(foldNum,
                                     dataset.trainingImagesArchivePath,
                                     dataset.trainingLabelsArchivePath,
@@ -49,11 +49,14 @@ public class VGG11OnFashionMNIST<data> {
                                     dataset.testLabelsArchivePath);
 
         try (VGGModel vggModel = new VGGModel(model.modelNamePath)) {
-            logger.info("Datastore.Model training.");
+            logger.info("Datastore.Model training: " + model.modelNamePath);
             vggModel.train(datasets, EPOCHS, BATCH_SIZE);
             logger.info("Datastore.Model evaluation.");
             vggModel.test(datasets, BATCH_SIZE);
             vggModel.saveParam();
+            return true;
+        } catch (Exception e) {
+            return false;
         }
     }
 

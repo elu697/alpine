@@ -28,7 +28,12 @@ public final class Dataset {
         return dataset;
     }
 
-    private static Dataset initFrom(String datasetName) {
+    public static Dataset initFrom(String datasetName) {
+        if (datasetName.startsWith("/")) {
+            datasetName = datasetName.replaceFirst("/", "");
+        }
+        datasetName = datasetName.replaceAll("/", "_");
+
         String name = DATASETS_ROOT + "/" + datasetName;
         String trainImage = name + "/train-images-idx3-ubyte.gz";
         String trainLabel = name + "/train-labels-idx1-ubyte.gz";

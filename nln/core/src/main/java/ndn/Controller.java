@@ -21,18 +21,28 @@ import net.named_data.jndn.OnData;
 import net.named_data.jndn.OnInterestCallback;
 import net.named_data.jndn.OnRegisterFailed;
 import net.named_data.jndn.OnTimeout;
+import net.named_data.jndn.encoding.EncodingException;
+import net.named_data.jndn.encoding.WireFormat;
 import net.named_data.jndn.security.KeyChain;
+import net.named_data.jndn.security.SafeBag;
 import net.named_data.jndn.security.SecurityException;
 import net.named_data.jndn.security.KeyType;
 import net.named_data.jndn.security.identity.IdentityManager;
 import net.named_data.jndn.security.identity.MemoryIdentityStorage;
 import net.named_data.jndn.security.identity.MemoryPrivateKeyStorage;
+import net.named_data.jndn.security.pib.Pib;
+import net.named_data.jndn.security.pib.PibImpl;
+import net.named_data.jndn.security.tpm.TpmBackEnd;
+import net.named_data.jndn.security.v2.CertificateV2;
+import net.named_data.jndn.sync.detail.PSyncSegmentPublisher;
 import net.named_data.jndn.util.Blob;
 
 public class Controller {
     Face face;
     KeyChain keyChain;
     Name certificateName;
+
+    public final static Long TIMEOUT_MS = 60*1000L;
 
     public Controller() {
         this.face = new Face("localhost");
@@ -50,7 +60,7 @@ public class Controller {
     }
 
     private void init() {
-        setupKeyChain();
+        setupKeychainV2();
         face.setInterestLoopbackEnabled(true);
     }
 
@@ -85,14 +95,56 @@ public class Controller {
         Logger.getGlobal().log(Level.INFO, "Face signed: node HOST->" + nodeId);
     }
 
+    private void setupKeychainV2() {
+        try {
+            KeyChain keyChain = new KeyChain("pib-memory", "tpm-memory");
+            String nodeId = "default";
+            try {
+                InetAddress addr = InetAddress.getLocalHost();
+                nodeId = addr.getHostName() + addr.getAddress();
+            } catch (UnknownHostException e) {
+                Logger.getGlobal().log(Level.SEVERE, e.getMessage());
+                e.printStackTrace();
+            }
+            Name keyName = new Name("/nln/" + nodeId);
+            Name certificateName = keyName.getSubName(0, keyName.size() - 1).append("KEY").append(keyName.get(-1))
+                    .append("ID-CERT").append("0");
+            keyChain.importSafeBag(new SafeBag(
+                    new Name("/nln/KEY/123"),
+                    new Blob(RSA_Key.DEFAULT_RSA_PRIVATE_KEY_DER, false),
+                    new Blob(RSA_Key.DEFAULT_RSA_PUBLIC_KEY_DER, false)
+            ));
+            face.setCommandSigningInfo(keyChain, keyChain.getDefaultCertificateName());
+
+            this.keyChain = keyChain;
+            this.certificateName = keyChain.getDefaultCertificateName();
+        } catch (KeyChain.Error e) {
+            e.printStackTrace();
+        } catch (PibImpl.Error e) {
+            e.printStackTrace();
+        } catch (SecurityException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (CertificateV2.Error e) {
+            e.printStackTrace();
+        } catch (TpmBackEnd.Error e) {
+            e.printStackTrace();
+        } catch (Pib.Error e) {
+            e.printStackTrace();
+        }
+    }
+
     public void runLoop() {
         while (true) {
             try {
+                if (face == null) break;
                 face.processEvents();
                 Thread.sleep(100);
             } catch (Exception e) {
                 Logger.getGlobal().log(Level.SEVERE, e.getMessage());
                 e.printStackTrace();
+                break;
             }
         }
     }
@@ -117,17 +169,36 @@ public class Controller {
         return tsf;
     }
 
-    public static Name getOriginName(Interest interest) {
-        String originName = Arrays.stream(interest.getName().toString().split("/")).filter(i -> !i.startsWith("TSF")).collect(Collectors.joining("/"));
+    public static Name getOriginName(Name prefix) {
+        String originName = Arrays.stream(prefix.toString().split("/")).filter(i -> !i.startsWith("TSF")).collect(Collectors.joining("/"));
 //        Interest originInterest = new Interest(interest);
 //        originInterest.setName(new Name(originName));
         return new Name(originName);
+    }
+
+    public void responseSegment(Interest interest, Face face, Blob param) {
+        Logger.getGlobal().log(Level.INFO, "Segmented response: " + interest.getName());
+        PSyncSegmentPublisher pSyncSegmentPublisher = new PSyncSegmentPublisher(face, this.keyChain);
+        try {
+            pSyncSegmentPublisher.publish(interest.getName(), interest.getName(), param, 1);
+        } catch (EncodingException e) {
+            e.printStackTrace();
+        } catch (TpmBackEnd.Error e) {
+            e.printStackTrace();
+        } catch (PibImpl.Error e) {
+            e.printStackTrace();
+        } catch (KeyChain.Error e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     public static void responseParam(Interest interest, Face face, Blob param) {
         Data responseData = new Data();
         responseData.setName(interest.getName());
         responseData.setContent(param);
+
         try {
             face.putData(responseData);
         } catch (IOException e) {
@@ -150,7 +221,7 @@ public class Controller {
             face.registerPrefix(new Name(name), (prefix, tsfInterest, face, interestFilterId, filter) -> {
                 Logger.getGlobal().log(Level.INFO, "Interest coming: " + tsfInterest.getName() + ", filterBy: " + filter.getPrefix());
 //                Interest originInterest = getOriginInterest(interest);
-                onInterestCallback.onInterest(getOriginName(tsfInterest), tsfInterest, face, interestFilterId, filter);
+                onInterestCallback.onInterest(getOriginName(tsfInterest.getName()), tsfInterest, face, interestFilterId, filter);
             }, prefix -> {
                 Logger.getGlobal().log(Level.INFO, "Register failed: " + prefix);
                 onRegisterFailed.onRegisterFailed(prefix);
@@ -169,9 +240,8 @@ public class Controller {
         Interest interest = isPreferredLatest ? initTsfInterest(new Name(name), isLatest) : new Interest(new Name(name));
         interest.setMustBeFresh(false); // trueにすると何故かDataを受け取れないのTimeStampFieldをNameにつける
         // Consumerの(now + 5) > ルーターのnow の時に転送させる
-        int timeout = 5;
-        interest.setInterestLifetimeMilliseconds(timeout * 1000);
-        interest.setApplicationParameters(new Blob(String.valueOf(LocalTime.now().plusSeconds(timeout).toNanoOfDay())));
+        interest.setInterestLifetimeMilliseconds(TIMEOUT_MS);
+        interest.setApplicationParameters(new Blob(String.valueOf(LocalTime.now().plusNanos(TIMEOUT_MS*100000).toNanoOfDay())));
 //            controller.keyChain.sign(interest, controller.certificateName);
         this.interest(interest, onData, onTimeout, onNetworkNack);
     }
@@ -183,15 +253,19 @@ public class Controller {
             onTimeout.onTimeout(interest);
             return;
         }
-
+        int[] responseCount = {1};
         try {
             final Boolean[] responseFlag = {false};
-//            controller.keyChain.sign(interest, controller.certificateName);
+//            keyChain.sign(interest, certificateName);
             Logger.getGlobal().log(Level.INFO, "Interest sending: " + interest.getName());
             face.expressInterest(interest, (tsfInterest, data) -> {
                 Logger.getGlobal().log(Level.INFO, "Receive data: " + tsfInterest.getName() + ", data: " + data.getContent());
-                responseFlag[0] = true;
-                onData.onData(tsfInterest, data);
+                responseCount[0]--;
+                if (!(responseCount[0] > 0)) {
+                    responseFlag[0] = true;
+                    onData.onData(tsfInterest, data);
+                }
+
             }, tsfInterest -> {
                 Logger.getGlobal().log(Level.INFO, "Timeout interest: " + tsfInterest.getName());
                 responseFlag[0] = true;
@@ -208,8 +282,7 @@ public class Controller {
         } catch (Exception e) {
             Logger.getGlobal().log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
-        } finally {
-            face.shutdown();
         }
+        face.shutdown();
     }
 }

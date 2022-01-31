@@ -320,7 +320,7 @@ public class VGGModel implements AutoCloseable {
 //            System.out.println(modelBundle.metaGraphDef().getGraphDef().getNodeList());
             return true;
         } catch (Exception e) {
-            e.printStackTrace();
+//            e.printStackTrace();
             logger.log(Level.INFO, "Create model from: " + path);
             return false;
         }

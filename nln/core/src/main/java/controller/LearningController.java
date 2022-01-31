@@ -1,7 +1,29 @@
 package controller;
 
+import datastore.Dataset;
+import datastore.Model;
+import model.LearningInfo;
 import org.tensorflow.TensorFlow;
 import tensorflow.model.cnn.vgg.VGG11OnFashionMNIST;
 
 public class LearningController {
+    public static LearningController shard = new LearningController();
+
+    private LearningController() {}
+
+    public LearningInfo simpleLearning(String name, Model model, Dataset dataset) {
+        LearningInfo learningInfo = new LearningInfo();
+        learningInfo.setUid(name);
+
+        Boolean isSuccess = VGG11OnFashionMNIST.action(model, dataset, 0);
+
+        if (isSuccess){
+//            learningInfo.setBase64Data(model.getZipModelBase64String());
+            learningInfo.setProgress(100);
+        } else {
+            learningInfo.setProgress(0);
+        }
+
+        return learningInfo;
+    }
 }
