@@ -113,8 +113,8 @@ public class ForwardController {
     private void response(Name prefix, Interest originInterest, Face face, ArrayList<ResponseData> data) {
 //        Controller.responseParam(originInterest, face, new Blob("DATA"));
         ResponseData responseData = new ResponseData(prefix.toString(), data);
-//        Controller.responseParam(originInterest, face, new Blob(responseData.toJsonObj().toString()));
-        ndnController.responseSegment(originInterest, face, new Blob(responseData.toJsonObj().toString()));
+        Controller.responseParam(originInterest, face, new Blob(responseData.toJsonObj().toString()));
+//        ndnController.responseSegment(originInterest, face, new Blob(responseData.toJsonObj().toString()));
     }
 
     public void listen(String name) {

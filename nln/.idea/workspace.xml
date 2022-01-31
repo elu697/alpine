@@ -3,8 +3,6 @@
   <component name="ArtifactsWorkspaceSettings">
     <artifacts-to-build>
       <artifact name="core:jar" />
-      <artifact name="core:jar2" />
-      <artifact name="core:jar3" />
     </artifacts-to-build>
   </component>
   <component name="AutoImportSettings">
@@ -12,7 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.sh" beforeDir="false" afterPath="$PROJECT_DIR$/main.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" afterDir="false" />
     </list>
     <list id="e361df0c-e309-4cdf-a8e5-b396987dc028" name="Changes by you" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,6 +121,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Demo3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demo3" />
+      <module name="core" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="ForwardController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="controller.ForwardController" />
       <module name="core" />
@@ -160,19 +170,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="VGG11OnFashionMNIST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="tensorflow.model.cnn.vgg.VGG11OnFashionMNIST" />
-      <module name="core" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="tensorflow.model.cnn.vgg.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <configuration name="All in jndn-android-with-async-io" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="jndn-android-with-async-io" />
       <option name="PACKAGE_NAME" value="" />
@@ -197,19 +194,19 @@
     <list>
       <item itemvalue="Application.Serve" />
       <item itemvalue="Application.Client" />
-      <item itemvalue="Application.VGG11OnFashionMNIST" />
       <item itemvalue="Application.ForwardController" />
       <item itemvalue="Application.Model" />
       <item itemvalue="Application.ResponseData" />
       <item itemvalue="JUnit.All in jndn-android-with-async-io" />
+      <item itemvalue="Application.Demo3" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Demo3" />
         <item itemvalue="Application.ForwardController" />
         <item itemvalue="JUnit.All in jndn-android-with-async-io" />
         <item itemvalue="Application.ResponseData" />
         <item itemvalue="Application.Model" />
-        <item itemvalue="Application.VGG11OnFashionMNIST" />
       </list>
     </recent_temporary>
   </component>
