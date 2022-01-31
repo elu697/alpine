@@ -12,55 +12,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/core_jar2.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/core_jar3.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/Demo1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/Demo2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/Demo3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/core_jar.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/core_jar.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/common/AliveMonitor.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/AliveMonitor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/common/PLT$LearningInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/PLT$LearningInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/common/PLT$PendingInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/PLT$PendingInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/common/PLT.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/common/PLT.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/InterestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/InterestController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/datastore/DataManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/datastore/DataManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/datastore/Dataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/datastore/Dataset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/datastore/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/datastore/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/model/DatasetInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/DatasetInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/model/InterestParameter.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/InterestParameter.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/model/LearningInfo.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/LearningInfo.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/model/ResponseData$POJO.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/ResponseData$POJO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/model/ResponseData.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/ResponseData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/RSA_Key.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/lenet/CnnMnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/lenet/CnnMnist.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/VGGModel.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/cnn/vgg/test.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatch.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatch.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatchIterator.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/ImageBatchIterator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/tensors/TensorCreation.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/tensors/TensorCreation.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/util/AsyncBlock.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/util/AsyncBlock.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.sh" beforeDir="false" afterPath="$PROJECT_DIR$/main.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" beforeDir="false" afterPath="$PROJECT_DIR$/out/artifacts/core_jar/core.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../setup/ndn/ndn_setup.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../setup/ndn/ndn_setup.sh" afterDir="false" />
     </list>
-    <list id="e361df0c-e309-4cdf-a8e5-b396987dc028" name="Changes by you" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../setup/ndn/jndn/src/META-INF/MANIFEST.MF" afterDir="false" />
-    </list>
+    <list id="e361df0c-e309-4cdf-a8e5-b396987dc028" name="Changes by you" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
