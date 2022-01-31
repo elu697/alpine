@@ -6,6 +6,7 @@ import ndn.Controller;
 import net.named_data.jndn.*;
 import net.named_data.jndn.util.Blob;
 import org.json.JSONObject;
+import sun.nio.ch.Net;
 import util.AsyncBlock;
 
 import java.time.LocalTime;
@@ -26,6 +27,11 @@ public class ForwardController {
         final Integer[] shouldResponseCount = {modelInfo.getDatasetNames().size() + modelInfo.getFaces().size()};
         final ArrayList<Data> responseData = new ArrayList<>();
         final Boolean[] isResponse = {false};
+
+        if (shouldResponseCount[0] == 0) {
+            Controller.responseNack(interest, face, new NetworkNack().setReason(NetworkNack.Reason.NO_ROUTE));
+            return;
+        }
 
         // Response
         double delay = interest.getInterestLifetimeMilliseconds()*0.75;
@@ -90,7 +96,6 @@ public class ForwardController {
     }
 
     private void response(Name prefix, Interest originInterest, Face face, ArrayList<Data> data) {
-        System.out.println(data.toString());
 //        ResponseData responseData = new ResponseData();
 //        responseData.set("Data", "AAA");
 //        System.out.println(responseData.toJsonObj());
@@ -107,11 +112,12 @@ public class ForwardController {
     }
 
     public static void main(String[] args) {
-        MIB.shard.set(new Name("/model/A"), new Name("/mnist"));
-        MIB.shard.set(new Name("/model/A"), new Name("/mnist2"));
-        MIB.shard.set(new Name("/model/A"), new Name("/mnist3"));
-        MIB.shard.set(new Name("/model/B"), new Name("/mnist"));
-        MIB.shard.set(new Name("/model/C"), new Name("/mnist"));
+//        MIB.shard.set(new Name("/model/A"), new Name("/mnist"));
+//        MIB.shard.set(new Name("/model/A"), new Name("/mnist2"));
+//        MIB.shard.set(new Name("/model/A"), new Name("/mnist3"));
+//        MIB.shard.set(new Name("/model/A"), new Face("192.168.1.2"));
+//        MIB.shard.set(new Name("/model/B"), new Name("/mnist"));
+//        MIB.shard.set(new Name("/model/C"), new Name("/mnist"));
 
         ForwardController fController = new ForwardController();
         fController.listen("/model");
@@ -123,18 +129,19 @@ public class ForwardController {
             public void onData(Interest interest, Data data) {
                 String dataStr = data.getContent().toString();
                 String jsonStr = new JSONObject(dataStr).get("Data").toString();
+                System.out.println("CLIENT DATA");
                 System.out.println(jsonStr);
 
             }
         }, new OnTimeout() {
             @Override
             public void onTimeout(Interest interest) {
-
+                System.out.println("CLIENT TIMEOUT");
             }
         }, new OnNetworkNack() {
             @Override
             public void onNetworkNack(Interest interest, NetworkNack networkNack) {
-
+                System.out.println("CLIENT GET NACK");
             }
         });
         controller.runLoop();

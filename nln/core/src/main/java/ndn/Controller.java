@@ -171,14 +171,14 @@ public class Controller {
         // Consumerの(now + 5) > ルーターのnow の時に転送させる
         int timeout = 5;
         interest.setInterestLifetimeMilliseconds(timeout * 1000);
-        interest.setApplicationParameters(new Blob(String.valueOf(LocalTime.now().plusSeconds(timeout).toSecondOfDay())));
+        interest.setApplicationParameters(new Blob(String.valueOf(LocalTime.now().plusSeconds(timeout).toNanoOfDay())));
 //            controller.keyChain.sign(interest, controller.certificateName);
         this.interest(interest, onData, onTimeout, onNetworkNack);
     }
 
     public void interest(Interest interest, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
-        int timeout = Integer.parseInt(interest.getApplicationParameters().toString());
-        if (timeout < LocalTime.now().toSecondOfDay()) {
+        long timeout = Long.parseLong(interest.getApplicationParameters().toString());
+        if (timeout < LocalTime.now().toNanoOfDay()) {
             Logger.getGlobal().log(Level.INFO, "Timeout by HOP_LIMIT TIME");
             onTimeout.onTimeout(interest);
             return;
