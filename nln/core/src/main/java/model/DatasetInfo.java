@@ -4,7 +4,7 @@ import datastore.Dataset;
 
 import java.util.Map;
 
-public class DatasetInfo {
+public final class DatasetInfo {
     private String uid;
     private String base64Data;
 
@@ -18,7 +18,10 @@ public class DatasetInfo {
         this.base64Data = (String) map.get("base64Data");
     }
 
-    public DatasetInfo() {}
+    public DatasetInfo() {
+        this.uid = "";
+        this.base64Data = "";
+    }
 
     public String getUid() {
         return uid;

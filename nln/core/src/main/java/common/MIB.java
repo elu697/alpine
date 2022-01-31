@@ -4,7 +4,7 @@ import java.util.*;
 
 import net.named_data.jndn.*;
 
-public class MIB {
+public final class MIB {
     public static final class ModelInfo extends Hashtable {
         private ArrayList<Name> datasetName;
         private ArrayList<Face> forwardFace;

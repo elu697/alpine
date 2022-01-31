@@ -6,7 +6,7 @@ import javax.xml.crypto.Data;
 import java.lang.reflect.Array;
 import java.util.*;
 
-public class ResponseData {
+public final class ResponseData {
     public static final class POJO {
         private String name;
         private ArrayList<DatasetInfo> datasetInfo;
@@ -82,7 +82,7 @@ public class ResponseData {
     }
 
     public static void main(String[] args) {
-        LearningInfo learningInfo = new LearningInfo("A", "B");
+        LearningInfo learningInfo = new LearningInfo("A", "B", 0);
         DatasetInfo datasetInfo = new DatasetInfo("C", "D");
         POJO pojo = new POJO();
         pojo.setName("Name");

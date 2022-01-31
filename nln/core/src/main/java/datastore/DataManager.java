@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 import java.util.Base64;
 import java.util.stream.Collectors;
 
-public class DataManager {
+public final class DataManager {
     public static String getBase64String(String targetDir) {
         String tempZip = new File(targetDir).getParent() + "/temp_" + LocalDateTime.now() + ".zip";
         String zipPath = DataManager.zipFiles(targetDir, tempZip);

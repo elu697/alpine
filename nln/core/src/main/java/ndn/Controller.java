@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.logging.Level;
@@ -164,41 +165,25 @@ public class Controller {
     }
 
     public void interest(String name, Boolean isPreferredLatest, Boolean isLatest, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
-        try {
-            final Boolean[] responseFlag = {false};
-            Interest.setDefaultCanBePrefix(true);
-            Interest interest = isPreferredLatest ? initTsfInterest(new Name(name), isLatest) : new Interest(new Name(name));
-            interest.setMustBeFresh(false); // trueにすると何故かDataを受け取れないのTimeStampFieldをNameにつける
-            interest.setInterestLifetimeMilliseconds(5000.0);
+        Interest.setDefaultCanBePrefix(true);
+        Interest interest = isPreferredLatest ? initTsfInterest(new Name(name), isLatest) : new Interest(new Name(name));
+        interest.setMustBeFresh(false); // trueにすると何故かDataを受け取れないのTimeStampFieldをNameにつける
+        // Consumerの(now + 5) > ルーターのnow の時に転送させる
+        int timeout = 5;
+        interest.setInterestLifetimeMilliseconds(timeout * 1000);
+        interest.setApplicationParameters(new Blob(String.valueOf(LocalTime.now().plusSeconds(timeout).toSecondOfDay())));
 //            controller.keyChain.sign(interest, controller.certificateName);
-            Logger.getGlobal().log(Level.INFO, "Interest sending: " + interest.getName());
-
-            face.expressInterest(interest, (tsfInterest, data) -> {
-                Logger.getGlobal().log(Level.INFO, "Receive data: " + tsfInterest.getName() + ", data: " + data.getContent());
-                responseFlag[0] = true;
-                onData.onData(tsfInterest, data);
-            }, tsfInterest -> {
-                Logger.getGlobal().log(Level.INFO, "Timeout interest: " + tsfInterest.getName());
-                responseFlag[0] = true;
-                onTimeout.onTimeout(tsfInterest);
-            }, (tsfInterest, networkNack) -> {
-                Logger.getGlobal().log(Level.INFO, "Network nack: " + tsfInterest.getName() + ", Reason: " + networkNack.getReason());
-                responseFlag[0] = true;
-                onNetworkNack.onNetworkNack(tsfInterest, networkNack);
-            });
-            while (!responseFlag[0]) {
-                face.processEvents();
-                Thread.sleep(10);
-            }
-        } catch (Exception e) {
-            Logger.getGlobal().log(Level.SEVERE, e.getMessage());
-            e.printStackTrace();
-        } finally {
-            face.shutdown();
-        }
+        this.interest(interest, onData, onTimeout, onNetworkNack);
     }
 
     public void interest(Interest interest, OnData onData, OnTimeout onTimeout, OnNetworkNack onNetworkNack) {
+        int timeout = Integer.parseInt(interest.getApplicationParameters().toString());
+        if (timeout < LocalTime.now().toSecondOfDay()) {
+            Logger.getGlobal().log(Level.INFO, "Timeout by HOP_LIMIT TIME");
+            onTimeout.onTimeout(interest);
+            return;
+        }
+
         try {
             final Boolean[] responseFlag = {false};
 //            controller.keyChain.sign(interest, controller.certificateName);

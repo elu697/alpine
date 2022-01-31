@@ -6,7 +6,7 @@ import net.named_data.jndn.Name;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class PLT {
+public final class PLT {
     public static final class PendingInfo {
         private Name prefix;
         private Face request;
