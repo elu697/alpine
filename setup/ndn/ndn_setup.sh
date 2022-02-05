@@ -6,14 +6,14 @@ set -Ceuxo pipefail
 # rm -rf ndn-tools/
 # rm -rf jndn/
 
-# # Download ndn-cxx
-# git clone --recursive https://github.com/named-data/ndn-cxx.git
-# # Download NFD
-# git clone --recursive https://github.com/named-data/NFD.git
-# # Download ndn-tools
-# git clone --recursive https://github.com/named-data/ndn-tools.git
-# # Download jndn
-# git clone --recursive https://github.com/named-data/jndn.git
+# Download ndn-cxx
+git clone --recursive https://github.com/named-data/ndn-cxx.git
+# Download NFD
+git clone --recursive https://github.com/named-data/NFD.git
+# Download ndn-tools
+git clone --recursive https://github.com/named-data/ndn-tools.git
+# Download jndn
+git clone --recursive https://github.com/named-data/jndn.git
 
 sudo aptitude update -y
 sudo aptitude upgrade -y
@@ -71,7 +71,7 @@ cd ..
 pip3 install -r requirements.txt
 
 # EX CONFIG
-nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
+# nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
 # nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
 # prefix= / strategy= /localhost/nfd/strategy/best-route/v=5
 # prefix= /localhost strategy= /localhost/nfd/strategy/multicast/v=4
