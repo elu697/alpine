@@ -20,8 +20,17 @@ public final class ResponseData {
 
         public POJO(Map<String, Object> map) {
             this.name = (String) map.get("name");
-            this.datasetInfo = ((ArrayList<DatasetInfo>) map.getOrDefault("datasetInfo", new ArrayList<>()));
-            this.learningInfo = ((ArrayList<LearningInfo>) map.getOrDefault("learningInfo", new ArrayList<>()));
+            this.datasetInfo = new ArrayList<>();
+            ArrayList<Map<String, Object>> map1 = (ArrayList<Map<String, Object>>) map.getOrDefault("datasetInfo", new ArrayList<>());
+            map1.forEach(o -> {
+                this.datasetInfo.add(new DatasetInfo(o));
+            });
+
+            this.learningInfo = new ArrayList<>();
+            ArrayList<Map<String, Object>> map2 = (ArrayList<Map<String, Object>>) map.getOrDefault("learningInfo", new ArrayList<>());
+            map2.forEach(o -> {
+                this.learningInfo.add(new LearningInfo(o));
+            });
         }
 
         public POJO() {
@@ -112,5 +121,6 @@ public final class ResponseData {
         System.out.println(pojo1.getName());
         System.out.println(pojo1.getDatasetInfo().toString());
         System.out.println(pojo1.getLearningInfo().toString());
+        System.out.println(((LearningInfo) pojo1.getLearningInfo().get(0)).getBase64Data());
     }
 }

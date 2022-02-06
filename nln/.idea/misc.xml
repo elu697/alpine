@@ -15,16 +15,32 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="643" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Main.java" />
+          <option name="caretOffset" value="14" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1564" />
+          <option name="caretOffset" value="1310" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="14" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" />
+          <option name="caretOffset" value="962" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/model/ResponseData.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="872" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/model/LearningInfo.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="123" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/datastore/Dataset.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="450" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/model/DatasetInfo.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="3148" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Main.java" />
         </OpenedFileInfo>
       </list>
     </option>

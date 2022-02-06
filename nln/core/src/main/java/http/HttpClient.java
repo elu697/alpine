@@ -21,7 +21,6 @@ public class HttpClient {
         int port = 9000;
         String url = "http://172.20.0.4"+ ":" + port + "/model/A";
         httpClient.request(url, responseData -> {
-            Logger.getGlobal().log(Level.INFO, "Receive response");
             System.out.println("Receive response");
             System.out.println(responseData.toJsonObj());
         });
@@ -40,9 +39,9 @@ public class HttpClient {
         httpClient.sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString())
                 .thenAccept(res -> {
                     ResponseData responseData = new ResponseData(res.body());
-                    responseDataConsumer.accept(responseData);
                     System.out.println("Receive response");
                     System.out.println(responseData.toJsonObj());
+                    responseDataConsumer.accept(responseData);
                 });
         try {
             Thread.sleep(60000);

@@ -24,7 +24,7 @@ public final class DatasetInfo {
     }
 
     public String getUid() {
-        return uid;
+        return this.uid;
     }
 
     public void setUid(String uid) {
@@ -32,7 +32,7 @@ public final class DatasetInfo {
     }
 
     public String getBase64Data() {
-        return base64Data;
+        return this.base64Data;
     }
 
     public void setBase64Data(String base64Data) {

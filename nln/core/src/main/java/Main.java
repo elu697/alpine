@@ -43,15 +43,15 @@ public class Main {
         InterestController interestController = new InterestController();
         interestController.request(uri, responseData -> {
             System.out.println(responseData.getPojo().getName());
-            responseData.getPojo().getDatasetInfo().forEach(datasetInfo -> {
-                System.out.println(datasetInfo.getUid());
-                System.out.println(datasetInfo.getBase64Data());
-            });
-            responseData.getPojo().getLearningInfo().forEach(learningInfo -> {
-                System.out.println(learningInfo.getUid());
-                System.out.println(learningInfo.getProgress());
-                System.out.println(learningInfo.getBase64Data());
-            });
+            for (int i = 0; i < responseData.getPojo().getLearningInfo().size(); i++) {
+                System.out.println(responseData.getPojo().getLearningInfo().get(i).getUid());
+                System.out.println(responseData.getPojo().getLearningInfo().get(i).getProgress());
+                System.out.println(responseData.getPojo().getLearningInfo().get(i).getBase64Data());
+            }
+            for (int i = 0; i < responseData.getPojo().getDatasetInfo().size(); i++) {
+                System.out.println(responseData.getPojo().getDatasetInfo().get(i).getUid());
+                System.out.println(responseData.getPojo().getDatasetInfo().get(i).getBase64Data());
+            }
         });
     }
 
@@ -73,15 +73,15 @@ public class Main {
         HttpClient httpClient = new HttpClient();
         httpClient.request(url, responseData -> {
             System.out.println(responseData.getPojo().getName());
-            responseData.getPojo().getDatasetInfo().forEach(datasetInfo -> {
-                System.out.println(datasetInfo.getUid());
-                System.out.println(datasetInfo.getBase64Data());
-            });
-            responseData.getPojo().getLearningInfo().forEach(learningInfo -> {
-                System.out.println(learningInfo.getUid());
-                System.out.println(learningInfo.getProgress());
-                System.out.println(learningInfo.getBase64Data());
-            });
+            for (int i = 0; i < responseData.getPojo().getLearningInfo().size(); i++) {
+                System.out.println(responseData.getPojo().getLearningInfo().get(i).getUid());
+                System.out.println(responseData.getPojo().getLearningInfo().get(i).getProgress());
+                System.out.println(responseData.getPojo().getLearningInfo().get(i).getBase64Data());
+            }
+            for (int i = 0; i < responseData.getPojo().getDatasetInfo().size(); i++) {
+                System.out.println(responseData.getPojo().getDatasetInfo().get(i).getUid());
+                System.out.println(responseData.getPojo().getDatasetInfo().get(i).getBase64Data());
+            }
         });
     }
 
