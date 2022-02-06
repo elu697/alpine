@@ -96,26 +96,33 @@ public class Main {
             JSONObject jsonObject = new JSONObject(response);
             serverIps[0] = (ArrayList<String>) ((ArrayList) jsonObject.toMap().get("server_ip")).stream().map(String::valueOf).collect(Collectors.toList());
             System.out.println(serverIps[0]);
+
+            AsyncBlock asyncBlock = new AsyncBlock();
+            for (int i = 0; i < serverIps[0].size(); i++) {
+                String ip = serverIps[0].get(i);
+                asyncBlock.setDaemonThread(() -> {
+                    HttpClient.request("http://" + ip + uri, responseData -> {
+                        System.out.println(responseData.getPojo().getName());
+                        for (int i2 = 0; i2 < responseData.getPojo().getLearningInfo().size(); i2++) {
+                            System.out.println(responseData.getPojo().getLearningInfo().get(i2).getUid());
+                            System.out.println(responseData.getPojo().getLearningInfo().get(i2).getProgress());
+                            System.out.println(responseData.getPojo().getLearningInfo().get(i2).getBase64Data());
+                        }
+                        for (int i2 = 0; i2 < responseData.getPojo().getDatasetInfo().size(); i2++) {
+                            System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getUid());
+                            System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getBase64Data());
+                        }
+                        if (asyncBlock.endThread() == 0) {
+                            asyncBlock.endLoop();
+                        }
+                    });
+                });
+            }
+            asyncBlock.runLoop();
+
         });
 
-        for (int i = 0; i < serverIps[0].size(); i++) {
-            String ip = serverIps[0].get(i);
-            AsyncBlock asyncBlock = new AsyncBlock();
-            asyncBlock.setDaemonThread(() -> {
-                HttpClient.request("http://" + ip + uri, responseData -> {
-                    System.out.println(responseData.getPojo().getName());
-                    for (int i2 = 0; i2 < responseData.getPojo().getLearningInfo().size(); i2++) {
-                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getUid());
-                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getProgress());
-                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getBase64Data());
-                    }
-                    for (int i2 = 0; i2 < responseData.getPojo().getDatasetInfo().size(); i2++) {
-                        System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getUid());
-                        System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getBase64Data());
-                    }
-                });
-            });
-        }
+
 
     }
 
