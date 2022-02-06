@@ -53,6 +53,7 @@ public class HttpServer {
         public void handle(HttpExchange t) throws IOException {
 
             System.out.println("**************************************************");
+            System.out.println("Request: " + t.getRequestURI());
             String resBody = "";
             try {
                 String prefix = t.getRequestURI().getPath();

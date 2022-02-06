@@ -10,6 +10,8 @@ import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.function.Consumer;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class HttpClient {
     private java.net.http.HttpClient httpClient;
@@ -19,6 +21,7 @@ public class HttpClient {
         int port = 9000;
         String url = "http://172.20.0.4"+ ":" + port + "/model/A";
         httpClient.request(url, responseData -> {
+            Logger.getGlobal().log(Level.INFO, "Receive response");
             System.out.println("Receive response");
             System.out.println(responseData.toJsonObj());
         });
@@ -38,6 +41,8 @@ public class HttpClient {
                 .thenAccept(res -> {
                     ResponseData responseData = new ResponseData(res.body());
                     responseDataConsumer.accept(responseData);
+                    System.out.println("Receive response");
+                    System.out.println(responseData.toJsonObj());
                 });
         try {
             Thread.sleep(60000);
