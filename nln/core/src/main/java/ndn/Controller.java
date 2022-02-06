@@ -289,6 +289,6 @@ public class Controller {
             Logger.getGlobal().log(Level.SEVERE, e.getMessage());
             e.printStackTrace();
         }
-        face.shutdown();
+//        face.shutdown();
     }
 }

@@ -16,7 +16,7 @@ public class Main {
         if (args.length == 0) {
             System.out.println("Arg:\n" +
                     "consumer {uri} - nln\n" +
-                    "router1 {uri} {forward_ip} - nln\n" +
+                    "router1 {uri} {forward_ip} {forward_ip2} ... - nln\n" +
                     "router2 {uri} {data_name} - nln\n" +
                     "client {url} - http\n" +
                     "server {context} {port}- http\n");
@@ -30,7 +30,7 @@ public class Main {
                 Consumer(args[1]);
                 break;
             case "router1":
-                Router1(args[1], args[2]);
+                Router1(args[1], args);
                 break;
             case "router2":
                 Router2(args[1], args[2]);
@@ -69,9 +69,12 @@ public class Main {
         });
     }
 
-    private static void Router1(String uri, String forwardIp) {
+    private static void Router1(String uri, String[] forwardIps) {
         ForwardController forwardController = new ForwardController();
-        MIB.shard.set(new Name(uri), new Face(forwardIp));
+        for (int i = 2; i < forwardIps.length; i++) {
+            MIB.shard.set(new Name(uri), new Face(forwardIps[i]));
+        }
+
         forwardController.listen(uri);
         forwardController.loop();
     }
