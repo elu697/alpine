@@ -12,7 +12,7 @@ public class LearningController {
 
     private LearningController() {}
 
-    public LearningInfo simpleLearning(String name, Model model, Dataset dataset) {
+    public LearningInfo simpleLearning(String name, Model model) {
         LearningInfo learningInfo = new LearningInfo();
         learningInfo.setUid(name);
 

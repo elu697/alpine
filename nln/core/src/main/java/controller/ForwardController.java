@@ -129,11 +129,10 @@ public class ForwardController {
         ndnController.runLoop();
     }
 
-    private LearningInfo learning(String modelName, String datasetName) {
+    private static LearningInfo learning(String modelName, String datasetName) {
         Model model = Model.initModel();
         Dataset dataset = Dataset.initFrom(datasetName);
-        LearningInfo learningInfo = LearningController.shard.simpleLearning(modelName, model, dataset);
-
+        LearningInfo learningInfo = LearningController.shard.simpleLearning(modelName, model);
         return learningInfo;
     }
 

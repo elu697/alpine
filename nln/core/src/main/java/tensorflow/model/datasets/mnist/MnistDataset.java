@@ -128,8 +128,8 @@ public class MnistDataset {
 
   private static ByteNdArray readArchive(String archiveName) throws IOException {
     DataInputStream archiveStream = new DataInputStream(
-        new GZIPInputStream(new java.io.FileInputStream(archiveName))
-//        new GZIPInputStream(MnistDataset.class.getClassLoader().getResourceAsStream(archiveName))
+//        new GZIPInputStream(new java.io.FileInputStream(archiveName))
+        new GZIPInputStream(MnistDataset.class.getClassLoader().getResourceAsStream(archiveName))
     );
     archiveStream.readShort(); // first two bytes are always 0
     byte magic = archiveStream.readByte();
