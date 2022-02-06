@@ -99,7 +99,7 @@ public class HttpServer {
 
     private static LearningInfo learning(String modelName) {
         Model model = Model.initModel();
-        LearningInfo learningInfo = LearningController.shard.simpleLearning(modelName, model);
+        LearningInfo learningInfo = LearningController.shard.simpleLearning(modelName, model, Dataset.initMnist());
         return learningInfo;
     }
 }

@@ -79,7 +79,6 @@ public class ForwardController {
                 shouldResponseCount[0]--;
             });
             thread.start();
-
 //            Controller datasetController = new Controller();
 //            datasetController.interest(datasetName.toString(), false, false, (datasetInterest, data) -> {
 //                // returned datasets
@@ -95,18 +94,21 @@ public class ForwardController {
 
         // Forward
         for (Face forwardFace : modelInfo.getFaces()) {
-            Controller forwardController = new Controller(forwardFace);
-            Interest forwardInterest = new Interest(interest);
-            forwardController.interest(forwardInterest, (datasetInterest, data) -> {
-                // returned model
-                ResponseData responseDataObject = new ResponseData(data.getContent().toString());
-                responseData.add(responseDataObject);
-                shouldResponseCount[0]--;
-            }, datasetInterest -> {
-                shouldResponseCount[0]--;
-            }, (datasetInterest, networkNack) -> {
-                shouldResponseCount[0]--;
+            Thread thread = new Thread(() -> {
+                Controller forwardController = new Controller(forwardFace);
+                Interest forwardInterest = new Interest(interest);
+                forwardController.interest(forwardInterest, (datasetInterest, data) -> {
+                    // returned model
+                    ResponseData responseDataObject = new ResponseData(data.getContent().toString());
+                    responseData.add(responseDataObject);
+                    shouldResponseCount[0]--;
+                }, datasetInterest -> {
+                    shouldResponseCount[0]--;
+                }, (datasetInterest, networkNack) -> {
+                    shouldResponseCount[0]--;
+                });
             });
+            thread.start();
         }
     }
 
@@ -132,7 +134,7 @@ public class ForwardController {
     private static LearningInfo learning(String modelName, String datasetName) {
         Model model = Model.initModel();
         Dataset dataset = Dataset.initFrom(datasetName);
-        LearningInfo learningInfo = LearningController.shard.simpleLearning(modelName, model);
+        LearningInfo learningInfo = LearningController.shard.simpleLearning(modelName+datasetName, model, dataset);
         return learningInfo;
     }
 

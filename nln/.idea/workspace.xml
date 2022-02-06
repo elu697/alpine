@@ -12,7 +12,9 @@
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../setup/ndn/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/../setup/ndn/jndn" afterDir="false" />
     </list>
@@ -144,7 +146,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="core" />
-      <option name="PROGRAM_PARAMETERS" value="router1 /model/A 172.20.0.2" />
+      <option name="PROGRAM_PARAMETERS" value="router1 /model/A 172.20.0.4 172.20.0.2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

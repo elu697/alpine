@@ -201,6 +201,7 @@ public class Controller {
     }
 
     public static void responseParam(Interest interest, Face face, Blob param) {
+        Logger.getGlobal().log(Level.INFO, "Response data: " + interest.getName() + "\n" + param.toString());
         Data responseData = new Data();
         responseData.setName(interest.getName());
         responseData.setContent(param);
@@ -214,6 +215,7 @@ public class Controller {
     }
 
     public static void responseNack(Interest interest, Face face, NetworkNack networkNack) {
+        Logger.getGlobal().log(Level.INFO, "Response nack: " + networkNack.getReason().toString());
         try {
             face.putNack(interest, networkNack);
         } catch (IOException e) {
