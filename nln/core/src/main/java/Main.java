@@ -6,6 +6,7 @@ import http.HttpServer;
 import net.named_data.jndn.Face;
 import net.named_data.jndn.Name;
 import org.json.JSONObject;
+import util.AsyncBlock;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
@@ -21,7 +22,7 @@ public class Main {
                     "consumer {uri} - nln\n" +
                     "router1 {uri} {forward_ip} {forward_ip2} ... - nln\n" +
                     "router2 {uri} {data_name} - nln\n" +
-                    "client {url} - http\n" +
+                    "client {host} {uri} - http\n" +
                     "server {context} {port}- http\n");
             return;
         }
@@ -39,7 +40,7 @@ public class Main {
                 Router2(args[1], args[2]);
                 break;
             case "client":
-                Client(args[1]);
+                Client(args[1], args[2]);
                 break;
             case "server":
                 Server(args[1], Integer.parseInt(args[2]));
@@ -89,25 +90,33 @@ public class Main {
         forwardController.loop();
     }
 
-    private static void Client(String url) {
-        HttpClient.simpleRequest(url+"/server", response -> {
+    private static void Client(String host, String uri) {
+        final ArrayList<String>[] serverIps = new ArrayList[]{new ArrayList<>()};
+        HttpClient.simpleRequest("http://" + host + uri +"/server", response -> {
             JSONObject jsonObject = new JSONObject(response);
-            ArrayList<String> serverIps = (ArrayList<String>) ((ArrayList) jsonObject.toMap().get("server_ip")).stream().map(String::valueOf).collect(Collectors.toList());
-            System.out.println(serverIps);
+            serverIps[0] = (ArrayList<String>) ((ArrayList) jsonObject.toMap().get("server_ip")).stream().map(String::valueOf).collect(Collectors.toList());
+            System.out.println(serverIps[0]);
         });
 
-        HttpClient.request(url, responseData -> {
-            System.out.println(responseData.getPojo().getName());
-            for (int i = 0; i < responseData.getPojo().getLearningInfo().size(); i++) {
-                System.out.println(responseData.getPojo().getLearningInfo().get(i).getUid());
-                System.out.println(responseData.getPojo().getLearningInfo().get(i).getProgress());
-                System.out.println(responseData.getPojo().getLearningInfo().get(i).getBase64Data());
-            }
-            for (int i = 0; i < responseData.getPojo().getDatasetInfo().size(); i++) {
-                System.out.println(responseData.getPojo().getDatasetInfo().get(i).getUid());
-                System.out.println(responseData.getPojo().getDatasetInfo().get(i).getBase64Data());
-            }
-        });
+        for (int i = 0; i < serverIps[0].size(); i++) {
+            String ip = serverIps[0].get(i);
+            AsyncBlock asyncBlock = new AsyncBlock();
+            asyncBlock.setDaemonThread(() -> {
+                HttpClient.request("http://" + ip + uri, responseData -> {
+                    System.out.println(responseData.getPojo().getName());
+                    for (int i2 = 0; i2 < responseData.getPojo().getLearningInfo().size(); i2++) {
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getUid());
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getProgress());
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getBase64Data());
+                    }
+                    for (int i2 = 0; i2 < responseData.getPojo().getDatasetInfo().size(); i2++) {
+                        System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getUid());
+                        System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getBase64Data());
+                    }
+                });
+            });
+        }
+
     }
 
     private static void Server(String context, int port) {
