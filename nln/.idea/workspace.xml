@@ -13,7 +13,6 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../setup/ndn/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/../setup/ndn/jndn" afterDir="false" />
     </list>
     <list id="f10732e7-8ad3-4130-a8b9-35bcbd881fbe" name="Changes by you" comment="" />

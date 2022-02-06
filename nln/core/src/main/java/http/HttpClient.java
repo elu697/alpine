@@ -17,9 +17,10 @@ public class HttpClient {
     public static void main(String[] args) {
         HttpClient httpClient = new HttpClient();
         int port = 9000;
-        String url = "http://localhost"+ ":" + port + "/model/A";
+        String url = "http://172.20.0.4"+ ":" + port + "/model/A";
         httpClient.request(url, responseData -> {
-            System.out.println(responseData.toJsonObj().toString());
+            System.out.println("Receive response");
+            System.out.println(responseData.toJsonObj());
         });
     }
 

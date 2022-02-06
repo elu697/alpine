@@ -19,12 +19,16 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Main.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="298" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="14" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/pom.xml" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="298" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" />
         </OpenedFileInfo>
       </list>
     </option>
