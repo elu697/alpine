@@ -19,19 +19,19 @@ public class InterestController {
             public void onData(Interest interest, Data data) {
                 ResponseData responseData= new ResponseData(data.getContent().toString());
                 responseDataConsumer.accept(responseData);
-                ndnController.runLoop();
+                ndnController.endLoop();
             }
         }, new OnTimeout() {
             @Override
             public void onTimeout(Interest interest) {
                 responseDataConsumer.accept(ResponseData.returnEmpty());
-                ndnController.runLoop();
+                ndnController.endLoop();
             }
         }, new OnNetworkNack() {
             @Override
             public void onNetworkNack(Interest interest, NetworkNack networkNack) {
                 responseDataConsumer.accept(ResponseData.returnEmpty());
-                ndnController.runLoop();
+                ndnController.endLoop();
             }
         });
         Controller.setDaemonThread(ndnController::runLoop);
