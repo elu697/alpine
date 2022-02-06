@@ -6,6 +6,7 @@ import datastore.Model;
 import model.LearningInfo;
 import model.ResponseData;
 
+import java.io.IOException;
 import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
@@ -14,8 +15,6 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class HttpClient {
-    private java.net.http.HttpClient httpClient;
-
     public static void main(String[] args) {
         HttpClient httpClient = new HttpClient();
         int port = 9000;
@@ -26,8 +25,8 @@ public class HttpClient {
         });
     }
 
-    public void request(String url, Consumer<ResponseData> responseDataConsumer) {
-        httpClient = java.net.http.HttpClient.newBuilder()
+    public static void simpleRequest(String url, Consumer<String> responseDataConsumer) {
+        java.net.http.HttpClient httpClient = java.net.http.HttpClient.newBuilder()
                 .build();
 
         HttpRequest httpRequest = HttpRequest.newBuilder()
@@ -36,15 +35,34 @@ public class HttpClient {
 
         System.out.println("Request: " + url);
 
-        httpClient.sendAsync(httpRequest, HttpResponse.BodyHandlers.ofString())
-                .thenAccept(res -> {
-                    ResponseData responseData = new ResponseData(res.body());
-                    System.out.println("Receive response");
-                    System.out.println(responseData.toJsonObj());
-                    responseDataConsumer.accept(responseData);
-                });
         try {
-            Thread.sleep(60000);
+            var res = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            responseDataConsumer.accept(res.body());
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void request(String url, Consumer<ResponseData> responseDataConsumer) {
+        java.net.http.HttpClient httpClient = java.net.http.HttpClient.newBuilder()
+                .build();
+
+        HttpRequest httpRequest = HttpRequest.newBuilder()
+                .uri(URI.create(url))
+                .build();
+
+        System.out.println("Request: " + url);
+
+        try {
+            var res = httpClient.send(httpRequest, HttpResponse.BodyHandlers.ofString());
+            ResponseData responseData = new ResponseData(res.body());
+            System.out.println("Receive response");
+            System.out.println(responseData.toJsonObj());
+            responseDataConsumer.accept(responseData);
+        } catch (IOException e) {
+            e.printStackTrace();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

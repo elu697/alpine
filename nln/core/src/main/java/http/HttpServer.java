@@ -19,8 +19,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class HttpServer {
-    private com.sun.net.httpserver.HttpServer httpServer;
-
     public static void main(String[] args) {
         HttpServer httpServer = new HttpServer();
         String prefix = "";
@@ -30,15 +28,15 @@ public class HttpServer {
             prefix = args[0];
         }
         try {
-            httpServer.listen(prefix, 9000);
+            listen(prefix, 9000);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void listen(String prefix, int port) {
+    public static void listen(String prefix, int port) {
         try {
-            httpServer = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(port), 0);
+            com.sun.net.httpserver.HttpServer httpServer = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(port), 0);
             httpServer.createContext(prefix, new RequestHandler());
             System.out.println("Listen: " + prefix);
             httpServer.start();
@@ -54,17 +52,23 @@ public class HttpServer {
 
             System.out.println("**************************************************");
             System.out.println("Request: " + t.getRequestURI());
+
             String resBody = "";
-            try {
-                String prefix = t.getRequestURI().getPath();
-                LearningInfo learningInfo = learning(prefix);
-                ResponseData.POJO pojo = new ResponseData.POJO();
-                pojo.setName(prefix);
-                pojo.addLearningInfo(learningInfo);
-                ResponseData responseDataObject = new ResponseData(pojo);
-                resBody = responseDataObject.toJsonObj().toString();
-            } catch (Exception e) {
-                e.printStackTrace();
+
+            if (t.getRequestURI().getPath().endsWith("server")) {
+                resBody = "{'server_ip':['172.20.0.2', '172.20.0.4']}";
+            } else {
+                try {
+                    String prefix = t.getRequestURI().getPath();
+                    LearningInfo learningInfo = learning(prefix);
+                    ResponseData.POJO pojo = new ResponseData.POJO();
+                    pojo.setName(prefix);
+                    pojo.addLearningInfo(learningInfo);
+                    ResponseData responseDataObject = new ResponseData(pojo);
+                    resBody = responseDataObject.toJsonObj().toString();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
 
             // レスポンスボディを構築

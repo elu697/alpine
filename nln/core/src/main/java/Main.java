@@ -5,11 +5,14 @@ import http.HttpClient;
 import http.HttpServer;
 import net.named_data.jndn.Face;
 import net.named_data.jndn.Name;
+import org.json.JSONObject;
 
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.stream.Collectors;
 
 public class Main {
     public static void main(String[] args) {
@@ -87,8 +90,13 @@ public class Main {
     }
 
     private static void Client(String url) {
-        HttpClient httpClient = new HttpClient();
-        httpClient.request(url, responseData -> {
+        HttpClient.simpleRequest(url+"/server", response -> {
+            JSONObject jsonObject = new JSONObject(response);
+            ArrayList<String> serverIps = (ArrayList<String>) ((ArrayList) jsonObject.toMap().get("server_ip")).stream().map(String::valueOf).collect(Collectors.toList());
+            System.out.println(serverIps);
+        });
+
+        HttpClient.request(url, responseData -> {
             System.out.println(responseData.getPojo().getName());
             for (int i = 0; i < responseData.getPojo().getLearningInfo().size(); i++) {
                 System.out.println(responseData.getPojo().getLearningInfo().get(i).getUid());
