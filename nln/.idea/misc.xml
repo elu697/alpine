@@ -15,20 +15,20 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="391" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" />
+          <option name="caretOffset" value="4166" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Main.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="3949" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" />
+          <option name="caretOffset" value="391" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
           <option name="caretOffset" value="230" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="447" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Main.java" />
+          <option name="caretOffset" value="3949" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" />
         </OpenedFileInfo>
       </list>
     </option>

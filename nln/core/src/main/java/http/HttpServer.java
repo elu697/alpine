@@ -56,7 +56,7 @@ public class HttpServer {
             String resBody = "";
 
             if (t.getRequestURI().getPath().endsWith("server")) {
-                resBody = "{'server_ip':['172.20.0.2', '172.20.0.4']}";
+                resBody = "{'server_ip':['172.20.0.2:9000', '172.20.0.4:9000']}";
             } else {
                 try {
                     String prefix = t.getRequestURI().getPath();
