@@ -10,23 +10,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/run-withPackaging.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/Demo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Demo1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Demo2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/Demo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Demo3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/Demo1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/Demo1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/Demo2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/Demo2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/Demo3.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/Demo3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/LearningController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/LearningController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/main.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/core-1.0-SNAPSHOT.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../setup/ndn/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/../setup/ndn/jndn" afterDir="false" />
     </list>
     <list id="39bcdc08-6804-4ee3-8dca-6601f27ba0c4" name="Changes by you" comment="" />
@@ -104,7 +93,7 @@
     <property name="extract.method.default.visibility" value="private" />
     <property name="jdk.selected.JAVA_MODULE" value="17" />
     <property name="last_directory_selection" value="$PROJECT_DIR$/core/src/main/java/datastore" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../setup/ndn/jndn/pom-android-with-async-io.xml" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -116,6 +105,9 @@
     <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.importing" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$" />
+    </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="controller" />
       <recent name="common" />

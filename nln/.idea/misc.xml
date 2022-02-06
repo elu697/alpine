@@ -15,40 +15,28 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="382" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="230" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="152" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="191" />
+          <option name="caretOffset" value="135" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Main.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="263" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Demo3.java" />
+          <option name="caretOffset" value="41" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/run.sh" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="14" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="88" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Demo2.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="230" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Demo1.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="1543" />
+          <option name="caretOffset" value="443" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/pom.xml" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="52" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/run-withPackaging.sh" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/main2.sh" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="0" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/main.sh" />
         </OpenedFileInfo>
       </list>
     </option>
