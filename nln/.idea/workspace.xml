@@ -10,31 +10,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/core/src/main/java/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/Demo1.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Demo1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/Demo2.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Demo2.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/Demo3.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Demo3.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/mnist/MnistDataset.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/model/datasets/mnist/MnistDataset.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/Demo1.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/Demo1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/Demo2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/Demo2.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/Demo3.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/Demo3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/META-INF/MANIFEST.MF" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/META-INF/MANIFEST.MF" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$2.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$3.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController$4.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/ForwardController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/ForwardController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/controller/InterestController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/InterestController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/target/classes/controller/LearningController.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/controller/LearningController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/datastore/Dataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/datastore/Dataset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/datastore/Model.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/datastore/Model.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/main.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/model/ResponseData.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/model/ResponseData.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/ndn/Controller.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/Mnist.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/datasets/mnist/MnistDataset.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/dense/SimpleMnist.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/classes/tensorflow/model/regression/linear/LinearRegressionExample.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/classes/main.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/core-1.0-SNAPSHOT.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/core-1.0-SNAPSHOT.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/core/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../setup/ndn/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/../setup/ndn/jndn" afterDir="false" />
     </list>
     <list id="39bcdc08-6804-4ee3-8dca-6601f27ba0c4" name="Changes by you" comment="" />
@@ -142,6 +134,13 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="Demo1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Demo1" />
+      <module name="core" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Demo2" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Demo2" />
       <module name="core" />
@@ -151,13 +150,6 @@
     </configuration>
     <configuration name="Demo3" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Demo3" />
-      <module name="core" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="ForwardController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="controller.ForwardController" />
       <module name="core" />
       <method v="2">
         <option name="Make" enabled="true" />
@@ -214,19 +206,19 @@
     <list>
       <item itemvalue="Application.Serve" />
       <item itemvalue="Application.Client" />
-      <item itemvalue="Application.ForwardController" />
       <item itemvalue="Application.Demo3" />
       <item itemvalue="Application.HttpServer" />
       <item itemvalue="Application.HttpClient" />
       <item itemvalue="Application.Demo2" />
+      <item itemvalue="Application.Demo1" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.Demo1" />
         <item itemvalue="Application.Demo3" />
         <item itemvalue="Application.Demo2" />
         <item itemvalue="Application.HttpClient" />
         <item itemvalue="Application.HttpServer" />
-        <item itemvalue="Application.ForwardController" />
       </list>
     </recent_temporary>
   </component>

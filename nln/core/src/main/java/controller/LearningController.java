@@ -27,4 +27,12 @@ public class LearningController {
 
         return learningInfo;
     }
+
+    public static void main(String[] args) {
+        InterestController interestController = new InterestController();
+        interestController.request("/model/A", responseData -> {
+            System.out.println(responseData.getPojo().getLearningInfo()
+            );
+        });
+    }
 }
