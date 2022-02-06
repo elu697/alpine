@@ -6,6 +6,11 @@ import http.HttpServer;
 import net.named_data.jndn.Face;
 import net.named_data.jndn.Name;
 
+import java.net.InetAddress;
+import java.net.UnknownHostException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
@@ -19,7 +24,7 @@ public class Main {
         }
 
         String mode = args[0];
-
+        printIP();
         switch (mode) {
             case "consumer":
                 Consumer(args[1]);
@@ -36,6 +41,15 @@ public class Main {
             case "server":
                 Server(args[1], Integer.parseInt(args[2]));
                 break;
+        }
+    }
+
+    public static void printIP() {
+        try {
+            Logger.getGlobal().log(Level.INFO, "LOCALHOST IP_ADDRESS: " + InetAddress.getLocalHost());
+            Logger.getGlobal().log(Level.INFO, "LOOPBACK IP_ADDRESS: " + InetAddress.getLoopbackAddress());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
         }
     }
 
