@@ -91,6 +91,8 @@ public class HttpServer {
             OutputStream os = t.getResponseBody();
             os.write(resBody.getBytes());
             os.close();
+            System.out.println("Response: " + resBody);
+            System.out.println("**************************************************");
         }
     }
 

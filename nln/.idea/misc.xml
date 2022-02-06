@@ -15,16 +15,16 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="1184" />
+          <option name="caretOffset" value="643" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Main.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/run.sh" />
+          <option name="caretOffset" value="298" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/package.sh" />
+          <option name="caretOffset" value="14" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" />
         </OpenedFileInfo>
       </list>
     </option>
