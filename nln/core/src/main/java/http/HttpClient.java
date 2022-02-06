@@ -14,7 +14,7 @@ import java.util.function.Consumer;
 public class HttpClient {
     private java.net.http.HttpClient httpClient;
 
-    public static void main(String[] args) throws InterruptedException {
+    public static void main(String[] args) {
         HttpClient httpClient = new HttpClient();
         int port = 9000;
         String url = "http://localhost"+ ":" + port + "/model/A";
@@ -23,7 +23,7 @@ public class HttpClient {
         });
     }
 
-    public void request(String url, Consumer<ResponseData> responseDataConsumer) throws InterruptedException {
+    public void request(String url, Consumer<ResponseData> responseDataConsumer) {
         httpClient = java.net.http.HttpClient.newBuilder()
                 .build();
 
@@ -38,6 +38,10 @@ public class HttpClient {
                     ResponseData responseData = new ResponseData(res.body());
                     responseDataConsumer.accept(responseData);
                 });
-        Thread.sleep(10000);
+        try {
+            Thread.sleep(10000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
     }
 }

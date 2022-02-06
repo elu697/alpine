@@ -29,10 +29,7 @@ public class LearningController {
     }
 
     public static void main(String[] args) {
-        InterestController interestController = new InterestController();
-        interestController.request("/model/A", responseData -> {
-            System.out.println(responseData.getPojo().getLearningInfo()
-            );
-        });
+        LearningController learningController = new LearningController();
+        learningController.simpleLearning("/model/A", Model.initModel());
     }
 }

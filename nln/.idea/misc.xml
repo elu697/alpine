@@ -15,28 +15,8 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="135" />
+          <option name="caretOffset" value="1184" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/Main.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="41" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/run.sh" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="443" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/pom.xml" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="52" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/run-withPackaging.sh" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/main2.sh" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/main.sh" />
         </OpenedFileInfo>
       </list>
     </option>

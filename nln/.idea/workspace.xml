@@ -10,15 +10,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="Update">
-      <change afterPath="$PROJECT_DIR$/run-withPackaging.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/core/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/LearningController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/http/HttpClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/http/HttpServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/tensorflow/SimpleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/tensorflow/SimpleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run-withPackaging.sh" beforeDir="false" afterPath="$PROJECT_DIR$/package.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run.sh" beforeDir="false" afterPath="$PROJECT_DIR$/run.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../setup/ndn/jndn" beforeDir="false" afterPath="$PROJECT_DIR$/../setup/ndn/jndn" afterDir="false" />
     </list>
-    <list id="39bcdc08-6804-4ee3-8dca-6601f27ba0c4" name="Changes by you" comment="" />
+    <list id="f10732e7-8ad3-4130-a8b9-35bcbd881fbe" name="Changes by you" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -160,12 +164,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="HttpServer" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="http.HttpServer" />
+    <configuration name="LearningController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.LearningController" />
       <module name="core" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="http.*" />
+          <option name="PATTERN" value="controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -199,18 +203,18 @@
       <item itemvalue="Application.Serve" />
       <item itemvalue="Application.Client" />
       <item itemvalue="Application.Demo3" />
-      <item itemvalue="Application.HttpServer" />
       <item itemvalue="Application.HttpClient" />
       <item itemvalue="Application.Demo2" />
       <item itemvalue="Application.Demo1" />
+      <item itemvalue="Application.LearningController" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.LearningController" />
         <item itemvalue="Application.Demo1" />
         <item itemvalue="Application.Demo3" />
         <item itemvalue="Application.Demo2" />
         <item itemvalue="Application.HttpClient" />
-        <item itemvalue="Application.HttpServer" />
       </list>
     </recent_temporary>
   </component>

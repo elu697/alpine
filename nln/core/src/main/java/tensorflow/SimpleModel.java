@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 import org.tensorflow.Graph;
 import org.tensorflow.Session;
@@ -62,7 +64,7 @@ public class SimpleModel {
     }
 
     public static float prob(float x) {
-        return x * 5;
+        return x * 0.1f;
     }
 
     public static ArrayList<Float> makeY(ArrayList<Float> x) {
@@ -134,7 +136,7 @@ public class SimpleModel {
             // Back-propagate gradients to variables for training
             String optimizerName = "adam";
             String lcOptimizerName = optimizerName.toLowerCase();
-            Optimizer optimizer = new GradientDescent(graph, 0.01f);
+            Optimizer optimizer = new Adamax(graph, 0.01f);
 //            switch (lcOptimizerName) {
 //                case "adadelta":
 //                    optimizer = new AdaDelta(graph, 1f, 0.95f, 1e-8f);
@@ -164,26 +166,51 @@ public class SimpleModel {
             Op minimize = optimizer.minimize(mse);
 
             try (Session session = new Session(graph)) {
-                for (int epoch = 0; epoch < 1; epoch++) {
-//                    Collections.shuffle(xValues);
-//                    yValues = makeY(xValues);
+                for (int epoch = 0; epoch < 100; epoch++) {
+                    Collections.shuffle(xValues);
+                    yValues = makeY(xValues);
+                    TFloat32 loss = TFloat32.scalarOf(0);
+                    for (int i = 0; i < xValues.size(); i++) {
+                        float x = xValues.get(i);
+                        float y = yValues.get(i);
+                        try (TFloat32 xTensor = TFloat32.scalarOf(x);
+                             TFloat32 yTensor = TFloat32.scalarOf(y)) {
 
-                }
-                for (int i = 0; i < xValues.size(); i++) {
-                    float x = xValues.get(i);
-                    float y = yValues.get(i);
-                    try (TFloat32 xTensor = TFloat32.scalarOf(x);
-                         TFloat32 yTensor = TFloat32.scalarOf(y)) {
+                            loss = (TFloat32) session.runner()
+                                    .feed(xData.asOutput(), xTensor)
+                                    .feed(yData.asOutput(), yTensor)
+                                    .addTarget(minimize)
+                                    .fetch(mse)
+                                    .run().get(0);
+//                            System.out.println("Training phase");
+//                            System.out.println("x is " + x + " y is " + y);
+                        }
+                    }
 
-                        session.runner()
-                                .addTarget(minimize)
-                                .feed(xData.asOutput(), xTensor)
-                                .feed(yData.asOutput(), yTensor)
-                                .run();
-                        System.out.println("Training phase");
-                        System.out.println("x is " + x + " y is " + y);
+                    if (epoch%10 == 0) {
+                        Logger.getGlobal().log(Level.INFO,
+                                "Iteration = " + epoch + ", training loss = " + loss.getFloat());
+                        // Let's predict y for x = 10f
+                        float x = epoch;
+                        float predictedY = 0f;
+
+                        try (TFloat32 xTensor = TFloat32.scalarOf(x);
+                             TFloat32 yTensor = TFloat32.scalarOf(predictedY);
+                             TFloat32 yPredictedTensor = (TFloat32) session.runner()
+                                     .feed(xData.asOutput(), xTensor)
+                                     .feed(yData.asOutput(), yTensor)
+                                     .fetch(yPredicted)
+                                     .run().get(0)) {
+
+                            predictedY = yPredictedTensor.getFloat();
+
+//                        System.out.println("Test phase value x: " + x);
+                        System.out.println("Collect value: " + prob(x));
+                        System.out.println("Predicted value: " + predictedY);
+                        }
                     }
                 }
+
                 // Extract linear regression model weight and bias values
                 List<?> tensorList = session.runner()
                         .fetch(weightVariableName)
@@ -193,26 +220,8 @@ public class SimpleModel {
                 try (TFloat32 weightValue = (TFloat32)tensorList.get(0);
                      TFloat32 biasValue = (TFloat32)tensorList.get(1)) {
 
-                    System.out.println("Weight is " + weightValue.getFloat());
-                    System.out.println("Bias is " + biasValue.getFloat());
-                }
-
-                // Let's predict y for x = 10f
-                float x = 10f;
-                float predictedY = 0f;
-
-                try (TFloat32 xTensor = TFloat32.scalarOf(x);
-                     TFloat32 yTensor = TFloat32.scalarOf(predictedY);
-                     TFloat32 yPredictedTensor = (TFloat32)session.runner()
-                             .feed(xData.asOutput(), xTensor)
-                             .feed(yData.asOutput(), yTensor)
-                             .fetch(yPredicted)
-                             .run().get(0)) {
-
-                    predictedY = yPredictedTensor.getFloat();
-
-                    System.out.println("Test phase value x: " + x);
-                    System.out.println("Predicted value: " + predictedY);
+//                    System.out.println("Weight is " + weightValue.getFloat());
+//                    System.out.println("Bias is " + biasValue.getFloat());
                 }
                 session.save(savePath);
             }

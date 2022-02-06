@@ -30,18 +30,21 @@ public class HttpServer {
             prefix = args[0];
         }
         try {
-            httpServer.listen(prefix);
+            httpServer.listen(prefix, 9000);
         } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public void listen(String prefix) throws IOException {
-        int port = 9000;
-        httpServer = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(port), 0);
-        httpServer.createContext(prefix, new RequestHandler());
-        System.out.println("Listen: " + prefix);
-        httpServer.start();
+    public void listen(String prefix, int port) {
+        try {
+            httpServer = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(port), 0);
+            httpServer.createContext(prefix, new RequestHandler());
+            System.out.println("Listen: " + prefix);
+            httpServer.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     // HTTP リクエストを処理するために呼び出されるハンドラ
