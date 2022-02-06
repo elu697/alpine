@@ -1,5 +1,9 @@
 package datastore;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.time.LocalDateTime;
 
 public final class Model {
@@ -10,12 +14,16 @@ public final class Model {
     public final Boolean isModelValid;
 
     private Model(String modelDir, String modelNamePath, Boolean isModelValid) {
+        try {
+            Files.createDirectory(Path.of(MODEL_ROOT));
+        } catch (IOException e) {
+        }
         this.modelDir = modelDir;
         this.modelNamePath = modelNamePath;
         this.isModelValid = isModelValid;
     }
-
     public static Model initModel() {
+
         String modelDir = MODEL_ROOT + "/model_" + LocalDateTime.now() + "_dir";
         String modelName = modelDir + "/model";
         return new Model(modelDir, modelName, false);

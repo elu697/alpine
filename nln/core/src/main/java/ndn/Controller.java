@@ -42,6 +42,8 @@ public class Controller {
     KeyChain keyChain;
     Name certificateName;
 
+    private Boolean endFlag = false;
+
     public final static Long TIMEOUT_MS = 60*1000L;
 
     public Controller() {
@@ -136,7 +138,7 @@ public class Controller {
     }
 
     public void runLoop() {
-        while (true) {
+        while (!endFlag) {
             try {
                 if (face == null) break;
                 face.processEvents();
@@ -147,6 +149,10 @@ public class Controller {
                 break;
             }
         }
+    }
+
+    public void endLoop() {
+        endFlag = true;
     }
 
     public static void setDaemonThread(Runnable block) {

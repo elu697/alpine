@@ -18,6 +18,7 @@ package tensorflow.model.dense;
 
 import org.tensorflow.Graph;
 import org.tensorflow.Operand;
+import org.tensorflow.SavedModelBundle;
 import org.tensorflow.Session;
 import org.tensorflow.framework.optimizers.GradientDescent;
 import org.tensorflow.framework.optimizers.Optimizer;
@@ -121,6 +122,7 @@ public class SimpleMnist implements Runnable {
               .get(0)) {
         System.out.println("Accuracy: " + accuracyValue.getFloat());
       }
+      session.save("/home/docker/test-model");
     }
   }
 

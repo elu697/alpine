@@ -83,6 +83,10 @@ public final class ResponseData {
         this.pojo = listPojo;
     }
 
+    public static ResponseData returnEmpty() {
+        return new ResponseData(new POJO());
+    }
+
     public JSONObject toJsonObj() {
         return new JSONObject(pojo);
     }

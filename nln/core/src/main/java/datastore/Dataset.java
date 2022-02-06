@@ -1,5 +1,9 @@
 package datastore;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+
 public final class Dataset {
     private static String DATASETS_ROOT = "/home/docker/datasets";
 
@@ -10,6 +14,10 @@ public final class Dataset {
     public final String testLabelsArchivePath;
 
     private Dataset(String datasetsPath, String trainingImagesArchivePath, String trainingLabelsArchivePath, String testImagesArchivePath, String testLabelsArchivePath) {
+        try {
+            Files.createDirectory(Path.of(DATASETS_ROOT));
+        } catch (IOException e) {
+        }
         this.datasetsPath = datasetsPath;
         this.trainingImagesArchivePath = trainingImagesArchivePath;
         this.trainingLabelsArchivePath = trainingLabelsArchivePath;

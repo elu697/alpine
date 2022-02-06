@@ -22,7 +22,7 @@
     <orderEntry type="library" name="Maven: org.tensorflow:tensorflow-framework:0.4.0" level="project" />
     <orderEntry type="library" name="Maven: net.lingala.zip4j:zip4j:2.9.1" level="project" />
     <orderEntry type="library" name="Maven: org.json:json:20210307" level="project" />
-    <orderEntry type="module" module-name="jndn-android-with-async-io" />
+    <orderEntry type="library" name="Maven: net.named-data:jndn-android-with-async-io:0.25" level="project" />
     <orderEntry type="library" name="Maven: org.xerial:sqlite-jdbc:3.23.1" level="project" />
     <orderEntry type="library" name="Maven: com.google.android:android:4.1.1.4" level="project" />
     <orderEntry type="library" name="Maven: org.apache.httpcomponents:httpclient:4.0.1" level="project" />

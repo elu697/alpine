@@ -8,14 +8,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="core" />
         <module name="client" />
-        <module name="jndn-android-with-async-io" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="client" target="17" />
       <module name="core" target="11" />
       <module name="jndn" target="1.7" />
-      <module name="jndn-android-with-async-io" target="11" />
+      <module name="jndn-android-with-async-io" target="1.7" />
       <module name="jndn-examples" target="1.7" />
     </bytecodeTargetLevel>
   </component>
