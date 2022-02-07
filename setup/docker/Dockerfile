@@ -76,6 +76,4 @@ EXPOSE 22
 CMD ["/usr/sbin/sshd", "-D"]
 
 # Ceforeセットアップ Rootユーザ
-RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/ndn
-RUN git config --global user.email "elyou.dev@gmail.com"
-RUN git config --global user.name "elu697"
+RUN su docker && cd /home/docker && git clone -v https://github.com/elu697/alpine.git && chown -hR docker:docker alpine && cd alpine/setup/ndn && ./ndn_setup.sh && cd ..

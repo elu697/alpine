@@ -6,6 +6,9 @@ set -Ceuxo pipefail
 # rm -rf ndn-tools/
 # rm -rf jndn/
 
+git config --global user.email "elyou.dev@gmail.com"
+git config --global user.name "elu697"
+
 # Download ndn-cxx
 git clone --recursive https://github.com/named-data/ndn-cxx.git
 # Download NFD
@@ -16,7 +19,10 @@ git clone --recursive https://github.com/named-data/ndn-tools.git
 git clone --recursive https://github.com/named-data/jndn.git
 
 sudo aptitude update -y
-sudo aptitude upgrade -y
+# sudo aptitude upgrade -y
+
+sudo aptitude install -y openjdk-11-jdk
+sudo update-alternatives --config java
 
 # # ndn-cxx
 # # https://github.com/named-data/ndn-cxx/blob/master/docs/INSTALL.rst
@@ -69,6 +75,9 @@ cd ..
 # python-ndn
 # pip3 install python-ndn nest-asyncio
 pip3 install -r requirements.txt
+
+cd ../../nln
+./package.sh
 
 # EX CONFIG
 # nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
