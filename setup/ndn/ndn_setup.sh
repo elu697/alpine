@@ -1,5 +1,5 @@
 #!/bin/bash
-set -Ceuxo pipefail
+set -Cux
 
 # rm -rf NFD/
 # rm -rf ndn-cxx/

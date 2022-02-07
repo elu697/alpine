@@ -1,13 +1,28 @@
-set -Ceuxo pipefail
+set -Cux
 
 # for i in {2..20}; do
 #     ssh icnl_lrd_vm$i pwd
 # done
 
+# for i in {2..20}; do
+#     echo $((i % 5))
+#     if test $((i % 5)) -eq 0; then
+#         (ssh icnl_lrd_vm$i "cd /home/docker/alpine/nln && git pull")
+#     else
+#         (ssh icnl_lrd_vm$i "cd /home/docker/alpine/nln && git pull")&
+#     fi
+# done
+
+
 for i in {2..20}; do
-    (ssh icnl_lrd_vm$i "cd /home/docker/alpine && git pull && cd setup/ndn && ./ndn_setup.sh")&
-    # (ssh icnl_lrd_vm$i "cd /home/docker/alpine/nln && git pull && ./package.sh")&
+    echo $((i % 5))
+    if test $((i % 3)) -eq 0; then
+        (ssh icnl_lrd_vm$i "cd /home/docker/alpine && git pull && cd setup/ndn && ./ndn_setup.sh")
+    else
+        (ssh icnl_lrd_vm$i "cd /home/docker/alpine && git pull && cd setup/ndn && ./ndn_setup.sh")&
+    fi
 done
+
 
 # (ssh icnl_lrd_vm2 "cd /home/docker/alpine/nln && git pull && ./package.sh")&
 # (ssh icnl_lrd_vm3 "cd /home/docker/alpine/nln && git pull && ./package.sh")&
