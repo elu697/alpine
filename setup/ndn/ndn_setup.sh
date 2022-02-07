@@ -79,7 +79,7 @@ cd ..
 pip3 install -r requirements.txt
 
 cd ../../nln
-./package.sh
+# ./package.sh
 
 # EX CONFIG
 # nfdc strategy set / /localhost/nfd/strategy/multicast/v=4
