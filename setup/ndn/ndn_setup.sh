@@ -1,6 +1,6 @@
 #!/bin/bash
 set -Cux
-
+export DEBIAN_FRONTEND=noninteractive
 rm -rf NFD/
 rm -rf ndn-cxx/
 rm -rf ndn-tools/

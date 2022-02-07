@@ -1,6 +1,6 @@
 #!/bin/bash
-
 set -Ceuxo pipefail
+export DEBIAN_FRONTEND=noninteractive
 #Add the package repositories
 sudo apt-get -y update
 sudo apt-get install -y apt-transport-https ca-certificates curl software-properties-common aptitude
