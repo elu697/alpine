@@ -45,7 +45,7 @@ cd ..
 
 # # NFD
 sudo aptitude install -y software-properties-common
-sudo add-apt-repository ppa:named-data/ppa
+sudo add-apt-repository -y ppa:named-data/ppa
 sudo apt update -y
 sudo aptitude install -y libpcap-dev libsystemd-dev
 # sudo aptitude install -y nfd
