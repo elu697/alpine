@@ -5,7 +5,8 @@ set -Ceuxo pipefail
 # done
 
 for i in {2..20}; do
-    (ssh icnl_lrd_vm$i "cd /home/docker/alpine/nln && git pull && ./package.sh")&
+    (ssh icnl_lrd_vm$i "cd /home/docker/alpine && git pull && cd setup/ndn && ./ndn_setup.sh")&
+    # (ssh icnl_lrd_vm$i "cd /home/docker/alpine/nln && git pull && ./package.sh")&
 done
 
 # (ssh icnl_lrd_vm2 "cd /home/docker/alpine/nln && git pull && ./package.sh")&

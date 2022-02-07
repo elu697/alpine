@@ -5,6 +5,8 @@ set -Ceuxo pipefail
 # rm -rf ndn-cxx/
 # rm -rf ndn-tools/
 # rm -rf jndn/
+PASSWORD=password
+echo $PASSWORD | sudo -S ls
 
 git config --global user.email "elyou.dev@gmail.com"
 git config --global user.name "elu697"
