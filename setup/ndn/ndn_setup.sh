@@ -87,6 +87,7 @@ cd ..
 pip3 install -r requirements.txt
 
 cd ../../nln
+exit
 # ./package.sh
 
 # EX CONFIG
