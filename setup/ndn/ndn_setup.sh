@@ -22,7 +22,7 @@ git clone --recursive https://github.com/named-data/jndn.git
 
 sudo dpkg --configure -a
 sudo aptitude update -y
-sudo aptitude upgrade -y
+sudo -E aptitude upgrade -y
 sudo aptitude install -y make libjsoncpp-dev libjsonrpccpp-dev libgmp-dev libreadline-dev libmicrohttpd-dev ocl-icd-libopencl1 \
   opencl-headers mesa-common-dev build-essential libboost-all-dev libsm6 libxext6 libxrender-dev libssl-dev \
   zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
