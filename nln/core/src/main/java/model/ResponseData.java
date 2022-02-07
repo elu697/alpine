@@ -2,9 +2,8 @@ package model;
 
 import org.json.JSONObject;
 
-import javax.xml.crypto.Data;
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
 
 public final class ResponseData {
     public static final class POJO {
@@ -86,8 +85,17 @@ public final class ResponseData {
         POJO listPojo = new POJO();
         listPojo.setName(name);
         responseDataArrayList.forEach(responseData -> {
-            responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
-            responseData.pojo.getDatasetInfo().forEach(listPojo::addDatasetInfo);
+//            responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
+//            responseData.pojo.getDatasetInfo().forEach(listPojo::addDatasetInfo);
+
+            // 一つだけ応答してモデルマージしたことにする
+            responseData.getPojo().getLearningInfo().forEach(learningInfo -> {
+                listPojo.addLearningInfo(learningInfo);
+                return;
+            });
+            responseData.getPojo().getDatasetInfo().forEach(datasetInfo -> {
+                listPojo.addDatasetInfo(datasetInfo);
+            });
         });
         this.pojo = listPojo;
     }
@@ -117,10 +125,10 @@ public final class ResponseData {
 
         ResponseData responseData1 = new ResponseData(responseData.toJsonObj().toString());
         POJO pojo1 = responseData1.getPojo();
-        System.out.println(responseData1.toJsonObj().toString());
+        System.out.println(responseData1.toJsonObj());
         System.out.println(pojo1.getName());
         System.out.println(pojo1.getDatasetInfo().toString());
         System.out.println(pojo1.getLearningInfo().toString());
-        System.out.println(((LearningInfo) pojo1.getLearningInfo().get(0)).getBase64Data());
+        System.out.println(pojo1.getLearningInfo().get(0).getBase64Data());
     }
 }
