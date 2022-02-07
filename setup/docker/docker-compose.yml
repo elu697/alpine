@@ -2,7 +2,7 @@ version: "3.5"
 
 services:
   cuda-ubuntu_1:
-    # container_name: cefore_1
+    container_name: cuda-ubuntu_1
     build:
       context: .
       dockerfile: Dockerfile
@@ -30,7 +30,7 @@ services:
   #        - net.core.rmem_max=10000000
   #        - net.core.wmem_max=10000000
   cuda-ubuntu_2:
-    # container_name: cefore_2
+    container_name: cuda-ubuntu_2
     build:
       context: .
       dockerfile: Dockerfile
@@ -52,12 +52,56 @@ services:
       - container-link
 
   cuda-ubuntu_3:
-    # container_name: cefore_3
+    container_name: cuda-ubuntu_3
     build:
       context: .
       dockerfile: Dockerfile
     ports:
       - "6972:22"
+    restart: always
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu, utility, compute, video]
+    networks:
+      - container-link
+
+  cuda-ubuntu_4:
+    container_name: cuda-ubuntu_4
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "6973:22"
+    restart: always
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [gpu, utility, compute, video]
+    networks:
+      - container-link
+
+  cuda-ubuntu_5:
+    container_name: cuda-ubuntu_5
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "6973:22"
     restart: always
     devices:
       - /dev/nvidiactl
@@ -82,4 +126,4 @@ networks:
   # コンテナ間通信用のネットワークセグメント
   container-link:
     # これが作成されるネットワーク名（同名がなければ自動生成される）
-    name: docker.cefore.internal
+    name: docker.nln.internal
