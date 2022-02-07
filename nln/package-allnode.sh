@@ -1,12 +1,15 @@
 set -Ceuxo pipefail
 
+# for i in {2..20}; do
+#     ssh icnl_lrd_vm$i pwd
+# done
 
 for i in {2..20}; do
-    ssh icnl_lrd_vm$i "cd /home/docker/alpine && git pull" &
+    (ssh icnl_lrd_vm$i "cd /home/docker/alpine/nln && git pull && ./package.sh")&
 done
 
-# (sshpass -p password ssh -l docker 172.20.0.4 cd alpine/nln && git pull &)&
-# (sshpass -p password ssh -l docker 172.20.0.5 cd alpine/nln && git pull &)&
+# (ssh icnl_lrd_vm2 "cd /home/docker/alpine/nln && git pull && ./package.sh")&
+# (ssh icnl_lrd_vm3 "cd /home/docker/alpine/nln && git pull && ./package.sh")&
 # (sshpass -p password ssh -l docker 172.20.0.6 cd alpine/nln && git pull &)&
 # (sshpass -p password ssh -l docker 172.20.0.7 cd alpine/nln && git pull &)&
 # (sshpass -p password ssh -l docker 172.20.0.8 cd alpine/nln && git pull &)&
