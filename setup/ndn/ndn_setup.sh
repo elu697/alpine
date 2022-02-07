@@ -1,10 +1,10 @@
 #!/bin/bash
 set -Cux
 
-# rm -rf NFD/
-# rm -rf ndn-cxx/
-# rm -rf ndn-tools/
-# rm -rf jndn/
+rm -rf NFD/
+rm -rf ndn-cxx/
+rm -rf ndn-tools/
+rm -rf jndn/
 PASSWORD=password
 echo $PASSWORD | sudo -S ls
 
@@ -32,7 +32,7 @@ sudo aptitude install -y g++ pkg-config python3-minimal libboost-all-dev libssl-
 sudo aptitude install -y doxygen graphviz python3-pip
 sudo pip3 install sphinx sphinxcontrib-doxylink
 cd ndn-cxx
-./waf configure --with-examples  # on CentOS, add --without-pch
+./waf configure
 ./waf
 sudo ./waf install
 sudo ldconfig  # on Linux only
