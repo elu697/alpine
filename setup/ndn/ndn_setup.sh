@@ -20,9 +20,9 @@ git clone --recursive https://github.com/named-data/ndn-tools.git
 # Download jndn
 git clone --recursive https://github.com/named-data/jndn.git
 
-sudo aptitude update -y
-# sudo aptitude upgrade -y
 sudo dpkg --configure -a
+sudo aptitude update -y
+sudo aptitude upgrade -y
 sudo aptitude install -y make libjsoncpp-dev libjsonrpccpp-dev libgmp-dev libreadline-dev libmicrohttpd-dev ocl-icd-libopencl1 \
   opencl-headers mesa-common-dev build-essential libboost-all-dev libsm6 libxext6 libxrender-dev libssl-dev \
   zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
@@ -44,9 +44,10 @@ sudo ldconfig  # on Linux only
 cd ..
 
 # # NFD
+sudo aptitude update -y
 sudo aptitude install -y software-properties-common
 sudo add-apt-repository -y ppa:named-data/ppa
-sudo apt update -y
+sudo aptitude update -y
 sudo aptitude install -y libpcap-dev libsystemd-dev
 # sudo aptitude install -y nfd
 cd NFD
@@ -58,8 +59,8 @@ cd ..
 
 # ndn tool
 # https://github.com/named-data/ndn-tools/blob/master/INSTALL.md
+sudo aptitude update -y
 sudo aptitude install -y default-jdk
-sudo aptitude install -y maven
 sudo aptitude install -y psmisc
 sudo aptitude install -y libpcap-dev
 cd ndn-tools
@@ -71,8 +72,10 @@ cd ..
 sudo nfd-start
 
 # jdn
+sudo aptitude update -y
 sudo aptitude install -y software-properties-common
 sudo aptitude install -y maven
+
 cd jndn
 mvn package
 mvn test -P with-integration-tests
