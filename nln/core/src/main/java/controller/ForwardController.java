@@ -8,7 +8,6 @@ import model.ResponseData;
 import ndn.Controller;
 import net.named_data.jndn.*;
 import net.named_data.jndn.util.Blob;
-import org.json.JSONObject;
 import util.AsyncBlock;
 
 import java.util.ArrayList;
@@ -100,6 +99,7 @@ public class ForwardController {
                 forwardController.interest(forwardInterest, (datasetInterest, data) -> {
                     // returned model
                     ResponseData responseDataObject = new ResponseData(data.getContent().toString());
+                    responseDataObject.getPojo().setOptions(String.valueOf(data.getContent().size()));
                     responseData.add(responseDataObject);
                     shouldResponseCount[0]--;
                 }, datasetInterest -> {
