@@ -113,6 +113,7 @@ public final class ResponseData {
 
             dataSize[0] += Integer.parseInt(responseData.getPojo().getOptions());
         });
+        listPojo.setOptions(String.valueOf(dataSize[0]));
         this.pojo = listPojo;
     }
 

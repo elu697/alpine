@@ -15,10 +15,6 @@
     <option name="openedFilesInfos">
       <list>
         <OpenedFileInfo>
-          <option name="caretOffset" value="674" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/model/ResponseData.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
           <option name="caretOffset" value="4434" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/tensorflow/SimpleModel.java" />
         </OpenedFileInfo>
@@ -41,6 +37,10 @@
         <OpenedFileInfo>
           <option name="caretOffset" value="698" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="2827" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/model/ResponseData.java" />
         </OpenedFileInfo>
       </list>
     </option>
