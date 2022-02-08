@@ -99,11 +99,11 @@ public final class ResponseData {
         final int[] dataSize = {0};
         responseDataArrayList.forEach(responseData -> {
             // モデル全部返す(従来の経路重複パターン)
-            responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
+            // responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
             // 一つだけ応答してモデルマージしたことにする
-//            if (responseData.getPojo().getLearningInfo().stream().findFirst().isPresent() && listPojo.getLearningInfo().size() == 0) {
-//                listPojo.addLearningInfo(responseData.getPojo().getLearningInfo().stream().findFirst().get());
-//            }
+            if (responseData.getPojo().getLearningInfo().stream().findFirst().isPresent() && listPojo.getLearningInfo().size() == 0) {
+                listPojo.addLearningInfo(responseData.getPojo().getLearningInfo().stream().findFirst().get());
+            }
 
             // 現状使ってない(その場で学習してるから)
             responseData.pojo.getDatasetInfo().forEach(listPojo::addDatasetInfo);
