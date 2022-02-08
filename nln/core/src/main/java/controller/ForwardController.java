@@ -100,7 +100,8 @@ public class ForwardController {
                     // returned model
                     ResponseData responseDataObject = new ResponseData(data.getContent().toString());
                     System.out.println(data.getContent().size());
-                    responseDataObject.getPojo().setOptions(String.valueOf(data.getContent().size()));
+                    int totalPacket = Integer.parseInt(responseDataObject.getPojo().getOptions(), 0);
+                    responseDataObject.getPojo().setOptions(String.valueOf(data.getContent().size()+totalPacket));
                     responseData.add(responseDataObject);
                     shouldResponseCount[0]--;
                 }, datasetInterest -> {
