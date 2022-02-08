@@ -101,7 +101,7 @@ public final class ResponseData {
             // モデル全部返す(従来の経路重複パターン)
 //            responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
             // 一つだけ応答してモデルマージしたことにする
-            if (responseData.getPojo().getLearningInfo().stream().findFirst().isPresent()) {
+            if (responseData.getPojo().getLearningInfo().stream().findFirst().isPresent() && listPojo.getLearningInfo().size() == 0) {
                 listPojo.addLearningInfo(responseData.getPojo().getLearningInfo().stream().findFirst().get());
             }
 
