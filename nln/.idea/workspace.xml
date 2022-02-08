@@ -12,7 +12,6 @@
     <list default="true" id="5bd5fe09-97b2-4c2a-aabc-f7dabd535e1a" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" afterDir="false" />
     </list>
     <list id="d3f691bc-0459-4e8f-9c2b-d3b0ce8f084c" name="Changes by you" comment="" />
@@ -153,6 +152,19 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="InterestController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="controller.InterestController" />
+      <module name="core" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="core" />
@@ -193,9 +205,11 @@
       <item itemvalue="Application.HttpClient" />
       <item itemvalue="Application.ResponseData" />
       <item itemvalue="Application.ForwardController" />
+      <item itemvalue="Application.InterestController" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.InterestController" />
         <item itemvalue="Application.ForwardController" />
         <item itemvalue="Application.HttpServer" />
         <item itemvalue="Application.ResponseData" />
@@ -227,6 +241,7 @@
       <workItem from="1644306799010" duration="299000" />
       <workItem from="1644307120480" duration="528000" />
       <workItem from="1644308132936" duration="180000" />
+      <workItem from="1644308714017" duration="532000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1644264631735</created>

@@ -18,7 +18,8 @@ public class InterestController {
             @Override
             public void onData(Interest interest, Data data) {
                 ResponseData responseData= new ResponseData(data.getContent().toString());
-//                responseData.getPojo().setOptions(String.valueOf(data.getContent().size()));
+                int totalPacket = Integer.parseInt(responseData.getPojo().getOptions());
+                responseData.getPojo().setOptions(String.valueOf(data.getContent().size()+totalPacket));
                 responseDataConsumer.accept(responseData);
                 ndnController.endLoop();
             }
@@ -38,5 +39,10 @@ public class InterestController {
         Controller.setDaemonThread(ndnController::runLoop);
     }
 
-
+    public static void main(String[] args) {
+        InterestController interestController = new InterestController();
+        interestController.request("/model/A", responseData -> {
+            System.out.println(responseData.getPojo());
+        });
+    }
 }
