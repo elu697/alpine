@@ -16,11 +16,12 @@ ENV LC_ALL en_US.UTF-8
 
 # 開発環境構築
 RUN aptitude install -y openssh-server apt-utils nano
-RUN aptitude install -y make libjsoncpp-dev libjsonrpccpp-dev libgmp-dev libreadline-dev libmicrohttpd-dev ocl-icd-libopencl1 \
+RUN aptitude install -y -o APT::Get::Fix-Missing=true make libjsoncpp-dev libjsonrpccpp-dev libgmp-dev libreadline-dev libmicrohttpd-dev ocl-icd-libopencl1 \
   opencl-headers mesa-common-dev build-essential libboost-all-dev libsm6 libxext6 libxrender-dev libssl-dev \
   zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
-  libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake libsystemd-dev libusb-dev cmake gstreamer1.0 libglib2.0-dev libreadline-dev libudev-dev
+  libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake libsystemd-dev libusb-dev cmake libglib2.0-dev libreadline-dev libudev-dev
 RUN aptitude install -y sudo git net-tools unzip
+RUN aptitude update
 
 # python3 for cefpyco
 RUN aptitude install -y build-essential libssl-dev libffi-dev
