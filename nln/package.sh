@@ -1,6 +1,6 @@
-set -Ceuxo pipefail
-# sudo apt install -y openjdk-11-jdk
-# sudo update-alternatives --config java
+set -Cux
+export DEBIAN_FRONTEND=noninteractive
 cd core
 mvn package
 cd ..
+exit
