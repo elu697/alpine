@@ -99,6 +99,7 @@ public class ForwardController {
                 forwardController.interest(forwardInterest, (datasetInterest, data) -> {
                     // returned model
                     ResponseData responseDataObject = new ResponseData(data.getContent().toString());
+                    System.out.println(data.getContent().size());
                     responseDataObject.getPojo().setOptions(String.valueOf(data.getContent().size()));
                     responseData.add(responseDataObject);
                     shouldResponseCount[0]--;
@@ -139,7 +140,7 @@ public class ForwardController {
     }
 
     public static void main(String[] args) {
-        MIB.shard.set(new Name("/model/A"), new Name("/mnist"));
+        MIB.shard.set(new Name("/model/MAIN"), new Name("/mnist"));
 //        MIB.shard.set(new Name("/model/A"), new Name("/mnist2"));
 //        MIB.shard.set(new Name("/model/A"), new Name("/mnist3"));
 //        MIB.shard.set(new Name("/model/A"), new Face("192.168.1.2"));
@@ -152,7 +153,7 @@ public class ForwardController {
 
         Controller controller = new Controller();
 
-        controller.interest("/model/A", true, true, new OnData() {
+        controller.interest("/model/MAIN", true, true, new OnData() {
             @Override
             public void onData(Interest interest, Data data) {
                 ResponseData responseDataObject = new ResponseData(data.getContent().toString());
