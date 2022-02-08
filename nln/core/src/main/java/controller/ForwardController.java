@@ -151,27 +151,10 @@ public class ForwardController {
         fController.listen("/model");
         new AsyncBlock().setDaemonThread(() -> fController.ndnController.runLoop());
 
-        Controller controller = new Controller();
-
-        controller.interest("/model/MAIN", true, true, new OnData() {
-            @Override
-            public void onData(Interest interest, Data data) {
-                ResponseData responseDataObject = new ResponseData(data.getContent().toString());
-                System.out.println("CLIENT DATA");
-                System.out.println(responseDataObject.toJsonObj());
-            }
-        }, new OnTimeout() {
-            @Override
-            public void onTimeout(Interest interest) {
-                System.out.println("CLIENT TIMEOUT");
-            }
-        }, new OnNetworkNack() {
-            @Override
-            public void onNetworkNack(Interest interest, NetworkNack networkNack) {
-                System.out.println("CLIENT GET NACK");
-            }
+        InterestController interestController = new InterestController();
+        interestController.request("/model/MAIN", responseData -> {
+            System.out.println(responseData.toJsonObj());
         });
-        controller.runLoop();
     }
 }
 

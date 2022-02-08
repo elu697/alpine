@@ -39,7 +39,7 @@ public final class ResponseData {
             this.name = "";
             this.datasetInfo = new ArrayList<>();
             this.learningInfo = new ArrayList<>();
-            this.options = "";
+            this.options = "0";
         }
 
         public String getName() {

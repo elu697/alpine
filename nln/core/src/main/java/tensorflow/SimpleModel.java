@@ -15,15 +15,13 @@ package tensorflow;/*
  *  =======================================================================
  */
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Random;
+import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
 import org.tensorflow.Graph;
 import org.tensorflow.Session;
+import org.tensorflow.TensorFlow;
 import org.tensorflow.framework.optimizers.*;
 import org.tensorflow.ndarray.Shape;
 import org.tensorflow.op.Op;
@@ -32,6 +30,8 @@ import org.tensorflow.op.core.Placeholder;
 import org.tensorflow.op.core.Variable;
 import org.tensorflow.op.data.ShuffleDataset;
 import org.tensorflow.op.math.*;
+import org.tensorflow.proto.framework.ConfigProto;
+import org.tensorflow.proto.framework.GPUOptions;
 import org.tensorflow.types.TFloat32;
 
 /**
@@ -108,11 +108,19 @@ public class SimpleModel {
             learn(xValues, yValues, savePath);
             return true;
         } catch (Exception e) {
+            e.printStackTrace();
             return false;
         }
     }
 
     public static void learn(ArrayList<Float> xValues, ArrayList<Float> yValues, String savePath) {
+//        GPUOptions.Experimental experimental = GPUOptions.getDefaultInstance().getExperimental().getDefaultInstanceForType().toBuilder().addVirtualDevices(
+//                GPUOptions.Experimental.VirtualDevices.getDefaultInstance().getDefaultInstanceForType().toBuilder().addMemoryLimitMb(1000f)
+//        ).build();
+        GPUOptions.Experimental.VirtualDevices virtualDevices = GPUOptions.Experimental.VirtualDevices.getDefaultInstance().toBuilder().addMemoryLimitMb(200f).build();
+        GPUOptions.Experimental experimental = GPUOptions.getDefaultInstance().getExperimental().toBuilder().addVirtualDevices(virtualDevices).addVirtualDevices(virtualDevices).build();
+        ConfigProto configProto = ConfigProto.getDefaultInstance().toBuilder().setGpuOptions(GPUOptions.getDefaultInstance().toBuilder().setExperimental(experimental)).buildPartial();
+
         String weightVariableName = WEIGHT_VARIABLE_NAME; String biasVariableName = BIAS_VARIABLE_NAME; float learningRate = LEARNING_RATE;
         try (Graph graph = new Graph()) {
             Ops tf = Ops.create(graph);
@@ -164,9 +172,9 @@ public class SimpleModel {
 //            }
 
             Op minimize = optimizer.minimize(mse);
-
-            try (Session session = new Session(graph)) {
-                for (int epoch = 0; epoch < 100; epoch++) {
+            int Epoch = 100;
+            try (Session session = new Session(graph, configProto)) {
+                for (int epoch = 0; epoch < Epoch; epoch++) {
                     Collections.shuffle(xValues);
                     yValues = makeY(xValues);
                     TFloat32 loss = TFloat32.scalarOf(0);
@@ -182,6 +190,7 @@ public class SimpleModel {
                                     .addTarget(minimize)
                                     .fetch(mse)
                                     .run().get(0);
+
 //                            System.out.println("Training phase");
 //                            System.out.println("x is " + x + " y is " + y);
                         }
@@ -205,8 +214,8 @@ public class SimpleModel {
                             predictedY = yPredictedTensor.getFloat();
 
 //                        System.out.println("Test phase value x: " + x);
-                        System.out.println("Collect value: " + prob(x));
-                        System.out.println("Predicted value: " + predictedY);
+                            System.out.println("Collect value: " + prob(x));
+                            System.out.println("Predicted value: " + predictedY);
                         }
                     }
                 }
@@ -223,6 +232,7 @@ public class SimpleModel {
 //                    System.out.println("Weight is " + weightValue.getFloat());
 //                    System.out.println("Bias is " + biasValue.getFloat());
                 }
+
                 session.save(savePath);
             }
         }
