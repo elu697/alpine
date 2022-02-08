@@ -927,6 +927,121 @@ services:
       container-link:
         ipv4_address: 172.20.0.40
 
+  cuda-ubuntu_41:
+    container_name: cuda-ubuntu_41
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7010:22"
+    restart: always
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu, utility, compute, video ]
+    networks:
+      container-link:
+        ipv4_address: 172.20.0.41
+
+  cuda-ubuntu_42:
+    container_name: cuda-ubuntu_42
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7011:22"
+    restart: always
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu, utility, compute, video ]
+    networks:
+      container-link:
+        ipv4_address: 172.20.0.42
+
+  cuda-ubuntu_43:
+    container_name: cuda-ubuntu_43
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7012:22"
+    restart: always
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu, utility, compute, video ]
+    networks:
+      container-link:
+        ipv4_address: 172.20.0.43
+
+  cuda-ubuntu_44:
+    container_name: cuda-ubuntu_44
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7013:22"
+    restart: always
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu, utility, compute, video ]
+    networks:
+      container-link:
+        ipv4_address: 172.20.0.44
+
+  cuda-ubuntu_45:
+    container_name: cuda-ubuntu_45
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "7014:22"
+    restart: always
+    devices:
+      - /dev/nvidiactl
+      - /dev/nvidia-uvm
+      - /dev/nvidia0
+    tty: true
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              capabilities: [ gpu, utility, compute, video ]
+    networks:
+      container-link:
+        ipv4_address: 172.20.0.45
+
 #ネットワーク定義
 networks:
   # docker-composeで勝手にデフォルトネットワークが生成される予防。（自動で全コンテナが所属するbridgeを指定）
