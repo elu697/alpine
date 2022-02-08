@@ -2,24 +2,26 @@ package model;
 
 import org.json.JSONObject;
 
-import javax.xml.crypto.Data;
-import java.lang.reflect.Array;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Map;
 
 public final class ResponseData {
     public static final class POJO {
         private String name;
         private ArrayList<DatasetInfo> datasetInfo;
         private ArrayList<LearningInfo> learningInfo;
+        private String options ;
 
-        public POJO(String name, ArrayList<DatasetInfo> datasetInfo, ArrayList<LearningInfo> learningInfo) {
+        public POJO(String name, ArrayList<DatasetInfo> datasetInfo, ArrayList<LearningInfo> learningInfo, String options) {
             this.name = name;
             this.datasetInfo = datasetInfo;
             this.learningInfo = learningInfo;
+            this.options = options;
         }
 
         public POJO(Map<String, Object> map) {
             this.name = (String) map.get("name");
+            this.options = (String) map.get("options");
             this.datasetInfo = new ArrayList<>();
             ArrayList<Map<String, Object>> map1 = (ArrayList<Map<String, Object>>) map.getOrDefault("datasetInfo", new ArrayList<>());
             map1.forEach(o -> {
@@ -37,6 +39,7 @@ public final class ResponseData {
             this.name = "";
             this.datasetInfo = new ArrayList<>();
             this.learningInfo = new ArrayList<>();
+            this.options = "";
         }
 
         public String getName() {
@@ -70,6 +73,14 @@ public final class ResponseData {
         public void addLearningInfo(LearningInfo learningInfo) {
             this.learningInfo.add(learningInfo);
         }
+
+        public String getOptions() {
+            return options;
+        }
+
+        public void setOptions(String options) {
+            this.options = options;
+        }
     }
 
     private POJO pojo;
@@ -85,9 +96,21 @@ public final class ResponseData {
     public ResponseData(String name, ArrayList<ResponseData> responseDataArrayList) {
         POJO listPojo = new POJO();
         listPojo.setName(name);
+        final int[] dataSize = {0};
         responseDataArrayList.forEach(responseData -> {
-            responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
-            responseData.pojo.getDatasetInfo().forEach(listPojo::addDatasetInfo);
+//            responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
+//            responseData.pojo.getDatasetInfo().forEach(listPojo::addDatasetInfo);
+
+            // 一つだけ応答してモデルマージしたことにする
+            responseData.getPojo().getLearningInfo().forEach(learningInfo -> {
+                listPojo.addLearningInfo(learningInfo);
+                return;
+            });
+            responseData.getPojo().getDatasetInfo().forEach(datasetInfo -> {
+                listPojo.addDatasetInfo(datasetInfo);
+            });
+
+            dataSize[0] += Integer.parseInt(responseData.getPojo().getOptions());
         });
         this.pojo = listPojo;
     }
@@ -117,10 +140,10 @@ public final class ResponseData {
 
         ResponseData responseData1 = new ResponseData(responseData.toJsonObj().toString());
         POJO pojo1 = responseData1.getPojo();
-        System.out.println(responseData1.toJsonObj().toString());
+        System.out.println(responseData1.toJsonObj());
         System.out.println(pojo1.getName());
         System.out.println(pojo1.getDatasetInfo().toString());
         System.out.println(pojo1.getLearningInfo().toString());
-        System.out.println(((LearningInfo) pojo1.getLearningInfo().get(0)).getBase64Data());
+        System.out.println(pojo1.getLearningInfo().get(0).getBase64Data());
     }
 }

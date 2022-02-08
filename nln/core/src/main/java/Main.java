@@ -61,6 +61,7 @@ public class Main {
         InterestController interestController = new InterestController();
         interestController.request(uri, responseData -> {
             System.out.println(responseData.getPojo().getName());
+            System.out.println(responseData.getPojo().getOptions());
             for (int i = 0; i < responseData.getPojo().getLearningInfo().size(); i++) {
                 System.out.println(responseData.getPojo().getLearningInfo().get(i).getUid());
                 System.out.println(responseData.getPojo().getLearningInfo().get(i).getProgress());
