@@ -18,7 +18,7 @@ public class InterestController {
             @Override
             public void onData(Interest interest, Data data) {
                 ResponseData responseData= new ResponseData(data.getContent().toString());
-                responseData.getPojo().setOptions(String.valueOf(data.getContent().size()));
+//                responseData.getPojo().setOptions(String.valueOf(data.getContent().size()));
                 responseDataConsumer.accept(responseData);
                 ndnController.endLoop();
             }
