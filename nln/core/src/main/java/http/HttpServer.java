@@ -16,10 +16,16 @@ import java.nio.charset.StandardCharsets;
 import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 
 public class HttpServer {
+    private ArrayList<String> forwardIps = new ArrayList<>();
+
     public static void main(String[] args) {
         HttpServer httpServer = new HttpServer();
+        httpServer.addForwardIp("111.11.12");
+        httpServer.addForwardIp("111.11.13");
+
         String prefix = "";
         if (args.length == 0) {
             prefix = "/model/";
@@ -27,16 +33,22 @@ public class HttpServer {
             prefix = args[0];
         }
         try {
-            listen(prefix, 9000);
+            httpServer.listen(prefix, 9000);
         } catch (Exception e) {
             e.printStackTrace();
         }
+
+
     }
 
-    public static void listen(String prefix, int port) {
+    public void addForwardIp(String ip) {
+        forwardIps.add(ip);
+    }
+
+    public void listen(String prefix, int port) {
         try {
             com.sun.net.httpserver.HttpServer httpServer = com.sun.net.httpserver.HttpServer.create(new InetSocketAddress(port), 0);
-            httpServer.createContext(prefix, new RequestHandler());
+            httpServer.createContext(prefix, new RequestHandler(forwardIps));
             System.out.println("Listen: " + prefix);
             httpServer.start();
         } catch (IOException e) {
@@ -45,17 +57,23 @@ public class HttpServer {
     }
 
     // HTTP リクエストを処理するために呼び出されるハンドラ
-    private static class RequestHandler implements HttpHandler {
-        // HTTP リクエストを処理する
-        public void handle(HttpExchange t) throws IOException {
+    private class RequestHandler implements HttpHandler {
+        private ArrayList<String> forwardIps = new ArrayList<>();
 
+        // HTTP リクエストを処理する
+        public RequestHandler(ArrayList<String> forwardIps) {
+            this.forwardIps = forwardIps;
+        }
+
+        public void handle(HttpExchange t) throws IOException {
             System.out.println("**************************************************");
             System.out.println("Request: " + t.getRequestURI());
-
             String resBody = "";
 
             if (t.getRequestURI().getPath().endsWith("server")) {
-                resBody = "{'server_ip':['172.20.0.2:9000', '172.20.0.4:9000']}";
+                String ips = "";
+                ips = forwardIps.toString();
+                resBody = "{'server_ip':"+ ips + "}";
             } else {
                 try {
                     String prefix = t.getRequestURI().getPath();

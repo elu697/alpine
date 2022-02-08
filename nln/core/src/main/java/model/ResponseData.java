@@ -98,6 +98,7 @@ public final class ResponseData {
         listPojo.setName(name);
         final int[] dataSize = {0};
         responseDataArrayList.forEach(responseData -> {
+            // モデル全部返す(従来の経路重複パターン)
 //            responseData.pojo.getLearningInfo().forEach(listPojo::addLearningInfo);
 //            responseData.pojo.getDatasetInfo().forEach(listPojo::addDatasetInfo);
 

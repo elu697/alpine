@@ -23,7 +23,7 @@ public class Main {
                     "router1 {uri} {forward_ip} {forward_ip2} ... - nln\n" +
                     "router2 {uri} {data_name} - nln\n" +
                     "client {host} {uri} - http\n" +
-                    "server {context} {port}- http\n");
+                    "server {context} {port} {forward_ip} {forward_ip2} ... - http\n");
             return;
         }
 
@@ -43,7 +43,7 @@ public class Main {
                 Client(args[1], args[2]);
                 break;
             case "server":
-                Server(args[1], Integer.parseInt(args[2]));
+                Server(args[1], Integer.parseInt(args[2]), args);
                 break;
         }
     }
@@ -58,8 +58,12 @@ public class Main {
     }
 
     private static void Consumer(String uri) {
+        long startTime = System.currentTimeMillis();
         InterestController interestController = new InterestController();
         interestController.request(uri, responseData -> {
+            long endTime = System.currentTimeMillis();
+            System.out.println("Traffic time ： " + (endTime - startTime) + "ms");
+
             System.out.println(responseData.getPojo().getName());
             System.out.println(responseData.getPojo().getOptions());
             for (int i = 0; i < responseData.getPojo().getLearningInfo().size(); i++) {
@@ -92,8 +96,10 @@ public class Main {
     }
 
     private static void Client(String host, String uri) {
+        long startTime = System.currentTimeMillis();
         final ArrayList<String>[] serverIps = new ArrayList[]{new ArrayList<>()};
         HttpClient.simpleRequest("http://" + host + uri +"/server", response -> {
+            long endTime = System.currentTimeMillis();
             JSONObject jsonObject = new JSONObject(response);
             serverIps[0] = (ArrayList<String>) ((ArrayList) jsonObject.toMap().get("server_ip")).stream().map(String::valueOf).collect(Collectors.toList());
             System.out.println(serverIps[0]);
@@ -115,6 +121,7 @@ public class Main {
                         }
                         if (asyncBlock.endThread() == 0) {
                             asyncBlock.endLoop();
+                            System.out.println("Traffic time ： " + (endTime - startTime) + "ms");
                         }
                     });
                 });
@@ -127,8 +134,11 @@ public class Main {
 
     }
 
-    private static void Server(String context, int port) {
+    private static void Server(String context, int port, String[] forwardIps) {
         HttpServer httpServer = new HttpServer();
+        for (int i = 2; i < forwardIps.length; i++) {
+            httpServer.addForwardIp(forwardIps[i]);
+        }
         httpServer.listen(context, port);
     }
 }
