@@ -27,20 +27,12 @@
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/ForwardController.java" />
         </OpenedFileInfo>
         <OpenedFileInfo>
-          <option name="caretOffset" value="0" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/bash-allnode.sh" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="39" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/client/client.iml" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="698" />
-          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" />
-        </OpenedFileInfo>
-        <OpenedFileInfo>
-          <option name="caretOffset" value="2827" />
+          <option name="caretOffset" value="3474" />
           <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/model/ResponseData.java" />
+        </OpenedFileInfo>
+        <OpenedFileInfo>
+          <option name="caretOffset" value="697" />
+          <option name="fileUrl" value="file://$PROJECT_DIR$/core/src/main/java/controller/InterestController.java" />
         </OpenedFileInfo>
       </list>
     </option>
