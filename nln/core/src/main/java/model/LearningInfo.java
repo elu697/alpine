@@ -1,7 +1,6 @@
 package model;
 
 import java.util.Map;
-import java.util.Objects;
 
 public final class LearningInfo {
     private String uid;

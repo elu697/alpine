@@ -1,7 +1,5 @@
 package model;
 
-import datastore.Dataset;
-
 import java.util.Map;
 
 public final class DatasetInfo {

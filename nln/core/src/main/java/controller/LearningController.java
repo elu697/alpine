@@ -3,9 +3,7 @@ package controller;
 import datastore.Dataset;
 import datastore.Model;
 import model.LearningInfo;
-import org.tensorflow.TensorFlow;
 import tensorflow.SimpleModel;
-import tensorflow.model.cnn.vgg.VGG11OnFashionMNIST;
 
 public class LearningController {
     public static LearningController shard = new LearningController();

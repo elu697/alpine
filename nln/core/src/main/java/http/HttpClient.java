@@ -1,9 +1,5 @@
 package http;
 
-import controller.LearningController;
-import datastore.Dataset;
-import datastore.Model;
-import model.LearningInfo;
 import model.ResponseData;
 
 import java.io.IOException;
@@ -11,8 +7,6 @@ import java.net.URI;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.function.Consumer;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class HttpClient {
     public static void main(String[] args) {

@@ -63,7 +63,9 @@ public class ForwardController {
 
         // Learning
         for (Name datasetName : modelInfo.getDatasetNames()) {
+            // TODO - 今後の実装
             // 本当はPLTかまして非同期でやる．時間ないので単純にタイムアウトを1分ぐらいにする．
+            // データセット取得も今回はパス．
             Thread thread = new Thread(() -> {
                 try {
                     LearningInfo learningInfo = learning(prefix.toString(), datasetName.toString());
@@ -113,9 +115,8 @@ public class ForwardController {
         }
     }
 
-    private void response(Name prefix, Interest originInterest, Face face, ArrayList<ResponseData> data) {
-//        Controller.responseParam(originInterest, face, new Blob("DATA"));
-        ResponseData responseData = new ResponseData(prefix.toString(), data);
+    private void response(Name prefix, Interest originInterest, Face face, ArrayList<ResponseData> dataList) {
+        ResponseData responseData = new ResponseData(prefix.toString(), dataList);
         Controller.responseParam(originInterest, face, new Blob(responseData.toJsonObj().toString()));
 //        ndnController.responseSegment(originInterest, face, new Blob(responseData.toJsonObj().toString()));
     }

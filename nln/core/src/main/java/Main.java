@@ -22,7 +22,7 @@ public class Main {
                     "consumer {uri} - nln\n" +
                     "router1 {uri} {forward_ip} {forward_ip2} ... - nln\n" +
                     "router2 {uri} {data_name} - nln\n" +
-                    "client {host} {uri} - http\n" +
+                    "client {scheme} {url} {url2} ... - http\n" +
                     "server {context} {port} {forward_ip} {forward_ip2} ... - http\n");
             return;
         }
@@ -40,7 +40,7 @@ public class Main {
                 Router2(args[1], args[2]);
                 break;
             case "client":
-                Client(args[1], args[2]);
+                Client(args[1], args);
                 break;
             case "server":
                 Server(args[1], Integer.parseInt(args[2]), args);
@@ -62,10 +62,6 @@ public class Main {
         InterestController interestController = new InterestController();
         interestController.request(uri, responseData -> {
             long endTime = System.currentTimeMillis();
-            System.out.println("Traffic time ： " + (endTime - startTime) + "ms");
-
-            System.out.println(responseData.getPojo().getName());
-            System.out.println(responseData.getPojo().getOptions());
             for (int i = 0; i < responseData.getPojo().getLearningInfo().size(); i++) {
                 System.out.println(responseData.getPojo().getLearningInfo().get(i).getUid());
                 System.out.println(responseData.getPojo().getLearningInfo().get(i).getProgress());
@@ -75,6 +71,9 @@ public class Main {
                 System.out.println(responseData.getPojo().getDatasetInfo().get(i).getUid());
                 System.out.println(responseData.getPojo().getDatasetInfo().get(i).getBase64Data());
             }
+            System.out.println(responseData.getPojo().getName());
+            System.out.println("Traffic time ： " + (endTime - startTime) + "ms");
+            System.out.println("Total packet_size ： " + Long.parseLong(responseData.getPojo().getOptions()) + "byte");
         });
     }
 
@@ -95,7 +94,37 @@ public class Main {
         forwardController.loop();
     }
 
-    private static void Client(String host, String uri) {
+    private static void Client(String scheme, String[] ips) {
+        long startTime = System.currentTimeMillis();
+        long totalPacketSize[] = {0};
+        for (int i = 2; i < ips.length; i++) {
+            String ip = ips[i];
+            AsyncBlock asyncBlock = new AsyncBlock();
+            asyncBlock.setDaemonThread(() -> {
+                HttpClient.request("http://" + ip + scheme, responseData -> {
+                    System.out.println(responseData.getPojo().getName());
+                    for (int i2 = 0; i2 < responseData.getPojo().getLearningInfo().size(); i2++) {
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getUid());
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getProgress());
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getBase64Data());
+                    }
+                    for (int i2 = 0; i2 < responseData.getPojo().getDatasetInfo().size(); i2++) {
+                        System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getUid());
+                        System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getBase64Data());
+                    }
+                    totalPacketSize[0] += Long.parseLong(responseData.getPojo().getOptions());
+                    if (asyncBlock.endThread() == 0) {
+                        asyncBlock.endLoop();
+                        long endTime = System.currentTimeMillis();
+                        System.out.println("Traffic time ： " + (endTime - startTime) + "ms");
+                        System.out.println("Total packet_size ： " + totalPacketSize[0] + "byte");
+                    }
+                });
+            });
+        }
+    }
+
+    private static void Client2(String host, String uri) {
         long startTime = System.currentTimeMillis();
         final ArrayList<String>[] serverIps = new ArrayList[]{new ArrayList<>()};
         HttpClient.simpleRequest("http://" + host + uri +"/server", response -> {
@@ -129,14 +158,11 @@ public class Main {
             asyncBlock.runLoop();
 
         });
-
-
-
     }
 
     private static void Server(String context, int port, String[] forwardIps) {
         HttpServer httpServer = new HttpServer();
-        for (int i = 2; i < forwardIps.length; i++) {
+        for (int i = 3; i < forwardIps.length; i++) {
             httpServer.addForwardIp(forwardIps[i]);
         }
         httpServer.listen(context, port);

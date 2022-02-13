@@ -2,20 +2,19 @@ package util;
 
 public class AsyncBlock {
 
-    Thread thread = new Thread();
-
-    public void killThread() {
-        thread.interrupt();
-    }
-
+    private Thread thread = new Thread();
     private boolean endFlag = false;
-    private int threadCount = 0;
+    private static int threadCount = 0;
 
     public void setDaemonThread(Runnable block) {
         thread = new Thread(block);
         thread.setDaemon(true);
         thread.start();
         threadCount++;
+    }
+
+    public void killThread() {
+        thread.interrupt();
     }
 
     public int endThread() {

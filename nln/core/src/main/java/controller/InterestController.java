@@ -18,8 +18,6 @@ public class InterestController {
             @Override
             public void onData(Interest interest, Data data) {
                 ResponseData responseData= new ResponseData(data.getContent().toString());
-                int totalPacket = Integer.parseInt(responseData.getPojo().getOptions());
-//                responseData.getPojo().setOptions(String.valueOf(data.getContent().size()+totalPacket));
                 responseDataConsumer.accept(responseData);
                 ndnController.endLoop();
             }
