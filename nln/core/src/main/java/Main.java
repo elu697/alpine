@@ -19,8 +19,8 @@ public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Arg:\n" +
-                    "consumer {uri} - nln\n" +
-                    "router1 {uri} {forward_ip} {forward_ip2} ... - nln\n" +
+                    "consumer {uri} {uri} ... - nln\n" +
+                    "router1 {uri} {forward_ip}:{forward_name(option)} {forward_ip2} ... - nln\n" +
                     "router2 {uri} {data_name} - nln\n" +
                     "client {scheme} {url} {url2} ... - http\n" +
                     "server {context} {port} {forward_ip} {forward_ip2} ... - http\n");
@@ -31,7 +31,7 @@ public class Main {
         printIP();
         switch (mode) {
             case "consumer":
-                Consumer(args[1]);
+                Consumer(args);
                 break;
             case "router1":
                 Router1(args[1], args);
@@ -57,7 +57,7 @@ public class Main {
         }
     }
 
-    private static void Consumer(String uri) {
+    private static void Consumer1(String uri) {
         long startTime = System.currentTimeMillis();
         InterestController interestController = new InterestController();
         interestController.request(uri, responseData -> {
@@ -77,10 +77,46 @@ public class Main {
         });
     }
 
-    private static void Router1(String uri, String[] forwardIps) {
+    private static void Consumer(String[] uris) {
+        long startTime = System.currentTimeMillis();
+        InterestController interestController = new InterestController();
+        long totalPacketSize[] = {0};
+        for (int i = 1; i < uris.length; i++) {
+            String uri = uris[i];
+            AsyncBlock asyncBlock = new AsyncBlock();
+            asyncBlock.setDaemonThread(() -> {
+                interestController.request(uri, responseData -> {
+                    for (int i2 = 0; i2 < responseData.getPojo().getLearningInfo().size(); i2++) {
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getUid());
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getProgress());
+                        System.out.println(responseData.getPojo().getLearningInfo().get(i2).getBase64Data());
+                    }
+                    for (int i2 = 0; i2 < responseData.getPojo().getDatasetInfo().size(); i2++) {
+                        System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getUid());
+                        System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getBase64Data());
+                    }
+                    totalPacketSize[0] += Long.parseLong(responseData.getPojo().getOptions());
+                    if (asyncBlock.endThread() == 0) {
+                        asyncBlock.endLoop();
+                        long endTime = System.currentTimeMillis();
+                        System.out.println("Traffic time ： " + (endTime - startTime) + "ms");
+                        System.out.println("Total packet_size ： " + totalPacketSize[0] + "byte");
+                    }
+                });
+            });
+        }
+    }
+
+    private static void Router1(String uri, String[] forwardIpName) {
         ForwardController forwardController = new ForwardController();
-        for (int i = 2; i < forwardIps.length; i++) {
-            MIB.shard.set(new Name(uri), new Face(forwardIps[i]));
+        for (int i = 2; i < forwardIpName.length; i++) {
+            if (forwardIpName[i].split(":").length == 2) {
+                String ip = forwardIpName[i].split(":")[0];
+                String name = forwardIpName[i].split(":")[1];
+                MIB.shard.set(new Name(name), new Face(ip));
+            } else {
+                MIB.shard.set(new Name(uri), new Face(forwardIpName[i]));
+            }
         }
 
         forwardController.listen(uri);
