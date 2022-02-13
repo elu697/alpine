@@ -99,7 +99,7 @@ public class Controller {
 
     private void setupKeychainV2() {
         try {
-            KeyChain keyChain = new KeyChain("pib-memory", "tpm-memory");
+            KeyChain keyChain = new KeyChain("pib-memory:", "tpm-memory:");
             String nodeId = "default";
             try {
                 InetAddress addr = InetAddress.getLocalHost();

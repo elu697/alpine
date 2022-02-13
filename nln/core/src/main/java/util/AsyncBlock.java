@@ -4,7 +4,7 @@ public class AsyncBlock {
 
     private Thread thread = new Thread();
     private boolean endFlag = false;
-    private static int threadCount = 0;
+    static int threadCount = 0;
 
     public void setDaemonThread(Runnable block) {
         thread = new Thread(block);

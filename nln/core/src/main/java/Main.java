@@ -79,11 +79,12 @@ public class Main {
 
     private static void Consumer(String[] uris) {
         long startTime = System.currentTimeMillis();
-        InterestController interestController = new InterestController();
         long totalPacketSize[] = {0};
+        AsyncBlock wait = new AsyncBlock();
         for (int i = 1; i < uris.length; i++) {
             String uri = uris[i];
             AsyncBlock asyncBlock = new AsyncBlock();
+            InterestController interestController = new InterestController();
             asyncBlock.setDaemonThread(() -> {
                 interestController.request(uri, responseData -> {
                     for (int i2 = 0; i2 < responseData.getPojo().getLearningInfo().size(); i2++) {
@@ -96,23 +97,28 @@ public class Main {
                         System.out.println(responseData.getPojo().getDatasetInfo().get(i2).getBase64Data());
                     }
                     totalPacketSize[0] += Long.parseLong(responseData.getPojo().getOptions());
+                    System.out.println(responseData.getPojo().getName());
                     if (asyncBlock.endThread() == 0) {
-                        asyncBlock.endLoop();
+                        wait.endLoop();
                         long endTime = System.currentTimeMillis();
+                        System.out.println(responseData.getPojo().getName());
                         System.out.println("Traffic time ： " + (endTime - startTime) + "ms");
                         System.out.println("Total packet_size ： " + totalPacketSize[0] + "byte");
                     }
                 });
             });
         }
+        wait.runLoop();
     }
 
     private static void Router1(String uri, String[] forwardIpName) {
         ForwardController forwardController = new ForwardController();
         for (int i = 2; i < forwardIpName.length; i++) {
+            System.out.println(forwardIpName[i].split(":"));
             if (forwardIpName[i].split(":").length == 2) {
                 String ip = forwardIpName[i].split(":")[0];
                 String name = forwardIpName[i].split(":")[1];
+                System.out.println("Split: " + ip + name);
                 MIB.shard.set(new Name(name), new Face(ip));
             } else {
                 MIB.shard.set(new Name(uri), new Face(forwardIpName[i]));

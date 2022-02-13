@@ -13,6 +13,8 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/main/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/ndn/Controller.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/main/java/util/AsyncBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/main/java/util/AsyncBlock.java" afterDir="false" />
     </list>
     <list id="d3f691bc-0459-4e8f-9c2b-d3b0ce8f084c" name="Changes by you" comment="" />
     <option name="SHOW_DIALOG" value="false" />
@@ -168,7 +170,7 @@
     <configuration name="Main" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="Main" />
       <module name="core" />
-      <option name="PROGRAM_PARAMETERS" value="client localhost:9000 /model/A" />
+      <option name="PROGRAM_PARAMETERS" value="consumer /model/A/1 /model/A/2" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -249,6 +251,7 @@
       <workItem from="1644743718503" duration="185000" />
       <workItem from="1644743928063" duration="596000" />
       <workItem from="1644748162254" duration="599000" />
+      <workItem from="1644752639059" duration="1747000" />
     </task>
     <task id="LOCAL-00001" summary="Update">
       <created>1644264631735</created>
