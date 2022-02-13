@@ -19,7 +19,7 @@ public class Main {
     public static void main(String[] args) {
         if (args.length == 0) {
             System.out.println("Arg:\n" +
-                    "consumer {uri} {uri} ... - nln\n" +
+                    "consumer {uri} {name1} {name2} ... - nln\n" +
                     "router1 {uri} {forward_ip}:{forward_name(option)} {forward_ip2} ... - nln\n" +
                     "router2 {uri} {data_name} - nln\n" +
                     "client {scheme} {url} {url2} ... - http\n" +
@@ -31,7 +31,7 @@ public class Main {
         printIP();
         switch (mode) {
             case "consumer":
-                Consumer(args);
+                Consumer(args[1], args);
                 break;
             case "router1":
                 Router1(args[1], args);
@@ -77,12 +77,14 @@ public class Main {
         });
     }
 
-    private static void Consumer(String[] uris) {
+    private static void Consumer(String prefix, String[] names) {
         long startTime = System.currentTimeMillis();
         long totalPacketSize[] = {0};
         AsyncBlock wait = new AsyncBlock();
-        for (int i = 1; i < uris.length; i++) {
-            String uri = uris[i];
+        for (int i = 2; i < names.length; i++) {
+            String name = names[i];
+            String uri = prefix + "/" + name;
+
             AsyncBlock asyncBlock = new AsyncBlock();
             InterestController interestController = new InterestController();
             asyncBlock.setDaemonThread(() -> {
@@ -119,7 +121,7 @@ public class Main {
                 String ip = forwardIpName[i].split(":")[0];
                 String name = forwardIpName[i].split(":")[1];
                 System.out.println("Split: " + ip + name);
-                MIB.shard.set(new Name(name), new Face(ip));
+                MIB.shard.set(new Name(uri + "/" + name), new Face(ip));
             } else {
                 MIB.shard.set(new Name(uri), new Face(forwardIpName[i]));
             }
