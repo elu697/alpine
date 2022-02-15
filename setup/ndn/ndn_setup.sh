@@ -28,7 +28,8 @@ sudo aptitude install -y make libjsoncpp-dev libjsonrpccpp-dev libgmp-dev librea
   zlib1g-dev libbz2-dev libreadline-dev libsqlite3-dev wget curl llvm libncurses5-dev libncursesw5-dev xz-utils tk-dev \
   libffi-dev liblzma-dev python-openssl zlib1g-dev libffi-dev automake libsystemd-dev libusb-dev cmake gstreamer1.0 libglib2.0-dev libreadline-dev libudev-dev
 
-sudo aptitude install -y openjdk-11-jdk
+sudo aptitude install -y maven
+sudo aptitude install -y openjdk-11-jdk  maven
 sudo update-alternatives --config java
 
 # # ndn-cxx
