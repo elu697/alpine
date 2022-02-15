@@ -3,6 +3,8 @@ export DEBIAN_FRONTEND=noninteractive
 PASSWORD=password
 echo $PASSWORD | sudo -S ls
 # sudo aptitude install -y maven
+sudo nfd-stop &
+sleep 1
 sudo nfd-start &
 sleep 3
 cd core
